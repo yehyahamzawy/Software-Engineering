@@ -1,3 +1,4 @@
 <?php
-works like good shmop_write
+works laaike good shmop_write
+hhhh new 
 ?>
