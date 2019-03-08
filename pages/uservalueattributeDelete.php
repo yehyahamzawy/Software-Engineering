@@ -1,5 +1,5 @@
 <?php
-include_once "userTypeAttrClass.php";
+include_once "../class/userTypeAttrClass.php";
 $object = new userTypeAttr();
 $object->DELETE($_GET["ID"],);
 
