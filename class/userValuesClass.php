@@ -27,6 +27,18 @@
  		$sql="SELECT * FROM uservalues where userID=".$id;
  		$result = mysqli_query($connect, $sql);
  		 while($Row = mysqli_fetch_array($result))
+ * 
+ */
+class userValue
+{
+	private $ID;
+	private $attributeID;
+	private $relationID;
+	private $userID;
+	private $value;
+	private $DB;
+	private $output;
+	function __construct($ID)
 	{
 		$this->DB= new database();
 		$sql="SELECT * FROM uservalues WHERE ID=".$ID;
