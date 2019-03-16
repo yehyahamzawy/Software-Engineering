@@ -96,6 +96,7 @@ include '../dashboard.html';
                                                         <option value = "int">INT</option>
                                                         <option  value = "varchar">VARCHAR</option>
                                                         <option  value = "text">TEXT</option>
+                                                        <option  value = "rate">5-Star rating</option>
                                                     </select>
                                                 
                                                     </div>

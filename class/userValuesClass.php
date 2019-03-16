@@ -11,7 +11,9 @@
  		$result = mysqli_query($connect, $sql);
  		echo $sql;
 
- 	}
+	 }
+	 
+	 
  	function delete($id){
  		$connect= new mysqli("localhost", "root", "", "se");
  		$sql="DELETE FROM uservalues where ID=".$id;

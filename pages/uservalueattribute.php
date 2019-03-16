@@ -147,7 +147,7 @@ include '../dashboard.html';
                                         <thead>
                                             <tr>
                                                 <th scope="col">Attribute</th>
-                                                <th scope="col">Value</th>
+                                                <th scope="col">Type</th>
                                                 <th scope="col">Edit/Delete</th>
                                             </tr>
                                         </thead>

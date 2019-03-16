@@ -1,3 +1,10 @@
+<?php
+$pageID = 4;
+include_once "../includes/session.php"
+
+
+?>
+
 <!doctype html>
 <html lang="en">
  
@@ -375,13 +382,13 @@ include '../dbheader.html';
                                 <div class="card">
                                     
                                     <div class="card-body">
-                                        <form class=".form-control-lg" method = "POST" action = <?php echo "'uservalueEdit.php?ID=".$_GET["ID"]."'"?>>
+                                        <form class="form-control" method = "POST" action = <?php echo "'uservalueEdit.php?ID=".$_GET["ID"]."'"?>>
                                            <br>
                                          
                                          
                                                         <label for="inputText3" value=".form-control-lg" class="col-form-label">attributes</label>
 
-                                                        <select class="selectpicker dropup" name = "uniqueuserattributeID" value=".form-control-lg">
+                                                        <select class="selectpicker dropup" name = "uniqueuserattributeID" value=".form-control-lg" onchange = "tester();" id = "uniqueuserattributeID">
                                                         <?php 
                                                    $Connection= new mysqli("localhost", "root", "", "se");
                                                     $sql2 = "SELECT * FROM usertypeattributes";
@@ -403,19 +410,26 @@ include '../dbheader.html';
                                                     echo $sql4;
                                                         echo '<option value= '.$Row["ID"].'>'.$attribute["attributeName"].' ('.$userType["type"].')</option>';
                                                     }
-                                                    ?>
+                                                   echo '
                                                             </select>
                                                             <br>
-                                                            <div class="form-group">
-                                            <label for="inputText3" class="col-form-label">value</label>
-                                            <input id="inputText3" type="text" name = "value" class="form-control" value = 
-                                            <?php 
+                                                            <div id="textField">
+                                                            <div class="form-group">';
+                                           echo '<div id = "test">';
+                                           echo '<label for="inputText3" class="col-form-label">value</label>
+                                            <input id="inputText3" type="text" name = "value" class="form-control" value = ';
+                                            
                                             $Connection = new mysqli("localhost", "root", "", "se");
 												 $sql = "SELECT * FROM uservalues WHERE ID = ".$_GET["ID"];
                                                  $result = mysqli_query($Connection, $sql);
                                                  $val =  mysqli_fetch_array($result);
                                                  echo '"'.$val["value"].'"'; 
-                                                 ?>>
+                                                 echo '></div>
+                                        ';
+                                        
+                                        echo '</div>';
+                                        echo '<div id = "User_AJAX_Form"></div>';
+                                        ?>
                                         </div>
                                         <br>                                         
                                          <label for="inputText3" value=".form-control-lg" class="col-form-label">users</label>
@@ -437,6 +451,7 @@ include '../dbheader.html';
                                         ?>
                                                  
                                              </select>
+                                             
                                              <br>
 
 
@@ -517,3 +532,19 @@ include '../dbfooter.html';
 </body>
  
 </html>
+
+<script>
+    function tester()
+    {
+        jQuery.ajax({
+            url: "stars.php",
+            data: "uniqueuserattributeID=" + $("#uniqueuserattributeID").val(),
+            type: "Post",
+            success:function(data)
+            {
+                $("#User_AJAX_Form").html(data);
+                $("#test").html("");
+            }
+        });
+    }
+</script>
