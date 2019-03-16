@@ -379,24 +379,34 @@ include '../dbheader.html';
                                            <br>
                                            <div class="form-group">
                                             <label for="inputText3" class="col-form-label">attribute Name</label>
-                                            <input id="inputText3" type="text"<?php 
+                                            <input id="inputText3" type="text" class="form-control" name = "attributeName">
+                                            <!-- <?php 
                                             $Connection = new mysqli("localhost", "root", "", "se");
                                             $sql = "SELECT * FROM attribute WHERE ID = ".$_GET["ID"];
                                             $result = mysqli_query($Connection, $sql);
                                             $attribute = mysqli_fetch_array($result);
-                                            echo "value = '".$attribute["attributeName"]."'"; ?> class="form-control" name = "attributeName">
+                                            echo "value = '".$attribute["attributeName"]."'"; ?>  -->
+
                                         </div>
                                         <br>
                                          
                                                         <label for="inputText3" value=".form-control-lg" class="col-form-label">type</label>
 
-                                                        <select class="selectpicker dropup" name = "attributeDType" >
-                                                    
-                                                    <option value = "int">INT</option>
+                                                        <!-- <select class="selectpicker dropup" name = "attributeDType" > -->
+                                                        <?php include "../class/attributeClass.php";
+                                                            $attributes =new Attribute(2);
+                                                            $output=$attributes->readInSelect();
+                                                            foreach ($output as $i) {
+                                                                # code...
+                                                                echo $i;
+                                                            }
+                                                         ?>
+
+                                                    <!-- <option value = "int">INT</option>
                                                     <option  value = "varchar">VARCHAR</option>
-                                                    <option  value = "text">TEXT</option>
-                                                </select>
-                                                            </select>
+                                                    <option  value = "text">TEXT</option> -->
+                                                <!-- </select> -->
+                                                            <!-- </select> -->
                                                             <br>
                                                             
                                                 </div>
