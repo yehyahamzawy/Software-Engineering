@@ -47,7 +47,7 @@ include '../dashboard.html';
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="page-header">
-                            <h2 class="pageheader-title">Multiselect </h2>
+                            <h2 class="pageheader-title">Mission</h2>
                             <p class="pageheader-text">Proin placerat ante duiullam scelerisque a velit ac porta, fusce sit amet vestibulum mi. Morbi lobortis pulvinar quam.</p>
                             <div class="page-breadcrumb">
                                 <nav aria-label="breadcrumb">
@@ -113,13 +113,13 @@ include '../dashboard.html';
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="section-block" id="basicform">
-                                    <h3 class="section-title">request day off</h3>
+                                    <h3 class="section-title">Select Team members</h3>
                                     
                                 </div>
-                                <div class="card">
+                                <div class="card" style="margin:200px;margin-left:200px;margin-top:0px;">
                                    
 
-                                    <div class="form-group">
+                                    <div class="form-group" style="height:50px;width:800px;margin-left:150px">
                                         <label for="inputText3" class="col-form-label">day</label>
                                     <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
                                         <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker4" />
@@ -128,7 +128,8 @@ include '../dashboard.html';
                                         </div>
                                     </div>
                                 </div>
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <br>
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12"style="margin-left:300px">
                             <div class="card">
                                 <h5 class="card-header">doctors</h5>
                                 <div class="card-body">
@@ -141,11 +142,11 @@ include '../dashboard.html';
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12"style="margin-left:300px">
                             <div class="card">
                                 <h5 class="card-header">pyshcology</h5>
                                 <div class="card-body">
-                                    <select id='callbacks' multiple='multiple'>
+                                    <select id='callbacks2' multiple='multiple'>
                                         <option value='elem_1'>mohmed</option>
                                         <option value='elem_2'>yehia</option>
                                         <option value='elem_3'>hazzem</option>
@@ -155,12 +156,12 @@ include '../dashboard.html';
                             </div>
                         </div>
 
-                 </div>
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+                 
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12"style="margin-left:300px">
                             <div class="card">
                                 <h5 class="card-header">assistant</h5>
                                 <div class="card-body">
-                                    <select id='callbacks' multiple='multiple'>
+                                    <select id='callbacks3' multiple='multiple'>
                                         <option value='elem_1'>mohmed</option>
                                         <option value='elem_2'>yehia</option>
                                         <option value='elem_3'>hazzem</option>
@@ -169,11 +170,11 @@ include '../dashboard.html';
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12"style="margin-left:300px;">
                             <div class="card">
                                 <h5 class="card-header">driver</h5>
                                 <div class="card-body">
-                                    <select id='callbacks' multiple='multiple'>
+                                    <select id='callbacks4' multiple='multiple'>
                                         <option value='elem_1'>mohmed</option>
                                         <option value='elem_2'>yehia</option>
                                         <option value='elem_3'>hazzem</option>
@@ -182,18 +183,25 @@ include '../dashboard.html';
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="exampleFormControlTextarea1">additional Information</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <div class="form-group" style="margin-left:150px">
+                            <label for="exampleFormControlTextarea1" >additional Information</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="height:50px;width:800px"></textarea>
                         </div>
+                        <div class="form-group" style="margin-left:150px">
+                            <label for="exampleFormControlTextarea1">Location</label>
+                            <br>
+                            <iframe src="https://www.google.com/maps/embed?pb=" width="600" height="450" frameborder="0" style="border:0" allowfullscreen ></iframe>
+                        </div>
+                        <br><br>
                         <div class="col-sm-6 pl-0">
-                            <p class="text-right">
+                            <p class="text-right" >
                                 <button type="submit" class="btn btn-space btn-primary">Create</button>
                                 <button class="btn btn-space btn-secondary">Cancel</button>
                             </p>
                         </div>
                     </form>
                 </div>
+</div>
                 </div>
                         <!-- ============================================================== -->
                         <!-- end callbacks multiselectd  -->
@@ -300,10 +308,40 @@ include '../dbfooter.html';
     <script>
     $('#callbacks').multiSelect({
         afterSelect: function(values) {
-            alert("Select value: " + values);
+            
         },
         afterDeselect: function(values) {
-            alert("Deselect value: " + values);
+            
+        }
+    });
+    </script>
+      <script>
+    $('#callbacks2').multiSelect({
+        afterSelect: function(values) {
+            
+        },
+        afterDeselect: function(values) {
+           
+        }
+    });
+    </script>
+      <script>
+    $('#callbacks3').multiSelect({
+        afterSelect: function(values) {
+          
+        },
+        afterDeselect: function(values) {
+          
+        }
+    });
+    </script>
+      <script>
+    $('#callbacks4').multiSelect({
+        afterSelect: function(values) {
+            
+        },
+        afterDeselect: function(values) {
+            
         }
     });
     </script>
