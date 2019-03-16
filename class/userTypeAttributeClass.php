@@ -2,29 +2,36 @@
 /**
  * 
  */
-include "userTypeClass.php";
-include "attributeClass.php";
+include_once "userTypeClass.php";
+include_once "attributeClass.php";
+include_once "CRUDinterface.php";
 
 // include "db.php";
-class userTypeAttribute
+class userTypeAttribute implements CRUD
 {
 	private $ID;
 	private $userTypeID;
 	private $attributeID;
 	private $userType;
 	private $attribute;
-	private $DB;
+	private $DB;		
+	private $output;
 	function __construct($ID)
-	{
+	{	$this->output=array();
 		$this->DB= new database();
 		$sql="SELECT * FROM usertypeattributes WHERE ID=".$ID;
 		$Row=$this->DB->db_query_row($sql);
-		
+		array_push($this->output, $Row);
 		$this->ID=$Row["ID"];
 		$this->userTypeID=$Row["userTypeID"];
 		$this->attributeID=$Row['attributeID'];
 		
 		
+	}
+	function Create($typeid,$attid){
+		$sql="INSERT INTO `usertypeattributes` (`userTypeID`,`attributeID`) VALUES ($typeid,$attid)";
+		$this->DB->db_query($sql);
+
 	}
 	function getuserTypeID(){
 		return $this->userTypeID;
@@ -35,13 +42,37 @@ class userTypeAttribute
 	
 	function Read(){
 		$this->userType= new userType($this->userTypeID);
-		$this->userType->Read();
+		$x=$this->userType->Read();
+			foreach ($x as $key ) {
+					echo $key['type'];
+			}
 		$this->attribute=new attribute($this->attributeID);
-		$this->attribute->Read();
+		$x=$this->attribute->Read();
+			foreach ($x as $key ) {
+					echo $key['attributeName'];
+			}
 	}
-	function ReadSpecific($Type){
+	function ReadInSelect(){}
+	function Delete($id){
+	$sql="UPDATE `usertypeattributes` SET isDeleted=1 WHERE ID=".$id;
+
+	$result=$this->DB->db_query($sql);
+	// return $result;
+}
+	// function Delete($id){
+	// 	$this->updatedAt=date("Y-m-d H:i:s");}
+	function ReadAll(){}
+	function Update(){
+		$this->updatedAt=date("Y-m-d H:i:s");
+	}
+		function ReadSpecific($Type){
+
 		$this->userType= new userType($Type);
-		$this->userType->Read();
+		$x=$this->userType->Read();
+		foreach ($x as $key ) {
+			# code...
+			echo $key['type'];
+		}
 		$sql="SELECT * FROM userTypeAttributes WHERE isDeleted=0 AND userTypeID=".$Type;
 		$result=$this->DB->db_query($sql);
 		
@@ -49,12 +80,13 @@ class userTypeAttribute
 	{
 
 		$this->attribute=new attribute($Row['attributeID']);
-		$this->attribute->Read();
+		$x=$this->attribute->Read();
+		foreach ($x as $key ) {
+			# code...
+			echo $key['attributeName'];
+		}
 	}
-	function Delete($ID){
-	$sql="UPDATE userTypeAttributes SET isDeleted=1 WHERE ID=".$ID;
-	$result=$this->DB->db_query($sql);
-}
+	
 
 	
 	}

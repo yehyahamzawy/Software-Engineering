@@ -1,7 +1,8 @@
-<?php
-include_once "../class/userTypeAttrClass.php";
-$object = new userTypeAttr();
-$object->DELETE($_GET["ID"],);
+	<?php
+include_once "../class/userTypeAttributeClass.php";
+$object = new userTypeAttribute(34);
+
+$object->Delete($_GET["ID"]);
 
 header('location:uservalueattribute.php');
 

@@ -26,7 +26,7 @@
         <!-- ============================================================== -->
         <?php
 include '../dbheader.html';
-
+include_once '../dashboard.php';
 ?>
         <!-- ============================================================== -->
         <!-- end navbar -->
@@ -34,7 +34,7 @@ include '../dbheader.html';
         <!-- ============================================================== -->
         <!-- left sidebar -->
         <!-- ============================================================== -->
-      <div class="nav-left-sidebar sidebar-dark">
+      <!-- <div class="nav-left-sidebar sidebar-dark">
             <div class="menu-list">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
@@ -324,7 +324,7 @@ include '../dbheader.html';
                     </div>
                 </nav>
             </div>
-        </div>
+        </div> -->
         <!-- ============================================================== -->
         <!-- end left sidebar -->
         <!-- ============================================================== -->

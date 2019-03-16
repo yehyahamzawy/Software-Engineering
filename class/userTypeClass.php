@@ -2,48 +2,49 @@
 /**
  * 
  */
-class userType 
+include_once "CRUDinterface.php";
+class userType implements CRUD
 {
 	private $ID;
 	private $typeName;
 	private $DB;
 	private $output;
+	private $updatedAt;
+
 	function __construct($ID)
-	{
+	{	$this->output=array();
 		$this->DB= new database();
 		$sql="SELECT * FROM userType WHERE ID=".$ID;
 
 		$Row=$this->DB->db_query_row($sql);
-		
+		array_push($this->output, $Row);
 		$this->ID=$Row["ID"];
 		$this->typeName=$Row["type"];
 		
 		
 	}
 	function Read(){
-		unset($this->output);
-		// echo "ID: ".$this->ID."<br>";
-		$this->output[]= "Type: ".$this->typeName."<br>";	
+		// unset($this->output);
+		// // echo "ID: ".$this->ID."<br>";
+		// $this->output[]= "Type: ".$this->typeName."<br>";	
 		return $this->output;
 	}
 	function ReadAll(){
-		unset($this->output);
+		$this->output=array();
 		$sql="SELECT * FROM userType WHERE isDeleted=0";
 		$result=$this->DB->db_query($sql);
-		$this->output[]= "<table>";
+		
 		while($Row = mysqli_fetch_array($result))
 	{
-		$this->output[]= "<tr>";
-		$this->output[]= "<td>ID: ".$Row["ID"]."</td>";
-		$this->output[]= "<td>Type: ".$Row["type"]."</td>";
-		$this->output[]= "</tr>";
+		array_push($this->output, $Row);
 
 	}
-	$this->output[]= "</table>";
+	
 	return $this->output;
 }
 	function Update($newType){
-		$sql="UPDATE usertype SET Type='$newType' WHERE ID=".$this->ID;
+		$this->updatedAt=date("Y-m-d H:i:s");
+		$sql="UPDATE usertype SET Type='$newType',updatedAt='$this->updatedAt' WHERE ID=".$this->ID;
 		$query=$this->DB->db_query($sql);
 				
 
@@ -60,7 +61,8 @@ class userType
 		return $this->output;
 	}
 	function Delete($ID){
-	$sql="UPDATE usertype SET isDeleted=1 WHERE ID=".$ID;
+		$this->updatedAt=date("Y-m-d H:i:s");
+	$sql="UPDATE usertype SET isDeleted=1,updatedAt='$this->updatedAt' WHERE ID=".$ID;
 	$result=$this->DB->db_query($sql);
 }
 

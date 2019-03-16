@@ -1,4 +1,11 @@
 <!doctype html>
+<?php 
+include_once "..\class\userClass.php";
+$x=sha1(2);
+$user=new User($x);
+
+
+ ?>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
@@ -39,17 +46,17 @@ include '../dbheader.html';
         <!-- end navbar -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
-        <?php
-include '../dashboard.html';
+        <!-- <?php
+// include '../dashboard.php';
 ?>
-      
+       -->
 
 <div class="container emp-profile">
             <form method="post">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="image"/>
                             <div class="file btn btn-lg btn-primary">
                                 Change Photo
                                 <input type="file" name="file"/>
@@ -59,7 +66,13 @@ include '../dashboard.html';
                     <div class="col-md-6">
                         <div class="profile-head">
                                     <h5>
-                                    Name
+                                    <?php 
+                                    $Row=$user->Read();
+                                    foreach ($Row as $i) {
+                                        echo $i['fName']." ".$i['lName'];
+                                    }
+
+                                     ?>
                                     </h5>
                                     <h6>
                                     Example
@@ -93,46 +106,22 @@ include '../dashboard.html';
                     <div class="col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>User Id</label>
+                                <?php 
+                                $Row=$user->getAllAttributes();
+                                foreach ($Row as $i) {
+                                    echo "<div class='row'>
+                                            <div class='col-md-6'>
+                                                <label>".$i['attributeName']."</label>
                                             </div>
-                                            <div class="col-md-6">
-                                                <p>Example</p>
+                                            <div class='col-md-6'>
+                                                <p>".$i['value']."</p>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Name</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Example</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Email</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Example</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Phone</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Example</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Example</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Example</p>
-                                            </div>
-                                        </div>
+                                        </div>";
+                                }
+                                    
+
+                                 ?>
+                                    
                             </div>
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                         <div class="row">

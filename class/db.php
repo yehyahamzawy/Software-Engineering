@@ -39,7 +39,7 @@
  	function db_query_row($query){
 
  		$result = mysqli_query($this->db_connect(), $query);
- 		if (!result)
+ 		if (!$result)
   			{
   				echo("Error description: " . mysqli_error($this->db_connect()));
   			}

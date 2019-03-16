@@ -2,49 +2,52 @@
 /**
  * 
  */
-include "db.php";
-class attribute
+include_once "db.php";
+
+include_once "CRUDinterface.php";
+class attribute implements CRUD
 {
 	private $ID;
 	private $attributeName;
 	private $attributeType;
 	private $DB;
 	private $output;
+	private $updatedAt;
 	function __construct($ID)
-	{
+	{	
+		$this->output=array();
 		$this->DB= new database();
 		$sql="SELECT * FROM attribute WHERE ID=".$ID;
-		$Row=$this->DB->db_query_row($sql);
-		
-		$this->ID=$Row["ID"];
-		$this->attributeName=$Row["attributeName"];
-		
+		if($Row=$this->DB->db_query_row($sql)){
+			// $Row = mysqli_fetch_array($result);
+            array_push($this->output, $Row);
+			$this->ID=$Row["ID"];
+			$this->attributeName=$Row["attributeName"];
+		}
 		
 	}
 	function Read(){
-		unset($this->output);
+		// unset($this->output);
 	    // echo "ID: ".$this->ID."<br>";
-		$this->output[]= "Attribute: ".$this->attributeName."<br>";
+		
 		return $this->output;	
 	}
 	function ReadAll(){
-		unset($this->output);
+		$this->output=array();
 		$sql="SELECT * FROM attribute";
 		$result=$this->DB->db_query($sql);
-		$this->output[]= "<table>";
+		
 		while($Row = mysqli_fetch_array($result))
 	{
-		$this->output[]= "<tr>";
-		$this->output[]= "<td>ID: ".$Row["ID"]."</td>";
-		$this->output[]= "<td>Type: ".$Row["attributeName"]."</td>";
-		$this->output[]= "</tr>";
+		array_push($this->output, $Row);
 
 	}
-	$this->output[]= "</table>";
+	
 	return $this->output;
 }
 	function Update($newName){
-		$sql="UPDATE attribute SET attributeName='$newName' WHERE ID=".$this->ID;
+		$this->updatedAt=date("Y-m-d H:i:s");
+		$sql="UPDATE attribute SET attributeName='$newName',updatedAt='$this->updatedAt' WHERE ID=".$this->ID;
 		$query=$this->DB->db_query($sql);
 				
 
@@ -85,7 +88,8 @@ class attribute
 		return $this->output;
 	}
 	function Delete($ID){
-		$sql="UPDATE attribute SET isDeleted=1 WHERE ID=".$ID;
+		$this->updatedAt=date("Y-m-d H:i:s");
+		$sql="UPDATE attribute SET isDeleted=1,updatedAt='$this->updatedAt' WHERE ID=".$ID;
 		$this->DB->db_query($sql);
 
 	}

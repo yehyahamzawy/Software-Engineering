@@ -33,7 +33,7 @@ include '../dbheader.html';
         <!-- ============================================================== -->
         <!-- ============================================================== -->
         <?php
-include '../dashboard.html';
+include '../dashboard.php';
 
 ?>
         <!-- ============================================================== -->
@@ -87,6 +87,7 @@ include '../dashboard.html';
                                         <form class=".form-control-lg">
                                            <br>
                                            <label for="inputText3"  value=".form-control-lg" class="col-form-label">guest name</label>
+                                           
                                            <select class="selectpicker dropup"   value=".form-control-lg" >
                                                         
                                                             <option>ahmed mohamed</option>

@@ -30,7 +30,7 @@ include '../dbheader.html';
         <!-- ============================================================== -->
         <!-- ============================================================== -->
         <?php
-include '../dashboard.html';
+include '../dashboard.php';
 
 ?>
         <!-- ============================================================== -->
@@ -154,7 +154,7 @@ include '../dashboard.html';
                                         <tbody>
                                         <?php
 												 $Connection = new mysqli("localhost", "root", "", "se");
-												 $sql = "SELECT * FROM usertypeattributes";
+												 $sql = "SELECT * FROM usertypeattributes WHERE isDeleted=0 ";
                                                  $result = mysqli_query($Connection, $sql);
                                                  
 

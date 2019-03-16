@@ -1,4 +1,4 @@
-<?php
+	<?php
 include_once "../class/userTypeAttrClass.php";
 $object = new userTypeAttr();
 $object->update($_GET["ID"],$_POST["typeId"],$_POST["attributeId"]);

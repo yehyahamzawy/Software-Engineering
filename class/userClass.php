@@ -3,14 +3,18 @@
  * 
  */
 include "db.php";
+include_once "CRUDinterface.php";
 // include "userTypeClass.php";
-class User
+class User implements CRUD
 {
 	private $fname;
 	private $lname;
 	private $userTypeID;
 	private $hashedID;
 	// private $password;
+	private $isDeleted;
+	private $createdAt;
+	private $updatedAt;
 	private $ID;
 	public $DB;
 	private $output;
@@ -18,14 +22,17 @@ class User
 	function __construct($ID)
 	{
 		$this->DB= new database();
+		$this->output=array();
 		$sql="SELECT * FROM user WHERE isDeleted=0";
 		$result=$this->DB->db_query($sql);
 		while($Row = mysqli_fetch_array($result))
 			if(sha1($Row['ID'])==$ID){
+				array_push($this->output, $Row);
 				$this->fname=$Row["fName"];
 				$this->lname=$Row["lName"];
 				$this->userTypeID=$Row['userType'];
 				$this->ID=$Row['ID'];
+				// $this->updatedAt=0;
 				return;
 			}
 			
@@ -86,39 +93,35 @@ class User
 
 	}
 	function Read(){
-		$this->output[]= "FirstName: ".$this->fname."<br>";
-		$this->output[]= "LastName: ".$this->lname."<br>";	
-		$this->output[]= "User Type: ".$this->userTypeID."<br>";
+		// $this->output[]= "FirstName: ".$this->fname."<br>";
+		// $this->output[]= "LastName: ".$this->lname."<br>";	
+		// $this->output[]= "User Type: ".$this->userTypeID."<br>";
 		return $this->output;
 
 	}
 	function ReadAll(){
-		unset($this->output);
+		$this->output=array();
 		$sql="SELECT * FROM user WHERE isDeleted=0";
 		$result=$this->DB->db_query($sql);
-		$this->output[]= "<table>";
+		
 		while($Row = mysqli_fetch_array($result))
 	{
-		$this->output[]= "<tr>";
-		$this->output[]= "<td>FirstName: ".$Row["fName"]."</td>";
-		$this->output[]= "<td>LastName: ".$Row["lName"]."</td>";
-		$this->output[]= "<td>User Type: ".$Row["userType"]."</td>";
-		$this->output[]= "</tr>";
+		array_push($this->output, $Row);
 
 	}
-	$this->output[]= "</table>";
+	
 	return $this->output;
 }
 
 
 	
 	function Update($newfName,$newlName,$newType,$userID){
-
+		$this->updatedAt=date("Y-m-d H:i:s");
 		$sql="SELECT * FROM user WHERE isDeleted=0";
 		$result=$this->DB->db_query($sql);
 		while($Row = mysqli_fetch_array($result))
-			if(sha1($Row['ID'])==$ID){
-				$sql="UPDATE user SET userType='$newType',fName='$newfName',lName='$newlName' WHERE ID=".$Row['ID'];
+			if(sha1($Row['ID'])==$userID){
+				$sql="UPDATE user SET userType='$newType',fName='$newfName',lName='$newlName' ,updatedAt='$this->updatedAt' WHERE ID=".$Row['ID'];
 				$query=$this->DB->db_query($sql);
 				return;
 			}
@@ -130,7 +133,7 @@ class User
 		// echo "x";
 		// $x= new userType($this->userTypeID);
 		// $x->Read();
-		unset($this->output);
+		$this->output=array();
 		$sql="SELECT attribute.attributeName,uservalues.value,user.fName,user.lName
     		FROM user
     		INNER JOIN uservalues ON user.ID=uservalues.userID
@@ -138,18 +141,13 @@ class User
     		WHERE user.ID=".$this->ID;
 
 		$result=$this->DB->db_query($sql);
-		$this->output[]= "<table>";
+		
 		while($Row = mysqli_fetch_array($result))
 	{
-		$this->output[]="<tr>";
-		// echo "<td>".$Row['fName']."</td>";
-		// echo "<td>".$Row['lName']."</td>";
-		$this->output[]= "<td>".$Row["attributeName"].":</td>";
-		$this->output[]= "<td>".$Row['value']."</td>";		
-		$this->output[]= "</tr>";
+		array_push($this->output, $Row);
 
 	}
-	$this->output[]= "</table>";
+	
 	return $this->output;
 	}
 	function readInSelect(){
@@ -209,13 +207,13 @@ function createinput($type){
 
 
 
-function Delete($ID){
-
+function Delete($id){
+	$this->updatedAt=date("Y-m-d H:i:s");
 	$sql="SELECT * FROM user WHERE isDeleted=0";
 		$result=$this->DB->db_query($sql);
 		while($Row = mysqli_fetch_array($result))
-			if(sha1($Row['ID'])==$ID){
-				$sql="UPDATE user SET isDeleted=1 WHERE ID=".$Row['ID'];
+			if(sha1($Row['ID'])==$id){
+				$sql="UPDATE user SET isDeleted=1,updatedAt='$this->updatedAt' WHERE ID=".$Row['ID'];
 				$result=$this->DB->db_query($sql);
 				return;
 			}

@@ -26,7 +26,7 @@
         <!-- ============================================================== -->
         <?php
 include '../dbheader.html';
-
+include_once '../dashboard.php';
 ?>
         <!-- ============================================================== -->
         <!-- end navbar -->
@@ -34,7 +34,7 @@ include '../dbheader.html';
         <!-- ============================================================== -->
         <!-- left sidebar -->
         <!-- ============================================================== -->
-      <div class="nav-left-sidebar sidebar-dark">
+    <!--   <div class="nav-left-sidebar sidebar-dark">
             <div class="menu-list">
                 <nav class="navbar navbar-expand-lg navbar-light">
                     <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
@@ -324,7 +324,7 @@ include '../dbheader.html';
                     </div>
                 </nav>
             </div>
-        </div>
+        </div> -->
         <!-- ============================================================== -->
         <!-- end left sidebar -->
         <!-- ============================================================== -->
@@ -367,7 +367,7 @@ include '../dbheader.html';
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="section-block" id="basicform">
-                                    <h3 class="section-title">update attribute type</h3>
+                                    <h3 class="section-title"></h3>
                                     <!-- ============================================================== -->
                 
                         <!-- ============================================================== -->
@@ -375,7 +375,7 @@ include '../dbheader.html';
                                 <div class="card">
                                     
                                     <div class="card-body">
-                                        <form class=".form-control-lg" method = "POST" action = <?php echo "'attributeEdit.php?ID=".$_GET["ID"]."'"?>>
+                                        <form class=".form-control-lg" method = "POST" action ="">
                                            <br>
                                            <div class="form-group">
                                             <label for="inputText3" class="col-form-label">attribute Name</label>
@@ -393,7 +393,7 @@ include '../dbheader.html';
                                                         <label for="inputText3" value=".form-control-lg" class="col-form-label">type</label>
 
                                                         <!-- <select class="selectpicker dropup" name = "attributeDType" > -->
-                                                        <?php include "../class/attributeClass.php";
+                                                        <?php include_once "../class/attributeClass.php";
                                                             $attributes =new Attribute(2);
                                                             $output=$attributes->readInSelect();
                                                             foreach ($output as $i) {

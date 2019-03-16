@@ -3,7 +3,8 @@
 /**
  * 
  */
-class userValue
+include_once "CRUDinterface.php";
+class userValue implements CRUD
 {
 	private $ID;
 	private $attributeID;
@@ -12,6 +13,7 @@ class userValue
 	private $value;
 	private $DB;
 	private $output;
+	private $updatedAt;
 	function __construct($ID)
 	{
 		$this->DB= new database();
@@ -31,8 +33,17 @@ class userValue
 		$sql="INSERT INTO `uservalues`( `attributeID`,`userID`, `value`,`userTypeOptionID`) VALUES ('$attributeID','$userID','$value','$relationID') ";
 		$this->DB->db_query($sql);
 	}
+	function Read(){
+
+	}
+	function ReadAll(){}
+	function ReadInSelect(){}
+	function Update(){
+		$this->updatedAt=date("Y-m-d H:i:s");
+	}
 	function Delete($ID){
-	$sql="UPDATE uservalues SET isDeleted=1 WHERE ID=".$ID;
+		$this->updatedAt=date("Y-m-d H:i:s");
+	$sql="UPDATE uservalues SET isDeleted=1,updatedAt='$this->updatedAt' WHERE ID=".$ID;
 	$result=$this->DB->db_query($sql);
 }
 
