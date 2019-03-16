@@ -7,12 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Concept - Bootstrap 4 Admin Dashboard Template</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.min.css">
-    <link href="../assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/libs/css/style.css">
-    <link rel="stylesheet" href="../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
-    <link rel="stylesheet" href="../assets/vendor/datepicker/tempusdominus-bootstrap-4.css" />
-    <link rel="stylesheet" href="../assets/vendor/inputmask/css/inputmask.css" />
+    <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="assets/vendor/fonts/circular-std/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/libs/css/style.css">
+    <link rel="stylesheet" href="assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
+    <link rel="stylesheet" href="assets/vendor/datepicker/tempusdominus-bootstrap-4.css" />
+    <link rel="stylesheet" href="assets/vendor/inputmask/css/inputmask.css" />
+    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src="assets/libs/js/main-js.js"></script>
+    <script src="assets/vendor/inputmask/js/jquery.inputmask.bundle.js"></script>
+    <script src="assets/vendor/datepicker/moment.js"></script>
+    <script src="assets/vendor/datepicker/tempusdominus-bootstrap-4.js"></script>
+    <script src="assets/vendor/datepicker/datepicker.js"></script>
     
 </head>
 
@@ -25,7 +33,7 @@
         <!-- navbar -->
         <!-- ============================================================== -->
         <?php
-include '../dbheader.html';
+include 'dbheader.html';
 
 ?>
 <!-- ============================================================== -->
@@ -51,16 +59,19 @@ include '../dbheader.html';
                                             <a class="nav-link" href="index.html" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-2" aria-controls="submenu-1-2">Database Control</a>
                                             <div id="submenu-1-2" class="collapse submenu" style="">
                                                 <ul class="nav flex-column">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="attribute.php">Attribute</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="uservalues.php">UserValues</a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="uservalueattribute.php">UserValue Attribute</a>
-                                                    </li>
-                                                   
+
+                                                    <?php
+                                                        include "class/db.php"; 
+                                                        $db=new Database();
+                                                        $output=$db->showTables();
+                                                        foreach ($output as $i) {
+                                                            echo "<li class='nav-item'>
+
+                                                        <a class='nav-link' href=''>".$i['Tables_in_se']."</a>
+                                                    </li>";
+                                                        }
+                                                     ?>
+                                                    
                                                    
                                                 </ul>
                                                 
@@ -134,14 +145,14 @@ include '../dbheader.html';
         <!-- end left sidebar -->
         <!-- wrapper  -->
         <!-- ============================================================== -->
-        <div class="dashboard-wrapper">
+        <!-- <div class="dashboard-wrapper">
             <div class="container-fluid dashboard-content">
                 <div class="row">
                     <div class="col-xl-10">
                         <!-- ============================================================== -->
                         <!-- pageheader  -->
                         <!-- ============================================================== -->
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="page-header" id="top">
                                     <h2 class="pageheader-title">update attribute type  </h2>
@@ -157,7 +168,7 @@ include '../dbheader.html';
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- ============================================================== -->
                         <!-- end pageheader  -->
                         <!-- ============================================================== -->
@@ -167,7 +178,7 @@ include '../dbheader.html';
                         <!-- ============================================================== -->
                         <!-- basic form  -->
                         <!-- ============================================================== -->
-                        <div class="row">
+                       <!--  <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="section-block" id="basicform">
                                     <h3 class="section-title">update attribute type</h3>
@@ -175,7 +186,7 @@ include '../dbheader.html';
                 
                         <!-- ============================================================== -->
                                 </div>
-                                <div class="card">
+                            <!--     <div class="card">
                                     
                                     <div class="card-body">
                                         <form class=".form-control-lg" method = "POST" action = <?php echo "'attributeEdit.php?ID=".$_GET["ID"]."'"?>>
@@ -189,14 +200,14 @@ include '../dbheader.html';
                                             $result = mysqli_query($Connection, $sql);
                                             $attribute = mysqli_fetch_array($result);
                                             echo "value = '".$attribute["attributeName"]."'"; ?>  -->
-
+<!-- <!-- <!-- 
                                         </div>
                                         <br>
                                          
                                                         <label for="inputText3" value=".form-control-lg" class="col-form-label">type</label>
 
                                                         <!-- <select class="selectpicker dropup" name = "attributeDType" > -->
-                                                        <?php include "../class/attributeClass.php";
+                                                    <!--     <?php include "../class/attributeClass.php";
                                                             $attributes =new Attribute(2);
                                                             $output=$attributes->readInSelect();
                                                             foreach ($output as $i) {
@@ -205,31 +216,31 @@ include '../dbheader.html';
                                                             }
                                                          ?>
 
-                                                    <!-- <option value = "int">INT</option>
+                                                    <option value = "int">INT</option>
                                                     <option  value = "varchar">VARCHAR</option>
-                                                    <option  value = "text">TEXT</option> -->
+                                                    <option  value = "text">TEXT</option>
                                                 <!-- </select> -->
                                                             <!-- </select> -->
-                                                            <br>
+                                                           <!--  <br>
                                                             
-                                                </div>
+                                                </div> -->
                                      
-                                            <div class="col-sm-6 pl-0">
+                                            <!-- <div class="col-sm-6 pl-0">
                                                 <p class="text-right">
                                                     <button type="submit" class="btn btn-space btn-primary">Submit</button>
                                                     <button class="btn btn-space btn-secondary">Cancel</button>
                                                 </p>
                                             </div>
                                         </form>
-                                    </div>
-                                    </div>
-                                    
+                                    </div> --> -->
+                                    <!-- </div> --> -->
+                                     --> --> --> -->
                         
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
             <?php
-include '../dbfooter.html';
+include 'dbfooter.html';
 
 ?>
             <!-- ============================================================== -->
@@ -241,14 +252,14 @@ include '../dbfooter.html';
     <!-- end main wrapper -->
     <!-- ============================================================== -->
     <!-- Optional JavaScript -->
-    <script src="../assets/vendor/jquery/jquery-3.3.1.min.js"></script>
-    <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
-    <script src="../assets/vendor/slimscroll/jquery.slimscroll.js"></script>
-    <script src="../assets/libs/js/main-js.js"></script>
-    <script src="../assets/vendor/inputmask/js/jquery.inputmask.bundle.js"></script>
-    <script src="../assets/vendor/datepicker/moment.js"></script>
-    <script src="../assets/vendor/datepicker/tempusdominus-bootstrap-4.js"></script>
-    <script src="../assets/vendor/datepicker/datepicker.js"></script>
+    <script src="assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+    <script src="assets/libs/js/main-js.js"></script>
+    <script src="assets/vendor/inputmask/js/jquery.inputmask.bundle.js"></script>
+    <script src="assets/vendor/datepicker/moment.js"></script>
+    <script src="assets/vendor/datepicker/tempusdominus-bootstrap-4.js"></script>
+    <script src="assets/vendor/datepicker/datepicker.js"></script>
     <script>
     $(function(e) {
         "use strict";
