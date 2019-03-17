@@ -26,6 +26,13 @@ class attribute implements CRUD
 		}
 		
 	}
+	function Create($name,$typeID){	
+		$sql="INSERT INTO `attribute` ( `attributeName`, `type`) VALUES ('$name',$typeID)";
+		$this->DB->db_query($sql);
+		$this->attributeName=$name;
+		$this->attributeType=$typeID;
+		
+	}
 	function Read(){
 		// unset($this->output);
 	    // echo "ID: ".$this->ID."<br>";
@@ -34,7 +41,7 @@ class attribute implements CRUD
 	}
 	function ReadAll(){
 		$this->output=array();
-		$sql="SELECT * FROM attribute";
+		$sql="SELECT * FROM attribute WHERE isDeleted=0";
 		$result=$this->DB->db_query($sql);
 		
 		while($Row = mysqli_fetch_array($result))
@@ -45,9 +52,9 @@ class attribute implements CRUD
 	
 	return $this->output;
 }
-	function Update($newName){
+	function Update($id,$newName,$newTypeID){
 		$this->updatedAt=date("Y-m-d H:i:s");
-		$sql="UPDATE attribute SET attributeName='$newName',updatedAt='$this->updatedAt' WHERE ID=".$this->ID;
+		$sql="UPDATE attribute SET attributeName='$newName',updatedAt='$this->updatedAt' WHERE ID=".$id;
 		$query=$this->DB->db_query($sql);
 				
 

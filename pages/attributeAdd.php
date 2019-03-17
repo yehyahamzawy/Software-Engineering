@@ -1,7 +1,7 @@
 <?php
-include_once "../class/attributes.php";
-$object = new attribute();
-$object->add($_POST["attributeName"],$_POST["attributeDType"]);
-header('location:uservalueattribute.php');
+include_once "../class/attributeClass.php";
+$object = new Attribute(1);
+$object->create($_POST["attributeName"],$_POST["attributeDType"]);
+header('location:attribute.php');
 
 ?>

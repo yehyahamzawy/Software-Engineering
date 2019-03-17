@@ -134,11 +134,7 @@ class User implements CRUD
 		// $x= new userType($this->userTypeID);
 		// $x->Read();
 		$this->output=array();
-		$sql="SELECT attribute.attributeName,uservalues.value,user.fName,user.lName
-    		FROM user
-    		INNER JOIN uservalues ON user.ID=uservalues.userID
-    		INNER JOIN attribute ON attribute.ID=uservalues.attributeID
-    		WHERE user.ID=".$this->ID;
+		$sql="SELECT attribute.attributeName as aName,uservalues.value,usertypeattributes.attributeID,user.fName,user.lName FROM user INNER JOIN uservalues ON user.ID=uservalues.userID INNER JOIN usertypeattributes ON uservalues.userTypeOptionID=usertypeattributes.ID INNER JOIN attribute ON attribute.ID=usertypeattributes.attributeID WHERE user.ID=".$this->ID;
 
 		$result=$this->DB->db_query($sql);
 		
@@ -173,7 +169,10 @@ class User implements CRUD
 		$x= new userType($userType);
 		
 		 $this->output[]="<form action='submit_form.php' method='POST'>";
-		 $this->output[]=$this->output[]="<h3>".$x->Read()."</h3>";
+		 $this->output[]="<h3>";
+		 foreach ($x->Read() as $key) {
+		 	$key;}
+		 $this->output[]="</h3>";
 		 $this->output[]="<label>First Name:<input type='text' name='fname'></label><br>";
 		 $this->output[]="<label>Last Name:<input type='text' name='lname'></label><br>";
 		 $this->output[]="<input type='hidden' value=".$userType." name='type'>";

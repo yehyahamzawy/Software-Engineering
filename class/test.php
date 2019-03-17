@@ -4,17 +4,20 @@ include "attributeClass.php";
 include "userTypeClass.php";
 include "userTypeAttributeClass.php";
 include "childClass.php";
+$object = new Attribute(1);
+$object->create("Email",1);
 // $x=sha1(3);
 // $user=new User($x);
 // $res=$user->getAllAttributes();
 // foreach ($res as $key ){
-	
-// 	echo $key['attributeName']."<br>".$key['value'];
+// 	echo $key['aName'];
+// 	}
+// // 	echo $key['attributeName']."<br>".$key['value'];
 // }
-$ta=new userTypeAttribute(34);
-// $ta->Create(2,26);
-$x=$ta->Delete(42);
-echo "x";
+// $ta=new userTypeAttribute(34);
+// // $ta->Create(2,26);
+// $x=$ta->Delete(42);
+// echo "x";
 // $user->Update("mo7y","el shar2awy",2,$x);
 // // foreach ($res as $i) {
 // // 	# code...

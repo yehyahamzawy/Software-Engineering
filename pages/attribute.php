@@ -1,4 +1,4 @@
-<!doctype html>
+    <!doctype html>
 <html lang="en">
  
 <head>
@@ -30,7 +30,9 @@ include '../dbheader.html';
         <!-- ============================================================== -->
         <!-- ============================================================== -->
         <?php
-include '../dashboard.html';
+include '../dashboard.php';
+include_once "../class/attributeClass.php";
+include_once "../class/attributeTypeClass.php";
 
 ?>
         <!-- ============================================================== -->
@@ -92,10 +94,21 @@ include '../dashboard.html';
                                                 <label for="inputText3" class="col-form-label">DataType</label>
                                                 
                                                 <select class="selectpicker dropup" name = "attributeDType" >
-                                                    
-                                                        <option value = "int">INT</option>
+                                                            
+                                                    <?php 
+                                                    $attributeType=new attributeType(1);
+                                                    $Row=$attributeType->ReadAll();
+                                                    // echo "<select name='typeSelect'>";
+                                                    foreach ($Row as $key) {
+                                                        echo "<option value=".$key['ID'].">".$key['name']."</option>";
+                                                    }
+                                                    // echo "</select>";
+                                                     ?>
+                                                        <!-- <option value = "int">INT</option>
                                                         <option  value = "varchar">VARCHAR</option>
-                                                        <option  value = "text">TEXT</option>
+<<<<<<< HEAD
+                                                        <option  value = "text">TEXT</option> -->
+
                                                     </select>
                                                 
                                                     </div>
@@ -129,22 +142,32 @@ include '../dashboard.html';
                                         <tbody>
                                            
 												<?php
-												 $Connection = new mysqli("localhost", "root", "", "se");
-												 $sql = "SELECT * FROM attribute";
-												 $result = mysqli_query($Connection, $sql);
-
-												 while($Row = mysqli_fetch_array($result))
-												 {
-													 echo ' <tr><th scope="row">'.$Row["ID"].'</th>
-                                                <td>'.$Row["attributeName"].'</td>
-                                                <td>'.$Row["type"].'</td>
-												<td class="iconrow">
-												  <a href="editAttributesForm.php?ID='.$Row["ID"].'"><i class="fas fa-edit"  ></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                    <a href="attributeDelete.php?ID='.$Row["ID"].'"> <i class="fas fa-trash"></i></a>
+												 // $Connection = new mysqli("localhost", "root", "", "se");
+												 // $sql = "SELECT * FROM attribute";
+												 // $result = mysqli_query($Connection, $sql);
+                                                $attribute=new Attribute(34);
+                                                $Row=$attribute->ReadAll();
+                                                foreach ($Row as $key ) {
+                                                    echo ' <tr><th scope="row">'.$key["ID"].'</th>
+                                                <td>'.$key["attributeName"].'</td>
+                                                <td>';
+                                                $attributeType=new attributeType($key["type"]);
+                                                $variable= $attributeType->Read();
+                                                foreach ($variable as $key1) {
+                                                    echo $key1['name'];
+                                                }
+                                                echo '</td>';
+                                                echo ' <td class="iconrow">
+                                                  <a href="editAttributesForm.php?ID='.$key["ID"].'"><i class="fas fa-edit"  ></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <a href="attributeDelete.php?ID='.$key["ID"].'"> <i class="fas fa-trash"></i></a>
                                                 </td>
                                             </tr>';
+                                                }
+												 // while($Row = mysqli_fetch_array($result))
+												 // {
+													 
 
-												 }
+												 // }
 	
 												?>
                                                 
