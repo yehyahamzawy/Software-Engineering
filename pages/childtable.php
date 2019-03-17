@@ -73,6 +73,7 @@ include '../dashboard.html';
                                                 <th scope="col">Last Name</th>
                                                 <th scope="col">Gender</th>
                                                 <th scope="col">Nationality</th>
+                                                <th scope="col">National Number</th>
                                                 <th scope="col">Date of birth</th>
                                                 <th scope="col">Address</th>
                                                 <th scope="col">Medical Files</th>
@@ -89,6 +90,7 @@ include '../dashboard.html';
                                                 <td> samer</td>
                                                 <td>male</td>
                                                 <td>Egyptian</td>
+                                                <td>26029123098443</td>
                                                 <td>1/3/2019</td>
                                                 <td>Alex-stanlie</td>
                                                 <td>Medical file</td>
@@ -107,6 +109,7 @@ include '../dashboard.html';
                                                 <td>lamer</td>
                                                 <td>male</td>
                                                 <td>others</td>
+                                                <td>Need a Birth certifcate</td>
                                                 <td>1/3/2019</td>
                                                 <td>Cairo-shobra</td>
                                                 <td>Medical file</td>
@@ -125,6 +128,7 @@ include '../dashboard.html';
                                                 <td>lamer</td>
                                                 <td>male</td>
                                                 <td>others</td>
+                                                <td>26029123098443</td>
                                                 <td>1/3/2019</td>
                                                 <td>Cairo-shobra</td>
                                                 <td>Medical file</td>
