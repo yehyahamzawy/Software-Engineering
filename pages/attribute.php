@@ -104,11 +104,7 @@ include_once "../class/attributeTypeClass.php";
                                                     }
                                                     // echo "</select>";
                                                      ?>
-                                                        <!-- <option value = "int">INT</option>
-                                                        <option  value = "varchar">VARCHAR</option>
-<<<<<<< HEAD
-                                                        <option  value = "text">TEXT</option> -->
-
+                                
                                                     </select>
                                                 
                                                     </div>
