@@ -11,8 +11,9 @@
         }
         function allData()
         {
+          
             $Connection= new mysqli("localhost", "root", "", "se");
-            $sql = "SELECT * FROM links";
+            $sql = "SELECT * FROM link";
             $result = mysqli_query($Connection, $sql);
 
             while($Row = mysqli_fetch_array($result))
