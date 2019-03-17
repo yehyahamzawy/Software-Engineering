@@ -8,5 +8,7 @@ include_once "../includes/session.php";
 // {
 //     echo $t["Link"]."<br>";
 // }
+//echo $test->returnUserTypeID('Driver');
+
 
 ?>
