@@ -8,7 +8,15 @@ include_once "../includes/session.php";
 // {
 //     echo $t["Link"]."<br>";
 // }
+
 //echo $test->returnUserTypeID('Driver');
+//echo $test->returnLinkID('edit.php');
+
+//$test->addPerm($test->returnUserTypeID('Driver'),$test->returnLinkID('edit.php'));
+
+//$test->delPerm(5);
+
+//$test->editPerm(4,$test->returnUserTypeID('Driver'),$test->returnLinkID('edit.php'));
 
 
 ?>

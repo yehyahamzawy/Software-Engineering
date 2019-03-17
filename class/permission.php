@@ -27,10 +27,11 @@
             array_push($this->linkconnection, $Row);
         }
 
-        function addPerm($linkID,$userTypeID)
+        function addPerm($userTypeID, $linkID)
         {
             $Connection= new mysqli("localhost", "root", "", "olddb");
             $sql = "INSERT INTO linkconnection (userTypeID, linkID) VALUES (".$userTypeID.",".$linkID.")";
+            mysqli_query($Connection, $sql);
         }
 
         function returnUserTypeID($type)
@@ -41,6 +42,29 @@
             $result = mysqli_query($Connection, $sql);
             $typeID = mysqli_fetch_array($result);
             return $typeID["ID"];
+        }
+
+        function returnLinkID($link)
+        {
+            $Connection= new mysqli("localhost", "root", "", "olddb");
+            $sql = "SELECT ID FROM links where link = '".$link."'";
+            //echo $sql;
+            $result = mysqli_query($Connection, $sql);
+            $linkID = mysqli_fetch_array($result);
+            return $linkID["ID"];
+        }
+
+        function delPerm($connectionID)
+        {   
+            
+            $sql = "DELETE FROM linkconnection WHERE ID = ".$connectionID;
+            mysqli_query($Connection, $sql);
+        }
+
+        function editPerm($connectionID, $userTypeID, $linkID )
+        {   $Connection= new mysqli("localhost", "root", "", "olddb");
+            $sql = "UPDATE linkconnection SET userTypeID = ".$userTypeID.", `linkID` = ".$linkID." WHERE ID = ".$connectionID;
+            mysqli_query($Connection, $sql);
         }
 
     }
