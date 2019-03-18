@@ -164,46 +164,6 @@ include '../dbfooter.html';
     <script>
     $('#my-select, #pre-selected-options').multiSelect()
     </script>
-    <script>
-    $('#callbacks').multiSelect({
-        afterSelect: function(values) {
-            
-        },
-        afterDeselect: function(values) {
-            
-        }
-    });
-    </script>
-      <script>
-    $('#callbacks2').multiSelect({
-        afterSelect: function(values) {
-            
-        },
-        afterDeselect: function(values) {
-           
-        }
-    });
-    </script>
-      <script>
-    $('#callbacks3').multiSelect({
-        afterSelect: function(values) {
-          
-        },
-        afterDeselect: function(values) {
-          
-        }
-    });
-    </script>
-      <script>
-    $('#callbacks4').multiSelect({
-        afterSelect: function(values) {
-            
-        },
-        afterDeselect: function(values) {
-            
-        }
-    });
-    </script>
           <script>
     $('#callbacks5').multiSelect({
         afterSelect: function(values) {
@@ -214,26 +174,8 @@ include '../dbfooter.html';
         }
     });
     </script>
-          <script>
-    $('#callbacks6').multiSelect({
-        afterSelect: function(values) {
-            
-        },
-        afterDeselect: function(values) {
-            
-        }
-    });
-    </script>
-          <script>
-    $('#callbacks7').multiSelect({
-        afterSelect: function(values) {
-            
-        },
-        afterDeselect: function(values) {
-            
-        }
-    });
-    </script>
+ 
+    
     <script>
     $('#keep-order').multiSelect({ keepOrder: true });
     </script>
