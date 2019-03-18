@@ -103,6 +103,7 @@ include '../dashboard.html';
                                                      
                                                 </td>
                                             </tr>
+                                            
                                             <tr>
                                                 <th scope="row">3</th>
                                                 <td>Example</td>
