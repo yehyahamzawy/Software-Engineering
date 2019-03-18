@@ -2,9 +2,9 @@
 /**
  * 
  */
-include "db.php";
+include_once "db.php";
 include_once "CRUDinterface.php";
-include "userTypeClass.php";
+include_once "userTypeClass.php";
 class User implements CRUD
 {
 	private $fname;

@@ -1,7 +1,7 @@
 <?php 
 
 include '../class/userClass.php';
-include '../class/db.php';
+// include '../class/db.php';
 // include "../userValuesClass.php";
 $user=new User(2);
 if($_POST['action']=="fetch_form"){

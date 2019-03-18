@@ -31,6 +31,9 @@ include '../dbheader.html';
         <!-- ============================================================== -->
         <?php
 include '../dashboard.html';
+include_once '../class/uservaluesClass.php';
+include_once '../class/userTypeAttributeClass.php';
+include_once '../class/userClass.php';
 
 ?>
         <!-- ============================================================== -->
@@ -87,7 +90,7 @@ include '../dashboard.html';
                                                 <label for="inputText3" class="col-form-label">Attributes</label>
                                                 
                                                 <select class="selectpicker dropup" name = "uniqueUserAttributeID" >
-                                                    <?php 
+                                                    <!-- <?php 
                                                    $Connection= new mysqli("localhost", "root", "", "se");
                                                     $sql2 = "SELECT * FROM usertypeattributes";
                                                     $result2 = mysqli_query($Connection, $sql2);
@@ -108,7 +111,7 @@ include '../dashboard.html';
                                                     echo $sql4;
                                                         echo '<option value= '.$Row["ID"].'>'.$attribute["attributeName"].' ('.$userType["type"].')</option>';
                                                     }
-                                                    ?>
+                                                    ?> -->
                                                     </select>
                                                     </div>
                                         <div class="form-group">
@@ -162,7 +165,37 @@ include '../dashboard.html';
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <?php
+
+                                            <?php 
+                                                $uservalue=new userValue(2);
+                                                $variable=$uservalue->ReadAll();
+                                                foreach ($variable as $Row) {
+                                                    $user=new User(sha1($Row['userID']));
+                                                    $uta=new usertypeattribute($Row['userTypeOptionID']);
+                                                    $y=$uta->getAttributeName();
+                                                    foreach ($y as $key ) {
+                                                        $attName=$key['attributeName'];
+                                                    }
+                                                    $name="NA";
+                                                    $x=$user->Read();
+                                                    foreach ($x as $key ) {
+                                                        $name=$key['fName']." ".$key['lName'];
+                                                    }
+                                                    echo '<tr>
+                                                <th scope="row">'.$Row["ID"].'</th>
+                                                
+                                                <td>'.$attName.'</td>
+                                                <td>'.$Row["value"].'</td>
+                                                <td>'.$name.'</td>
+                                                <td class="iconrow">
+                                                    <a href="edituservaluesForm.php?ID='.$Row["ID"].'"><i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <a href="uservaluesDelete.php?ID='.$Row["ID"].'"> <i class="fas fa-trash"></i></a>
+                                                </td>
+                                            </tr>';
+                                                }
+
+                                             ?>
+                                        <!-- <?php
 												 $Connection = new mysqli("localhost", "root", "", "se");
 												 $sql = "SELECT * FROM uservalues";
                                                  $result = mysqli_query($Connection, $sql);
@@ -172,7 +205,7 @@ include '../dashboard.html';
                                                  while($Row = mysqli_fetch_array($result))
                                                  {
                                                       $sql1 = "SELECT * FROM user WHERE ID = ".$Row["userID"];
-                                                 $result1 = mysqli_query($Connection, $sql1);
+                                                 $result1 = mysqli_query($Connection, $sql2ql1);
                                                  $user = mysqli_fetch_array($result1);
                                                     $sql2 = "SELECT * FROM usertypeattributes WHERE ID = ".$Row["uniqueUserAttributeID"];
                                                     $result2 = mysqli_query($Connection, $sql2);
@@ -201,7 +234,7 @@ include '../dashboard.html';
                                             </tr>';
                                                  }
                                              ?>
-                                            
+                                             -->
                                             
                                         </tbody>
                                     </table>

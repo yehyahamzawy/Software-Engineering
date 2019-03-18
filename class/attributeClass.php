@@ -107,6 +107,7 @@ class attribute implements CRUD
 		while($Row=mysqli_fetch_array($result))
 		array_push($this->output, $Row);
 	}
+	return $this->output;
 }
 
  ?>

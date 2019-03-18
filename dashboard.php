@@ -101,7 +101,7 @@ include 'dbheader.html';
                                                     <a class="nav-link" href="driverform.php">Driver Form</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="assistantform.php">Assistant Form</a>
+                                                    <a class="nav-link" href=assistantform.php">Assistant Form</a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" href="userType.php">Promote Users</a>
@@ -116,11 +116,11 @@ include 'dbheader.html';
                                 </div>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="pages/reporting.php"  ><i class="fab fa-fw fa-wpforms">Reporting</i></a>
+                                <a class="nav-link" href="reporting.php"  ><i class="fab fa-fw fa-wpforms">Reporting</i></a>
                                 
                             </li>
                             <li class="nav-item">
-                                    <a class="nav-link" href="userprofile.php">User profile</a>
+                                    <a class="nav-link" href="pages/userprofile.php">User profile</a>
                                 </li>
                                 <li class="nav-item">
                                         <a class="nav-link" href="accesscontrol.php">Access Control</a>
