@@ -1,9 +1,10 @@
 <?php
-include_once "../class/permission.php";
+include_once "../class/meetingClass.php";
+
+$test = new meeting(2);
+$test->allMeetings();
 $pageID = 4;
-$test = new permission(2);
-$test->allData();
-include_once "../includes/session.php";
+//include_once "../includes/session.php";
 // foreach($test->link as $t)
 // {
 //     echo $t["Link"]."<br>";
@@ -12,7 +13,9 @@ include_once "../includes/session.php";
 //echo $test->returnUserTypeID('Driver');
 //echo $test->returnLinkID('edit.php');
 
-//$test->addPerm($test->returnUserTypeID('Driver'),$test->returnLinkID('edit.php'));
+$test->createMeeting(1,"3la2 SP","madinaty",'2019-05-13','16:30:00');
+//$user = $test->returnUser(1);
+//echo $user["firstName"]
 
 //$test->delPerm(5);
 

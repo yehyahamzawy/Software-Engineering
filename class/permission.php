@@ -4,6 +4,7 @@
         private $id;
         public $linkconnection  = array();
         public $link = array();
+        public $userTypes = array();
 
         public function __construct($id)
         {
@@ -13,6 +14,7 @@
         {
             $this->link = array();
             $this->linkconnection = array();
+            $this->userTypes = array();
             $Connection= new mysqli("localhost", "root", "", "olddb");
             $sql = "SELECT * FROM links";
             $result = mysqli_query($Connection, $sql);
@@ -25,6 +27,12 @@
 
             while($Row = mysqli_fetch_array($result))
             array_push($this->linkconnection, $Row);
+
+            $sql = "SELECT * FROM usertype";
+            $result = mysqli_query($Connection, $sql);
+
+            while($Row = mysqli_fetch_array($result))
+            array_push($this->userTypes, $Row);
         }
 
         function addPerm($userTypeID, $linkID)
