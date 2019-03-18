@@ -115,6 +115,10 @@ include 'dbheader.html';
                                                 </ul>
                                 </div>
                             </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="pages/reporting.php"  ><i class="fab fa-fw fa-wpforms">Reporting</i></a>
+                                
+                            </li>
                             <li class="nav-item">
                                     <a class="nav-link" href="userprofile.php">User profile</a>
                                 </li>

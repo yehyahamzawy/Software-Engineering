@@ -1,11 +1,18 @@
 <?php 
-include "userClass.php";
-include "attributeClass.php";
-include "userTypeClass.php";
-include "userTypeAttributeClass.php";
-include "childClass.php";
-$object = new Attribute(1);
-$object->create("Email",1);
+// include "userClass.php";
+// include "attributeClass.php";
+// include "userTypeClass.php";
+// include "userTypeAttributeClass.php";
+// include "childClass.php";
+include "reportClass.php";
+$rep=new Report();
+$variable=$rep->reportUserType();
+foreach ($variable as $key) {
+	echo $key['label'];
+	echo $key['num'];
+}
+// $object = new Attribute(1);
+// $object->create("Email",1);
 // $x=sha1(3);
 // $user=new User($x);
 // $res=$user->getAllAttributes();

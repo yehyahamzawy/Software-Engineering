@@ -101,7 +101,7 @@ class attribute implements CRUD
 
 	}
 	function ReadTypeAttributes($typeID){
-		$this->output=new array();
+		$this->output=array();
 		$sql="SELECT * FROM  attribute WHERE ID in (SELECT * FROM usertypeattributes WHERE userTypeID=".$typeID.")";
 		$result=$this->DB->db_query($sql);
 		while($Row=mysqli_fetch_array($result))

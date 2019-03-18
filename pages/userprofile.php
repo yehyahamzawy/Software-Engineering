@@ -111,7 +111,7 @@ include '../dbheader.html';
                                 foreach ($Row as $i) {
                                     echo "<div class='row'>
                                             <div class='col-md-6'>
-                                                <label>".$i['attributeName']."</label>
+                                                <label>".$i['aName']."</label>
                                             </div>
                                             <div class='col-md-6'>
                                                 <p>".$i['value']."</p>
