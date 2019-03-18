@@ -3,37 +3,12 @@
 /**
   * 
   */
- class userVal
- {
- 	
- 	static function add($attrId,$value,$userid)
- 	{	$connect= new mysqli("localhost", "root", "", "se");
- 		$sql="INSERT INTO uservalues (`uniqueUserAttributeID`,`value`,`userID`) VALUES ('$attrId','$value','$userid') ";
- 		$result = mysqli_query($connect, $sql);
- 		echo $sql;
 
-	 }
-	 
-	 
- 	function delete($id){
- 		$connect= new mysqli("localhost", "root", "", "se");
- 		$sql="DELETE FROM uservalues where ID=".$id;
- 		$result = mysqli_query($connect, $sql);
- 		echo "delete done";
-
- 	}
- 	function read($id){
- 		$connect= new mysqli("localhost", "root", "", "se");
- 		$sql="SELECT * FROM uservalues where userID=".$id;
- 		$result = mysqli_query($connect, $sql);
- 		 while($Row = mysqli_fetch_array($result))
- * 
- */
 include_once "CRUDinterface.php";
 class userValue implements CRUD
 {
 	private $ID;
-	private $attributeID;
+	
 	private $relationID;
 	private $userID;
 	private $value;
@@ -55,8 +30,8 @@ class userValue implements CRUD
 		
 	}
 
-	function Create($attributeID,$userID,$value,$relationID){
-		$sql="INSERT INTO `uservalues`( `attributeID`,`userID`, `value`,`userTypeOptionID`) VALUES ('$attributeID','$userID','$value','$relationID') ";
+	function Create($userID,$value,$relationID){
+		$sql="INSERT INTO `uservalues`( `userID`, `value`,`userTypeOptionID`) VALUES ('$userID','$value','$relationID') ";
 		$this->DB->db_query($sql);
 	}
 	function Read(){

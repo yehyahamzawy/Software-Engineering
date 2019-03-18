@@ -4,7 +4,7 @@
   */
  class database 
  { 
- 	private $connect;
+ 	public $connect;
  		
  	function __construct()
 	{

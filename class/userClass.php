@@ -2,9 +2,9 @@
 /**
  * 
  */
-include "db.php";
+// include "db.php";
 include_once "CRUDinterface.php";
-// include "userTypeClass.php";
+include "userTypeClass.php";
 class User implements CRUD
 {
 	private $fname;
@@ -79,15 +79,26 @@ class User implements CRUD
 		
 		
 
-		$sql="INSERT INTO `user`( `fname`,`lname`, `userType`) VALUES ('$fname','$lname','$usertype')";
+		$sql="INSERT INTO `user`( `fname`,`lname`, `userType`) VALUES ('$fname','$lname','$usertype')
+			 
+			";
 		$this->DB->db_query($sql);
 		$this->fname=$fname;
 		$this->lname=$lname;
 		$this->userTypeID=$usertype;
-		
-		$sql1="SELECT * FROM user WHERE fName='$fname' AND lName='$lname' WHERE isDeleted=0";
-		$x=$this->DB->db_query_row($sql1);
-		$this->ID=$x['ID'];
+		$this->ID= mysqli_insert_id($this->DB->connect);
+
+		// $sql="SELECT ID AS LastID FROM `user` WHERE ID = @@Identity";
+		// echo "x";
+		// $result=$this->DB->db_query_row($sql);
+		// 	echo $result['lastID'];
+				// while($Row=mysqli_fetch_array($result)){
+		// 	echo "x";
+		// 	echo $Row['lastID'];
+		// }
+		// $sql1="SELECT * FROM `user` WHERE `fname`=$fname AND `lname`=$lname WHERE isDeleted=0";
+		// $x=$this->DB->db_query($sql1);
+		// $this->ID=$x['ID'];
 		// $this->ID=$x['ID'];
 
 
@@ -168,7 +179,7 @@ class User implements CRUD
 		$result=$this->DB->db_query($sql);
 		$x= new userType($userType);
 		
-		 $this->output[]="<form action='submit_form.php' method='POST'>";
+		 $this->output[]="<form action='submit_formEav.php' method='POST'>";
 		 $this->output[]="<h3>";
 		 foreach ($x->Read() as $key) {
 		 	$key;}

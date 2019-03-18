@@ -33,7 +33,9 @@ include '../dbheader.html';
         <!-- ============================================================== -->
         <!-- ============================================================== -->
         <?php
-include '../dashboard.html';
+include '../dashboard.php';
+include_once '../class/userClass.php';
+include_once '../class/userTypeClass.php';
 
 ?>
         <!-- ============================================================== -->
@@ -76,12 +78,37 @@ include '../dashboard.html';
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="section-block" id="basicform">
+                                
+
                                     <h3 class="section-title">Enter Employee Data</h3>
                                     
                                 </div>
-                                <div class="card">
+                                <!-- <div class='eav'> -->
+                                    <h3>Choose Employee Type</h3>
+                                    <select id='userType' onchange="UserTypeForm();">
+                                        <?php 
+                                            $userType=new userType(1);
+                                            $output=$userType->ReadAll();
+                                            foreach ($output as $key ) {
+                                                echo "<option value=".$key['ID'].">".$key['type']."</option>";
+                                            }
+                                         ?>
+                                    </select>
+                                    <!-- <button >Show Form</button> -->
+<!--                              <?php   
+                                        $user=new User(2);
+                                        $output=$user->showForm(2);
+
+
+
+                                     ?>
+ --> 
+
+                                <!-- </div> -->
+                                <div class="card eav">  <div class="card-body"></div>   </div>
                                     
-                                    <div class="card-body">
+                                    
+                                       <!--
                                         <form>
                                             <div class="form-group">
                                                 <label for="inputText3" class="col-form-label">First Name</label>
@@ -198,6 +225,43 @@ include '../dbfooter.html';
     <script src="../assets/vendor/datepicker/tempusdominus-bootstrap-4.js"></script>
     <script src="../assets/vendor/datepicker/datepicker.js"></script>
     <script>
+        function UserTypeForm()
+    {
+        // alert(1);
+        var action = 'fetch_form';
+        var userType = $('#userType').val();
+        // alert(userType);
+        // var storage = get_filter('storage');
+        $.ajax({
+            url:"EavForm.php",
+            method:"POST",
+            data:{action:action, userType:userType },
+            success:function(data){
+                $('.eav').html(data);
+            }
+        });
+    }
+
+    //         function submit_form()
+    // {
+    //     // alert(1);
+    //     var action = 'fetch_form';
+    //     var userType = $('#userType').val();
+    //     // alert(userType);
+    //     // var storage = get_filter('storage');
+    //     while($input)
+    //     $.ajax({
+    //         url:"EavForm.php",
+    //         method:"POST",
+    //         data:{action:action, userType:userType },
+    //         success:function(data){
+    //             $('.eav').html(data);
+    //         }
+    //     });
+    // }
+
+
+
     $(function(e) {
         "use strict";
         $(".date-inputmask").inputmask("dd/mm/yyyy"),
