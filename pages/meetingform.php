@@ -117,106 +117,8 @@ include '../dashboard.html';
                                                 <input id="inputText3" type="text" class="form-control">
                                             </div>
 
-                                            <div class="row">
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                                <div class="section-block" id="basicform">
-                                    <h3 class="section-title">Select Meeting members</h3>
-                                    
-                                </div>
-                                
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="card">
-                                <h5 class="card-header">Hr Department</h5>
-                                <div class="card-body">
-                                    <select id='callbacks5' multiple='multiple'>
-                                        <option value='elem_1'>mohmed</option>
-                                        <option value='elem_2'>yehia</option>
-                                        <option value='elem_3'>hazzem</option>
-                                        <option value='elem_4'>kareem</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="card">
-                                <h5 class="card-header">Technical Department</h5>
-                                <div class="card-body">
-                                    <select id='callbacks6' multiple='multiple'>
-                                        <option value='elem_1'>mohmed</option>
-                                        <option value='elem_2'>yehia</option>
-                                        <option value='elem_3'>hazzem</option>
-                                        <option value='elem_4'>kareem</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="card">
-                                <h5 class="card-header">Financial Department</h5>
-                                <div class="card-body">
-                                    <select id='callbacks7' multiple='multiple'>
-                                        <option value='elem_1'>mohmed</option>
-                                        <option value='elem_2'>yehia</option>
-                                        <option value='elem_3'>hazzem</option>
-                                        <option value='elem_4'>kareem</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="card">
-                                <h5 class="card-header">doctors</h5>
-                                <div class="card-body">
-                                    <select id='callbacks' multiple='multiple'>
-                                        <option value='elem_1'>mohmed</option>
-                                        <option value='elem_2'>yehia</option>
-                                        <option value='elem_3'>hazzem</option>
-                                        <option value='elem_4'>kareem</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="card">
-                                <h5 class="card-header">pyshcology</h5>
-                                <div class="card-body">
-                                    <select id='callbacks2' multiple='multiple'>
-                                        <option value='elem_1'>mohmed</option>
-                                        <option value='elem_2'>yehia</option>
-                                        <option value='elem_3'>hazzem</option>
-                                        <option value='elem_4'>kareem</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                 
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="card">
-                                <h5 class="card-header">assistant</h5>
-                                <div class="card-body">
-                                    <select id='callbacks3' multiple='multiple'>
-                                        <option value='elem_1'>mohmed</option>
-                                        <option value='elem_2'>yehia</option>
-                                        <option value='elem_3'>hazzem</option>
-                                        <option value='elem_4'>kareem</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12"style="">
-                            <div class="card">
-                                <h5 class="card-header">driver</h5>
-                                <div class="card-body">
-                                    <select id='callbacks4' multiple='multiple'>
-                                        <option value='elem_1'>mohmed</option>
-                                        <option value='elem_2'>yehia</option>
-                                        <option value='elem_3'>hazzem</option>
-                                        <option value='elem_4'>kareem</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+                                            
+                        
 
                                             
                                             <div class="col-sm-6 pl-0">
@@ -235,7 +137,7 @@ include '../dashboard.html';
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <<?php
+            <?php
 include '../dbfooter.html';
 
 ?>
