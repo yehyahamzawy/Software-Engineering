@@ -1,3 +1,7 @@
+<?php 
+$pageID = 4;
+//include_once "../includes/session.php";
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -64,6 +68,7 @@ include '../dashboard.html';
 
 <div class="bigdiv">
 <div class="container">
+
 	<div class="row">
 		<h2 class="chooseut">Choose User Type </h2>
         <div class="form-group">
@@ -79,14 +84,26 @@ include '../dashboard.html';
                 <div class="items col-xs-5 col-sm-5 col-md-3 col-lg-3">
                     <div class="info-block block-info clearfix">
                         <div class="square-box pull-left">
-                            
-                        </div>
+
+                        
+
+                         <form method = "POST" action = "addpermission.php">   
+                        <?php
+                        include_once "../class/permission.php";
+
+                        $object = new permission(2);
+                        $object->allData();
+                        foreach($object->userTypes as $usertype)
+                        {
+                            echo
+                        
+                        '</div>
                         <div data-toggle="buttons" class="btn-group bizmoduleselect">
                             <label class="btn btn-default">
                                 <div class="bizcontent">
-                                    <input type="checkbox" name="var_id[]" autocomplete="off" value="">
+                                    <input type="checkbox" name="typeID[]" autocomplete="off" value="'.$usertype["ID"].'">
                                     <span class="glyphicon glyphicon-ok glyphicon-lg"></span>
-                                    <h5>Doctor</h5>
+                                    <h5>'.$usertype["type"].'</h5>
                                 </div>
                             </label>
                         </div>
@@ -96,121 +113,28 @@ include '../dashboard.html';
                     <div class="info-block block-info clearfix">
                         <div class="square-box pull-left">
                             
-                        </div>
+                        </div>'; } ?>
 
-                        <div data-toggle="buttons" class="btn-group bizmoduleselect">
-                            <label class="btn btn-default">
-                                <div class="bizcontent">
-                                    <input type="checkbox" name="var_id[]" autocomplete="off" value="">
-                                    <span class="glyphicon glyphicon-ok glyphicon-lg"></span>
-                                    <h5>Coutry representitive</h5>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="items col-xs-5 col-sm-5 col-md-3 col-lg-3">
-                    <div class="info-block block-info clearfix">
-                        <div class="square-box pull-left">
-                            
-                        </div>
-                        <div data-toggle="buttons" class="btn-group bizmoduleselect">
-                            <label class="btn btn-default">
-                                <div class="bizcontent">
-                                    <input type="checkbox" name="var_id[]" autocomplete="off" value="">
-                                    <span class="glyphicon glyphicon-ok glyphicon-lg"></span>
-                                    <h5>Psychologist</h5>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="items col-xs-5 col-sm-5 col-md-3 col-lg-3">
-                    <div class="info-block block-info clearfix">
-                        <div class="square-box pull-left">
-                            
-                        </div>
-
-
-                        <div data-toggle="buttons" class="btn-group bizmoduleselect">
-                            <label class="btn btn-default">
-                                <div class="bizcontent">
-                                    <input type="checkbox" name="var_id[]" autocomplete="off" value="">
-                                    <span class="glyphicon glyphicon-ok glyphicon-lg"></span>
-                                    <h5>Financial manager</h5>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="items col-xs-5 col-sm-5 col-md-3 col-lg-3">
-                    <div class="info-block block-info clearfix">
-                        <div class="square-box pull-left">
-                            
-                        </div>
-
-
-
-                        <div data-toggle="buttons" class="btn-group bizmoduleselect">
-                            <label class="btn btn-default">
-                                <div class="bizcontent">
-                                    <input type="checkbox" name="var_id[]" autocomplete="off" value="">
-                                    <span class="glyphicon glyphicon-ok glyphicon-lg"></span>
-                                    <h5>Admin</h5>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="items col-xs-5 col-sm-5 col-md-3 col-lg-3">
-                    <div class="info-block block-info clearfix">
-                        <div class="square-box pull-left">
-                            
-                        </div>
-
-                        <div data-toggle="buttons" class="btn-group bizmoduleselect">
-                            <label class="btn btn-default">
-                                <div class="bizcontent">
-                                    <input class="checkboxut" type="checkbox" name="var_id[]" autocomplete="off" value="">
-                                    <span class="glyphicon glyphicon-ok glyphicon-lg"></span>
-                                    <h5>Driver</h5>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="items col-xs-5 col-sm-5 col-md-3 col-lg-3">
-                    <div class="info-block block-info clearfix">
-                        <div class="square-box pull-left">
-                            
-                        </div>
-                        <div data-toggle="buttons" class="btn-group bizmoduleselect">
-                            <label class="btn btn-default">
-                                <div class="bizcontent">
-                                    <input type="checkbox" name="var_id[]" autocomplete="off" value="">
-                                    <span class="glyphicon glyphicon-ok glyphicon-lg"></span>
-                                    <h5>Hr Manager</h5>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-                </div>
+                        
             </div>
         </div>
 	</div>
 
 <br>
 <div class="card-body">
-                                        <form>
+                                        
                                         <label for="inputText3" class="col-form-label">Website</label>
-                                                
-                                                <select class="selectpicker dropup"  >
-                                                    
-                                                        <option>example1</option>
-                                                        <option>example2</option>
-                                                        <option>example3</option>
+                                              
+                                                <select class="selectpicker dropup" name = "linkID" >
+                                                     <?php 
+                                                        foreach($object->link as $links)
+                                                        {
+                                                            echo
+                                                        '<option value = '.$links["ID"].'>'.$links["link"].'</option>';
+                                                        }
+                                                    ?>
                                             </select>
-</form>
+                                            
 </div>
 <br>
 <div class="col-sm-6 pl-0 submit">
@@ -219,8 +143,72 @@ include '../dashboard.html';
                                                     <button class="btn btn-space btn-secondary">Cancel</button>
                                                 </p>
                                             </div>
-
+</form>
 </div>
+
+                            <div class="card">
+                                <h5 class="card-header">Events Table</h5>
+                                <div class="card-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                               
+                                                
+                                                <th scope="col">Type</th>
+                                                <th scope="col">Link</th>
+                                                <th scope="col">Edit/Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>financial problem</td>
+                                                <td>1/2/2019</td>
+                                                <td>2:00 AM</td>
+                                                <td> room 011</td>
+                                                <td>mohmed,yehya,ayman</td>
+                                                <td class="iconrow">
+                                                <a href="editmeetingtable.php"> <i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                   <a> <i class="fas fa-trash"></i></a>
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>financial problem</td>
+                                                <td>1/2/2019</td>
+                                                <td>2:00 AM</td>
+                                                <td> room 011</td>
+                                                <td>mohmed,yehya,ayman</td>
+                                                <td class="iconrow">
+                                                <a href="editmeetingtable..php"> <i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                   <a> <i class="fas fa-trash"></i></a>
+                                                     
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>financial problem</td>
+                                                <td>1/2/2019</td>
+                                                <td>2:00 AM</td>
+                                                <td> room 011</td>
+                                                <td>mohmed,yehya,ayman</td>
+                                                <td class="iconrow">
+                                                   <a href="editmeetingtable..php"> <i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                   <a> <i class="fas fa-trash"></i></a>
+                                                     
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ============================================================== -->
+                        <!-- end striped table -->
+                        <!-- ============================================================== -->
+                    </div>
+                    
 
 
 

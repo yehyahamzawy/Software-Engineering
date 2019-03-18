@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
     <link rel="stylesheet" href="../assets/vendor/datepicker/tempusdominus-bootstrap-4.css" />
     <link rel="stylesheet" href="../assets/vendor/inputmask/css/inputmask.css" />
-    
 </head>
 
 <body>
@@ -95,7 +94,7 @@ include '../dashboard.html';
 </div>
                                             <div class="col-sm-6 pl-0">
                                                 <p class="text-right">
-                                                    <button type="submit" class="btn btn-space btn-primary">Submit</button>
+                                                    <button type="submit" class="btn btn-space btn-primary">Save Changes</button>
                                                     <button class="btn btn-space btn-secondary">Cancel</button>
                                                 </p>
                                             </div>
