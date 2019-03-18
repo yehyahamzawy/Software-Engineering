@@ -52,7 +52,7 @@ include '../dashboard.html';
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Database Control</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Event table</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Meeting Attendess table</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -62,57 +62,44 @@ include '../dashboard.html';
 
 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                             <div class="card">
-                                <h5 class="card-header">Events Table</h5>
+                                <h5 class="card-header">Attendess Table</h5>
                                 <div class="card-body">
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">Name</th>
-                                                <th scope="col">Date</th>
-                                                <th scope="col">Time</th>
-                                                <th scope="col">sponsors</th>
-                                                <th scope="col">Description</th>
+                                                <th scope="col">Meeting Name</th>
+                                                <th scope="col">Attendees</th>
                                                 <th scope="col">Edit/Delete</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <th scope="row">1</th>
-                                                <td>Example</td>
-                                                <td>1/2/2019</td>
-                                                <td>2:00 AM</td>
-                                                <td> Dell</td>
-                                                <td>funny event</td>
+                                                <td>2gtma3 tare2</td>
+                                                <td>mohmed,yehya,ayman</td>
                                                 <td class="iconrow">
-                                                <a href="editeventtable.php"> <i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <a href="editattendees.php"> <i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                    <a> <i class="fas fa-trash"></i></a>
                                                      
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th scope="row">2</th>
-                                                <td>Example</td>
-                                                <td>1/2/2019</td>
-                                                <td>2:00 AM</td>
-                                                <td> Dell</td>
-                                                <td>funny event</td>
+                                                <td>2gtma3 tare2</td>
+                                                <td>mohmed,yehya,ayman</td>
                                                 <td class="iconrow">
-                                                <a href="editeventtable..php"> <i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <a href="editattendees..php"> <i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                    <a> <i class="fas fa-trash"></i></a>
                                                      
                                                 </td>
                                             </tr>
-                                            
                                             <tr>
                                                 <th scope="row">3</th>
-                                                <td>Example</td>
-                                                <td>1/2/2019</td>
-                                                <td>2:00 AM</td>
-                                                <td> Dell</td>
-                                                <td>funny event</td>
+                                                <td>2gtma3 tare2</td>
+                                                <td>mohmed,yehya,ayman</td>
                                                 <td class="iconrow">
-                                                   <a href="editeventtable..php"> <i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                   <a href="editattendees..php"> <i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                    <a> <i class="fas fa-trash"></i></a>
                                                      
                                                 </td>
