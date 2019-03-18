@@ -139,7 +139,7 @@ class User implements CRUD
 		
 			
 	}
-
+	
 	function getAllAttributes(){
 		// echo "x";
 		// $x= new userType($this->userTypeID);
