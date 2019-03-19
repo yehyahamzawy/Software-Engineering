@@ -42,29 +42,29 @@
             mysqli_query($Connection, $sql);
         }
 
-        function returnUserTypeID($type)
+        function returnUserType($id)
         {
             $Connection= new mysqli("localhost", "root", "", "olddb");
-            $sql = "SELECT ID FROM usertype where type = '".$type."'";
+            $sql = "SELECT type FROM usertype where ID = '".$id."'";
             //echo $sql;
             $result = mysqli_query($Connection, $sql);
             $typeID = mysqli_fetch_array($result);
-            return $typeID["ID"];
+            return $typeID["type"];
         }
 
-        function returnLinkID($link)
+        function returnLink($id)
         {
             $Connection= new mysqli("localhost", "root", "", "olddb");
-            $sql = "SELECT ID FROM links where link = '".$link."'";
+            $sql = "SELECT link FROM links where ID = '".$id."'";
             //echo $sql;
             $result = mysqli_query($Connection, $sql);
             $linkID = mysqli_fetch_array($result);
-            return $linkID["ID"];
+            return $linkID["link"];
         }
 
         function delPerm($connectionID)
         {   
-            
+            $Connection= new mysqli("localhost", "root", "", "olddb");
             $sql = "DELETE FROM linkconnection WHERE ID = ".$connectionID;
             mysqli_query($Connection, $sql);
         }
