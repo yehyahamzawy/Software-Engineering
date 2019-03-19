@@ -29,7 +29,7 @@ while($Row = mysqli_fetch_array($emails))
                // echo "success <br>";
                 $_SESSION["ID"] = $Row2["userID"];
                 //echo $_SESSION["ID"];
-                header('location:../pages/tester.php');
+                header('location:../pages/announcement.php');
                 break;
             }
         }
