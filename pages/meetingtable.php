@@ -67,55 +67,39 @@ include '../dashboard.html';
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">Meeting Reason</th>
+                                               
+                                                <th scope="col">Title</th>
                                                 <th scope="col">Date</th>
                                                 <th scope="col">Time</th>
-                                                <th scope="col">Location</th>
+                                                <th scope="col">Room</th>
                                                 <th scope="col">Meeting members</th>
                                                 <th scope="col">Edit/Delete</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>financial problem</td>
-                                                <td>1/2/2019</td>
-                                                <td>2:00 AM</td>
-                                                <td> room 011</td>
-                                                <td>mohmed,yehya,ayman</td>
-                                                <td class="iconrow">
-                                                <a href="editmeetingtable.php"> <i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                   <a> <i class="fas fa-trash"></i></a>
-                                                     
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>financial problem</td>
-                                                <td>1/2/2019</td>
-                                                <td>2:00 AM</td>
-                                                <td> room 011</td>
-                                                <td>mohmed,yehya,ayman</td>
-                                                <td class="iconrow">
-                                                <a href="editmeetingtable..php"> <i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                   <a> <i class="fas fa-trash"></i></a>
-                                                     
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td>financial problem</td>
-                                                <td>1/2/2019</td>
-                                                <td>2:00 AM</td>
-                                                <td> room 011</td>
-                                                <td>mohmed,yehya,ayman</td>
-                                                <td class="iconrow">
-                                                   <a href="editmeetingtable..php"> <i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                   <a> <i class="fas fa-trash"></i></a>
-                                                     
-                                                </td>
-                                            </tr>
+                                        <?php 
+                                       include_once "../class/meetingClass.php";
+
+                                       $object = new meeting(2);
+                                       $object->allMeetings();
+
+                                       foreach($object->meetings as $meeting)
+                                       {
+                                           echo '<tr>
+                                           <th scope="row">'.$meeting["title"].'</th>
+                                           <td>'.$meeting["date"].'</td>
+                                           <td>'.$meeting["time"].'</td>
+                                           <td>'.$meeting["room"].'</td>
+                                           <td>'.$object->returnUser($meeting["creatorID"]).'</td>
+                                           <td class="iconrow">
+                                           <a href="editpermission.php?ID='.$meeting["ID"].'"> <i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                              <a href="permissionDelete.php?ID='.$meeting["ID"].'"> <i class="fas fa-trash"></i></a>
+                                                
+                                           </td>
+                                       </tr>';
+                                       }
+                                       ?>
+                                            
                                         </tbody>
                                     </table>
                                 </div>
