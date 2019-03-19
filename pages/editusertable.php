@@ -72,24 +72,37 @@ include '../dashboard.html';
                                 <div class="card">
                                     
                                     <div class="card-body">
-                                        <form>
-                                        
+                                        <form action='editUser.php' method="POST">
+                                                
                                             <div class="form-group">
                                                 <label for="inputText3" class="col-form-label">First Name</label>
-                                                <input id="inputText3" type="text" class="form-control">
+                                                <input id="inputText3" type="text" class="form-control" name='fname'>
+                                                <?php   
+                                                    $userID=$_GET['ID'];
+
+                                                 ?>
+                                                <input type="hidden" name="userID" value=<?php  echo $userID ?> >
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputText3" class="col-form-label">Last Name</label>
-                                                <input  type="text" class="form-control">
+                                                <input  type="text" class="form-control" name='lname'>
 </div>
 <div class="form-group">
-                                                    <label for="inputText3" class="col-form-label">Data Type</label>
+                                                    <label for="inputText3" class="col-form-label">User Type</label>
                                                     <br>
-                                                    <select class="selectpicker dropup"  >
-                                                        
-                                                            <option>Doctor</option>
-                                                            <option>Driver</option>
-                                                            <option>HR Manager</option>
+                                                    <select class="selectpicker dropup" name='type' >
+                                                        <!-- <option>   x </option> -->
+                                                            <?php   
+                                                                    include_once '../class/userTypeClass.php';
+                                                                        
+                                                                $ut=new userType(1);
+
+                                                                $var=$ut->ReadAll();
+                                                                foreach ($var as $key ) {
+                                                                    
+                                                                echo "<option value=".$key['ID']."  > ".$key['type']."</option>";
+                                                                }
+                                                             ?>
                                                         </select>
 </div>
                                             <div class="col-sm-6 pl-0">

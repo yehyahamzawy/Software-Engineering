@@ -22,34 +22,34 @@ foreach ($x as $key) {
 
 }
 echo "</select>";
-echo "<script type='text/javascript'>$('#attributeName').change(function(){
+// echo "<script type='text/javascript'>$('#attributeName').change(function(){
         
-        var action = 'get_input';
+//         var action = 'get_input';
         
-        var attID = $('#attributeName').val();
+//         var attID = $('#attributeName').val();
        
         
-        alert(attID);
-        $.ajax({
-            url:'get_att.php',
-            method:'POST',
-            data:{action:action,attID:attID},
-            success:function(data){
-                $('.value').empty();
-                $('.value').html(data);
-            }
-        });
-        return false;
-    }
-    );
-   </script>";
+//         alert(attID);
+//         $.ajax({
+//             url:'get_att.php',
+//             method:'POST',
+//             data:{action:action,attID:attID},
+//             success:function(data){
+//                 $('.value').empty();
+//                 $('.value').html(data);
+//             }
+//         });
+//         return false;
+//     }
+//     );
+//    </script>";
 
 return;
 }
 elseif($_POST['action']=="get_input"){
 	
     include_once '../class/attributeClass.php';
-
+    
 	// $attType=$_POST['attType'];
 	include_once '../class/attributeTypeClass.php';
     $attID=$_POST['attID'];
