@@ -175,6 +175,7 @@ include_once '../class/userClass.php';
                                                     $y=$uta->getAttributeName();
                                                     foreach ($y as $key ) {
                                                         $attName=$key['attributeName'];
+                                                        $attID=$key['ID'];
                                                     }
                                                     $name="NA";
                                                     $x=$user->Read();
@@ -188,7 +189,7 @@ include_once '../class/userClass.php';
                                                 <td>'.$Row["value"].'</td>
                                                 <td>'.$name.'</td>
                                                 <td class="iconrow">
-                                                    <a href="edituservaluesForm.php?ID='.$Row["ID"].'"><i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    <a href="edituservaluesForm.php?ID='.$Row["ID"].'&attID='.$attID.'"><i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                     <a href="uservaluesDelete.php?ID='.$Row["ID"].'"> <i class="fas fa-trash"></i></a>
                                                 </td>
                                             </tr>';

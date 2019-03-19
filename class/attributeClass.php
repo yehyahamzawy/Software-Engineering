@@ -23,8 +23,12 @@ class attribute implements CRUD
             array_push($this->output, $Row);
 			$this->ID=$Row["ID"];
 			$this->attributeName=$Row["attributeName"];
+			$this->attributeType=$Row['type'];
 		}
 		
+	}
+	function getType(){
+		return $this->attributeType;
 	}
 	function Create($name,$typeID){	
 		$sql="INSERT INTO `attribute` ( `attributeName`, `type`) VALUES ('$name',$typeID)";
@@ -102,12 +106,12 @@ class attribute implements CRUD
 	}
 	function ReadTypeAttributes($typeID){
 		$this->output=array();
-		$sql="SELECT * FROM  attribute WHERE ID in (SELECT * FROM usertypeattributes WHERE userTypeID=".$typeID.")";
+		$sql="SELECT * FROM  attribute WHERE ID in (SELECT attributeID FROM usertypeattributes WHERE userTypeID=".$typeID.")";
 		$result=$this->DB->db_query($sql);
-		while($Row=mysqli_fetch_array($result))
+		while($Row=mysqli_fetch_array($result)){
 		array_push($this->output, $Row);
 	}
 	return $this->output;
 }
-
+}
  ?>

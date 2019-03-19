@@ -1,7 +1,12 @@
 <?php
 include_once "../class/userValuesClass.php";
-$object = new userValue($_GET["ID"]);
-$object->update($_GET["ID"],$_POST["uniqueuserattributeID"],$_POST["value"],$_POST["userID"]);
+$input= $_POST["choice"];
+$id= $_GET["ID"];
+echo $id;
+echo $input;
+$object = new userValue($id);
+
+$object->Update($id,$input);
 
 header('location:uservalues.php');
 

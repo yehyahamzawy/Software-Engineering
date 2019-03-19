@@ -20,24 +20,7 @@ $pageID = 4;
     <link rel="stylesheet" href="../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
     <link rel="stylesheet" href="../assets/vendor/datepicker/tempusdominus-bootstrap-4.css" />
     <link rel="stylesheet" href="../assets/vendor/inputmask/css/inputmask.css" />
-    <script type="text/javascript">
-        function UserTypeShow()
-    {
-        // alert(1);
-        var action = 'get_att';
-        var userType = $('#userType').val();
-        // alert(userType);
-        // var storage = get_filter('storage');
-        $.ajax({
-            url:"get_att.php",
-            method:"POST",
-            data:{action:action, userType:userType },
-            success:function(data){
-                $('.attSelect').html(data);
-            }
-        });
-    }
-    </script>
+    
 </head>
 
 <body>
@@ -50,7 +33,7 @@ $pageID = 4;
         <!-- ============================================================== -->
         <?php
 include '../dbheader.html';
-// include '../dashboard.php';
+include '../dashboard.php';
 include_once '../class/userClass.php';
 ?>
        
@@ -61,7 +44,7 @@ include_once '../class/userClass.php';
                         <!-- ============================================================== -->
                         <!-- pageheader  -->
                         <!-- ============================================================== -->
-                        <div class="row">
+                        <!-- div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="page-header" id="top">
                                     <h2 class="pageheader-title">update user value  </h2>
@@ -77,7 +60,7 @@ include_once '../class/userClass.php';
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- ============================================================== -->
                         <!-- end pageheader  -->
                         <!-- ============================================================== -->
@@ -102,28 +85,28 @@ include_once '../class/userClass.php';
                                            <br>
                                          
                                          
-                                                        <label for="inputText3" value=".form-control-lg" class="col-form-label">
+                                                        <!-- <label for="inputText3" value=".form-control-lg" class="col-form-label">
                                                             USER
                                                         </label>
 
-                                                        <select class="selectpicker dropup" name = "uniqueuserattributeID" value=".form-control-lg" onchange = "UserTypeShow()" id = "userType">
+                                                        <select class="selectpicker dropup" name = "user" value=".form-control-lg"   id= "userType1">
                                                             <?php 
                                                             $user=new User(sha1(3));
                                                             $variable=$user->ReadAll();
                                                             foreach ($variable as $key ) {
-                                                                echo "<option value=".$key['userType'].">".$key['fName']." ".$key['lName']."</option>";
+                                                                echo "<option value=".$key['ID'].">".$key['fName']." ".$key['lName']."</option>";
                                                             }
 
 
                                                              ?>
-                                                        </select>
+                                                        </select> -->
                                                         
 
                                                         <br>    
 
-                                         <label for="inputText3" value=".form-control-lg" class="col-form-label">Attributes</label>
+                                        <!--  <label for="inputText3" value=".form-control-lg" class="col-form-label">Attributes</label>
 
-                                         <div class="attSelect"></div>
+                                         <div class="attSelect"></div> -->
                                        <!--   <select class="selectpicker dropup" value=".form-control-lg" name = "userID">
                                             <?php 
                                             $att=new Attribute(2);
@@ -135,8 +118,17 @@ include_once '../class/userClass.php';
                                              
                                              <br>
 
+                                             <div class='value'    ><?php   
 
+                                             //      <?php 
 
+                                                 include_once '../class/attributeTypeClass.php';
+                                                 $att=new Attribute($_GET['attID']);
+                                                        $x=$att->getType();
+                                                $atc=new attributeType($x);
+                                                echo "NEW VALUE<br>";
+                                                $atc->showInput($x,"choice",$_GET['attID']); ?>
+                                             </div>
 
                                                             
                                                 <!-- </div> -->
@@ -164,6 +156,7 @@ include '../dbfooter.html';
             <!-- ============================================================== -->
         </div>
     </div>
+
     <!-- ============================================================== -->
     <!-- end main wrapper -->
     <!-- ============================================================== -->
@@ -176,6 +169,48 @@ include '../dbfooter.html';
     <script src="../assets/vendor/datepicker/moment.js"></script>
     <script src="../assets/vendor/datepicker/tempusdominus-bootstrap-4.js"></script>
     <script src="../assets/vendor/datepicker/datepicker.js"></script>
+    <script type="text/javascript">
+    $("#userType1").change(function(){
+  
+        
+        var action = 'get_att';
+        var userType = $('#userType1').val();
+        
+        $.ajax({
+            url:"get_att.php",
+            method:"POST",
+            data:{action:action, userType:userType },
+            success:function(data){
+                
+                $('.attSelect').html(data);
+            }
+        });
+        return false;
+    }
+);     
+    
+
+
+
+    // function(){
+    //     // alert(1);
+    //     var action = 'get_att';
+    //     var userType = $('#userType1').val();
+    //     alert(2);
+    //     // var storage = get_filter('storage');
+    //     $.ajax({
+    //         url:"get_att.php",
+    //         method:"POST",
+    //         data:{action:action, userType:userType },
+    //         success:function(data){
+    //             alert(3);
+    //             $('.attSelect').html(data);
+    //         }
+    //     });
+    //     return false;
+    // }
+
+    </script>
     <script>
     
 

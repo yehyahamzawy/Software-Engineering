@@ -51,8 +51,12 @@ class userValue implements CRUD
 	return $this->output;
 	}
 	function ReadInSelect(){}
-	function Update(){
+
+
+	function Update($ID,$value){
 		$this->updatedAt=date("Y-m-d H:i:s");
+		$sql="UPDATE uservalues SET  value='".$value."', updatedAt='$this->updatedAt' WHERE ID=".$ID;
+		$result=$this->DB->db_query($sql);
 	}
 	function Delete($ID){
 		$this->updatedAt=date("Y-m-d H:i:s");
