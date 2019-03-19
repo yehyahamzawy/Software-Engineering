@@ -39,6 +39,15 @@ class userTypeAttribute implements CRUD
 	function getattributeID(){
 		return $this->attributeID;
 	}
+	function getattributeName(){
+		$this->output=array();
+		$this->attribute=new attribute($this->attributeID);
+		$x=$this->attribute->Read();
+			foreach ($x as $key ) {
+					array_push($this->output, $key);
+			}
+			return $this->output;
+	}
 	
 	function Read(){
 		$this->userType= new userType($this->userTypeID);

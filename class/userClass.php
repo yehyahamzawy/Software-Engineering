@@ -2,9 +2,9 @@
 /**
  * 
  */
-include "db.php";
+include_once "db.php";
 include_once "CRUDinterface.php";
-include "userTypeClass.php";
+include_once "userTypeClass.php";
 class User implements CRUD
 {
 	private $fname;
@@ -25,7 +25,7 @@ class User implements CRUD
 		$this->output=array();
 		$sql="SELECT * FROM user WHERE isDeleted=0";
 		$result=$this->DB->db_query($sql);
-		while($Row = mysqli_fetch_array($result))
+		while($Row = mysqli_fetch_array($result)){
 			if(sha1($Row['ID'])==$ID){
 				array_push($this->output, $Row);
 				$this->fname=$Row["fName"];
@@ -37,7 +37,7 @@ class User implements CRUD
 			}
 			
 		}
-		
+		} 		
 		
 		
 	
@@ -127,18 +127,24 @@ class User implements CRUD
 
 	
 	function Update($newfName,$newlName,$newType,$userID){
+
 		$this->updatedAt=date("Y-m-d H:i:s");
+		
 		$sql="SELECT * FROM user WHERE isDeleted=0";
 		$result=$this->DB->db_query($sql);
-		while($Row = mysqli_fetch_array($result))
+		while($Row = mysqli_fetch_array($result)){
+
 			if(sha1($Row['ID'])==$userID){
+						echo "x";
+
 				$sql="UPDATE user SET userType='$newType',fName='$newfName',lName='$newlName' ,updatedAt='$this->updatedAt' WHERE ID=".$Row['ID'];
 				$query=$this->DB->db_query($sql);
+
 				return;
 			}
 		
 			
-	}
+	}}
 	
 	function getAllAttributes(){
 		// echo "x";
@@ -221,8 +227,11 @@ function Delete($id){
 	$this->updatedAt=date("Y-m-d H:i:s");
 	$sql="SELECT * FROM user WHERE isDeleted=0";
 		$result=$this->DB->db_query($sql);
-		while($Row = mysqli_fetch_array($result))
+		while($Row = mysqli_fetch_array($result)){
+
 			if(sha1($Row['ID'])==$id){
+						echo "x";
+
 				$sql="UPDATE user SET isDeleted=1,updatedAt='$this->updatedAt' WHERE ID=".$Row['ID'];
 				$result=$this->DB->db_query($sql);
 				return;
@@ -231,8 +240,7 @@ function Delete($id){
 
 	
 }
-
-
 }
+}		
 
  ?>

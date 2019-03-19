@@ -1,46 +1,11 @@
-<?php 
-// include "userClass.php";
-// include "attributeClass.php";
-// include "userTypeClass.php";
-// include "userTypeAttributeClass.php";
-// include "childClass.php";
-include "reportClass.php";
-$rep=new Report();
-$variable=$rep->reportUserType();
-foreach ($variable as $key) {
-	echo $key['label'];
-	echo $key['num'];
-}
-// $object = new Attribute(1);
-// $object->create("Email",1);
-// $x=sha1(3);
-// $user=new User($x);
-// $res=$user->getAllAttributes();
-// foreach ($res as $key ){
-// 	echo $key['aName'];
-// 	}
-// // 	echo $key['attributeName']."<br>".$key['value'];
-// }
-// $ta=new userTypeAttribute(34);
-// // $ta->Create(2,26);
-// $x=$ta->Delete(42);
-// echo "x";
-// $user->Update("mo7y","el shar2awy",2,$x);
-// // foreach ($res as $i) {
-// // 	# code...
-// // 	echo 	$i;
-// // }
-// $res=$user->ReadAll();
-
-// foreach ($res as $i) {
-// // 	# code...
-//  	echo 	$i;
-// }
-// $att=new Attribute(25);
-// $x=$att->Read();
-// foreach ($x as $key ) {
-// 	echo $key['attributeName'];
-// }
-// $dt = new DateTime('2013-09-15 08:45:00', new DateTimeZone('UTC'));
-// print_r($dt);
- ?>
+ <?php   
+                                                                    include_once '../class/userTypeClass.php';
+                                                                        
+                                                                $ut=new userType(1);
+                                                                // echo "<option>x</option>";
+                                                                $var=$ut->ReadAll();
+                                                                foreach ($var as $key ) {
+                                                                    echo "x";
+                                                                // echo "<option value=".$key['ID']."  > ".$key['type']."</option>";
+                                                                }
+                                                             ?>

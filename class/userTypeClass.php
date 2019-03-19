@@ -2,6 +2,7 @@
 /**
  * 
  */
+include_once 'db.php';
 include_once "CRUDinterface.php";
 class userType implements CRUD
 {
@@ -31,6 +32,7 @@ class userType implements CRUD
 	}
 	function ReadAll(){
 		$this->output=array();
+
 		$sql="SELECT * FROM userType WHERE isDeleted=0";
 		$result=$this->DB->db_query($sql);
 		

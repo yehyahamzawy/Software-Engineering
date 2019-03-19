@@ -19,11 +19,12 @@ class attributeType implements CRUD
 		$this->output=array();
 		$this->DB= new database();
 		$sql="SELECT * FROM attributetypes WHERE ID=".$ID;
-		if($Row=$this->DB->db_query_row($sql)){
+		$result=$this->DB->db_query($sql);
+		if($Row=mysqli_fetch_array($result)){
 			// $Row = mysqli_fetch_array($result);
             array_push($this->output, $Row);
 			$this->ID=$Row["ID"];
-			$this->attributeName=$Row["name"];
+			$this->Name=$Row["name"];
 		}
 		
 	}
@@ -51,6 +52,33 @@ class attributeType implements CRUD
 		// $sql="UPDATE attribute SET attributeName='$newName',updatedAt='$this->updatedAt' WHERE ID=".$this->ID;
 		// $query=$this->DB->db_query($sql);
 				
+
+	}
+	function showSelect($id,$att){
+
+		$sql="SELECT uservalues.value as value, usertypeattributes.attributeID FROM userValues INNER JOIN usertypeattributes ON usertypeattributes.ID=uservalues.userTypeOptionID WHERE usertypeattributes.attributeID=".$att;
+		$result=$this->DB-db_query($sql);
+		echo "<select id=".$id.">";
+		while ($row=mysqli_fetch_array($result)) {
+			echo "<option value=".$row['value'].">".$row['value']."</option>";
+		}
+		echo "</select>";
+	}
+
+	function showInput($type,$id,$attID){
+		// unsert($this->output);
+		if($type==1)
+			echo "<input type='email' name=".$id.">";
+		elseif($type==2)
+			echo "<input type='text' name=".$id.">";
+		elseif($type==3)
+			echo "<input type='number' name=".$id.">";
+		elseif($type==4)
+			showSelect($id,$attID);
+		elseif($type==5)
+			echo  "Male Female";
+
+		// return $this->output;
 
 	}
 

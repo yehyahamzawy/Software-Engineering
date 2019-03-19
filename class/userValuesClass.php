@@ -3,7 +3,7 @@
 /**
   * 
   */
-
+include_once 'db.php';
 include_once "CRUDinterface.php";
 class userValue implements CRUD
 {
@@ -23,7 +23,7 @@ class userValue implements CRUD
 		$Row=$this->DB->db_query_row($sql);
 		
 		$this->ID=$Row["ID"];
-		$this->attributeID=$Row["attributeID"];
+		
 		$this->userID=$Row['userID'];
 		$this->value=$Row['value'];
 		$this->relationID=$Row['userTypeOptionID'];
@@ -37,10 +37,26 @@ class userValue implements CRUD
 	function Read(){
 
 	}
-	function ReadAll(){}
+	function ReadAll(){
+		$this->output=array();
+		$sql="SELECT * FROM uservalues WHERE isDeleted=0";
+		$result=$this->DB->db_query($sql);
+		
+		while($Row = mysqli_fetch_array($result))
+	{
+		array_push($this->output, $Row);
+
+	}
+	
+	return $this->output;
+	}
 	function ReadInSelect(){}
-	function Update(){
+
+
+	function Update($ID,$value){
 		$this->updatedAt=date("Y-m-d H:i:s");
+		$sql="UPDATE uservalues SET  value='".$value."', updatedAt='$this->updatedAt' WHERE ID=".$ID;
+		$result=$this->DB->db_query($sql);
 	}
 	function Delete($ID){
 		$this->updatedAt=date("Y-m-d H:i:s");

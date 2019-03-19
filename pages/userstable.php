@@ -78,48 +78,32 @@ include '../dashboard.html';
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>abbas</td>
-                                                <td> driver</td>
-                                                <td>0</td>
-                                                <td>1/1/2019</td>
-                                                <td>1/3/2019</td>
-                                                <td class="iconrow">
-                                                <a href="editusertable.php"> <i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                   <a> <i class="fas fa-trash"></i></a>
+                                           
+
+                                                <?php   
+                                                        include_once '../class/userClass.php';
+                                                    $user=new User(2);
+                                                    $var=$user->ReadAll();
+                                                    foreach ($var as $key) {
+                                                            echo " <tr> <th scope='row'>".$key['ID']."</th>
+                                                <td>".$key['fName']."</td>
+                                                <td>".$key['lName']."</td>
+                                                <td> ".$key['userType']."</td>
+                                                <td>".$key['isDeleted']."</td>
+                                                <td>".$key['createdAt']."</td>
+                                                <td>".$key['updatedAt']."</td>
+                                                <td class='iconrow'>
+                                                <a href='editusertable.php?ID=".sha1($key['ID'])."'> 
+                                                <i class='fas fa-edit' ></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                   <a href='deleteUser.php?ID=".sha1($key['ID'])."'> <i class='fas fa-trash'></i></a>
                                                      
                                                 </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>shady</td>
-                                                <td>shehab</td>
-                                                <td> driver</td>
-                                                <td>0</td>
-                                                <td>8/3/2019</td>
-                                                <td>12/3/2019</td>
-                                                <td class="iconrow">
-                                                <a href="editusertable.php"> <i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                   <a> <i class="fas fa-trash"></i></a>
-                                                     
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td>khaled</td>
-                                                <td>hosny</td>
-                                                <td> driver</td>
-                                                <td>0</td>
-                                                <td>2/3/2019</td>
-                                                <td>6/3/2019</td>
-                                                <td class="iconrow">
-                                                   <a href="editusertable.php"> <i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                   <a> <i class="fas fa-trash"></i></a>
-                                                     
-                                                </td>
-                                            </tr>
+                                            </tr>";
+                                                    }
+                                                 ?>
+                                               
+                                            
+                                            
                                         </tbody>
                                     </table>
                                 </div>

@@ -2,7 +2,7 @@
 include_once "../class/userValuesClass.php";
 include_once "../class/userClass.php";
 include_once "../class/userTypeClass.php";
-include "../class/db.php";
+// include "../class/db.php";
 $fname= $_POST['fname'];
 $lname=$_POST['lname'];
 $type=$_POST['type'];

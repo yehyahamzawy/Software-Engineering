@@ -108,7 +108,7 @@ include_once '../class/userTypeClass.php';
                                 <div class="card eav">  <div class="card-body"></div>   </div>
                                     
                                     
-                                       <!--
+                                       
                                         <form>
                                             <div class="form-group">
                                                 <label for="inputText3" class="col-form-label">First Name</label>
@@ -200,8 +200,8 @@ include_once '../class/userTypeClass.php';
                                     </div>
                                     
                         
-            <!-- ============================================================== -->
-            <!-- footer -->
+            <!--/ ============================================================== 
+            footer -->
             <!-- ============================================================== -->
             <?php
 include '../dbfooter.html';
