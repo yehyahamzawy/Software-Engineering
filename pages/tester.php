@@ -13,7 +13,7 @@ $pageID = 4;
 //echo $test->returnUserTypeID('Driver');
 //echo $test->returnLinkID('edit.php');
 
-$test->createMeeting(1,"3la2 SP","madinaty",'2019-05-13','16:30:00');
+//$test->createMeeting(1,"3la2 SP","madinaty",'2019-05-13','16:30:00');
 //$user = $test->returnUser(1);
 //echo $user["firstName"]
 

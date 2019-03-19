@@ -1,13 +1,12 @@
 <?php
 include_once "../class/permission.php";
 
-$object = new permission();
+$object = new permission(2);
 
+echo $_POST["typeID"]." ".$_POST["linkID"];
 
-foreach($_POST["typeID"] as $type)
-{
-    $object->update($_GET["id"],$type,$_POST["linkID"]);
-}
-header('location:acceesscontrol.php');
+    $object->editPerm($_GET["ID"],$_POST["typeID"],$_POST["linkID"]);
+
+header('location:accesscontrol.php');
 
 ?>

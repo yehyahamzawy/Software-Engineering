@@ -87,7 +87,7 @@ include '../dashboard.html';
 
                         
 
-                         <form method = "POST" action = "addpermission.php">   
+                         <form method = "POST" action =  <?php echo '"permissionEdit.php?ID='.$_GET["ID"].'"' ?>>   
                         <?php
                         include_once "../class/permission.php";
 
@@ -101,7 +101,7 @@ include '../dashboard.html';
                         <div data-toggle="buttons" class="btn-group bizmoduleselect">
                             <label class="btn btn-default">
                                 <div class="bizcontent">
-                                    <input type="checkbox" name="typeID[]" autocomplete="off" value="'.$usertype["ID"].'">
+                                    <input type="checkbox" name="typeID" autocomplete="off" value="'.$usertype["ID"].'">
                                     <span class="glyphicon glyphicon-ok glyphicon-lg"></span>
                                     <h5>'.$usertype["type"].'</h5>
                                 </div>
@@ -146,41 +146,7 @@ include '../dashboard.html';
 </form>
 </div>
 
-                            <div class="card">
-                                <h5 class="card-header">Events Table</h5>
-                                <div class="card-body">
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                               
-                                                
-                                                <th scope="col">Type</th>
-                                                <th scope="col">Link</th>
-                                                <th scope="col">Edit/Delete</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        <?php 
-                                       
-                                       
-                                        foreach($object->linkconnection as $connection)
-                                        {
-                                            echo '<tr>
-                                            <th scope="row">'.$object->returnUserType($connection["userTypeID"]).'</th>
-                                            <td>'.$object->returnLink($connection["linkID"]).'</td>
-                                            <td class="iconrow">
-                                            <a href="editpermission.php?ID='.$connection["ID"].'"> <i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                               <a href="permissionDelete.php?ID='.$connection["ID"].'"> <i class="fas fa-trash"></i></a>
-                                                 
-                                            </td>
-                                        </tr>';
-                                        }
-                                        ?>
-                                            
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                           
                         </div>
                         <!-- ============================================================== -->
                         <!-- end striped table -->
