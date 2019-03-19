@@ -54,18 +54,18 @@ class meeting
             return $user;
         }
 
-        function delPerm($connectionID)
-        {   
+        // function delPerm($connectionID)
+        // {   
             
-            $sql = "DELETE FROM linkconnection WHERE ID = ".$connectionID;
-            mysqli_query($Connection, $sql);
-        }
+        //     $sql = "DELETE FROM linkconnection WHERE ID = ".$connectionID;
+        //     mysqli_query($Connection, $sql);
+        // }
 
-        function editPerm($connectionID, $userTypeID, $linkID )
-        {   $Connection= new mysqli("localhost", "root", "", "olddb");
-            $sql = "UPDATE linkconnection SET userTypeID = ".$userTypeID.", `linkID` = ".$linkID." WHERE ID = ".$connectionID;
-            mysqli_query($Connection, $sql);
-        }
+        // function editPerm($connectionID, $userTypeID, $linkID )
+        // {   $Connection= new mysqli("localhost", "root", "", "olddb");
+        //     $sql = "UPDATE linkconnection SET userTypeID = ".$userTypeID.", `linkID` = ".$linkID." WHERE ID = ".$connectionID;
+        //     mysqli_query($Connection, $sql);
+        // }
 
     }
 
