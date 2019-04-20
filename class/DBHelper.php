@@ -33,7 +33,7 @@ class helper
   }
 
 
-  function select($selection , $table, $condition)
+  function selectIndexedArray($selection , $table, $condition)
   {
     $indexedArray = array();
     $sql = "SELECT ".$selection." FROM ".$table." WHERE isDeleted = 0";
@@ -49,6 +49,20 @@ class helper
 
   }
   return $indexedArray;
+  }
+
+  function selectFetchArray($selection , $table, $condition)
+  {
+    $indexedArray = array();
+    $sql = "SELECT ".$selection." FROM ".$table." WHERE isDeleted = 0";
+    if ($condition != NULL)
+    {
+      $sql = $sql." AND ".$condition;
+    }
+    $result = $this->db_query($sql);
+    
+    
+  return  mysqli_fetch_array($result);
   }
 
   function insert($table, $data)
@@ -85,14 +99,72 @@ class helper
       
   }
 
+  function delete($table, $id)
+  {
+    $sql="UPDATE $table SET  isDeleted='1' WHERE ID=".$id;
+    $this->db_query($sql);
+    $this->logIt("delete",$id,$table);
+  }
+
+  function restore($table, $id)
+  {
+    $sql="UPDATE $table SET  isDeleted='0' WHERE ID=".$id;
+    $this->db_query($sql);
+    $this->logIt("restore",$id,$table);
+  }
+
+  function update($table, $data, $id)
+  {
+    $updates = array();
+
+    foreach ($data as $key => $value) 
+    {
+      array_push($updates," `$key` = '$value' ");
+    }
+  
+    $sql ="UPDATE $table SET ".join(", ",$updates)." WHERE ID = $id";
+    //echo $sql;
+
+    $this->db_query($sql);
+    
+    $this->logIt("update",$id,$table);
+
+  }
+
   function logIt($action,$rowID,$table)
   {
-    $result = $this->select("*", $table, "ID = $rowID");
+    $result = $this->selectIndexedArray("*", $table, "ID = $rowID");
     $hashedRow = sha1(json_encode($result));
    
     $sql = "INSERT INTO log (`action`,`hashedRow`,`rowID`,`tableName`) VALUES ('$action','$hashedRow','$rowID','$table')";
     $this->db_query($sql);
     //echo $sql;
+  }
+
+  function logValidate($table,$rowID)
+  {
+    $result = $this->selectIndexedArray("*", $table, "ID = $rowID");
+    $currentRowHashed = sha1(json_encode($result));
+    
+    $sql =  "SELECT MAX(ID) AS ID FROM log WHERE tableName = '$table' AND rowID = '$rowID'";
+    //echo $sql;
+    $lastUpDateID = mysqli_fetch_array($this->db_query($sql));
+    //var_dump($lastUpDateID);
+
+    $sql =  "SELECT hashedRow FROM log WHERE ID =".$lastUpDateID["ID"];
+    //echo $sql;
+    $lastHashedRow = mysqli_fetch_array($this->db_query($sql));
+
+    if($currentRowHashed == $lastHashedRow["hashedRow"])
+    {
+      echo "good";
+      return TRUE;
+    }
+    else
+    { 
+      echo "bad";
+      return FALSE;
+    }
   }
 
 }
