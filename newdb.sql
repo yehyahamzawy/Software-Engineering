@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2019 at 02:46 AM
+-- Generation Time: Apr 20, 2019 at 04:23 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -32,7 +32,7 @@ CREATE TABLE `attribute` (
   `ID` int(11) NOT NULL,
   `attributeName` int(11) NOT NULL,
   `type` varchar(20) NOT NULL,
-  `isDeleted` int(11) NOT NULL
+  `isDeleted` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -56,7 +56,12 @@ CREATE TABLE `log` (
 
 INSERT INTO `log` (`ID`, `action`, `time`, `hashedRow`, `rowID`, `tableName`) VALUES
 (2, 'insert', '2019-04-20 00:44:16', '811e7752a2b4fc58cbc514e3bfe6ef24aac9ef9f', 2, 'user'),
-(3, 'insert', '2019-04-20 00:45:10', '4d99a7a39a1b02dd058be0014252a9b9dee62a61', 9, 'user');
+(3, 'insert', '2019-04-20 00:45:10', '4d99a7a39a1b02dd058be0014252a9b9dee62a61', 9, 'user'),
+(4, 'delete', '2019-04-20 13:24:56', '97d170e1550eee4afc0af065b78cda302a97674c', 2, 'user'),
+(5, 'delete', '2019-04-20 13:25:04', '97d170e1550eee4afc0af065b78cda302a97674c', 2, 'user'),
+(6, 'restore', '2019-04-20 13:28:38', '811e7752a2b4fc58cbc514e3bfe6ef24aac9ef9f', 2, 'user'),
+(14, 'update', '2019-04-20 14:20:53', '811e7752a2b4fc58cbc514e3bfe6ef24aac9ef9f', 2, 'user'),
+(15, 'update', '2019-04-20 14:21:24', 'dcb0ea530290340ef7b017d94c00db84860edce8', 2, 'user');
 
 -- --------------------------------------------------------
 
@@ -69,7 +74,7 @@ CREATE TABLE `user` (
   `fName` varchar(100) NOT NULL,
   `lName` varchar(100) NOT NULL,
   `userTypeID` int(11) NOT NULL,
-  `isDeleted` tinyint(4) NOT NULL
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -77,8 +82,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`ID`, `fName`, `lName`, `userTypeID`, `isDeleted`) VALUES
-(1, 'test', 'tester', 1, 0),
-(2, 'bad', 'tester', 1, 0),
+(2, 'not', 'tester', 1, 0),
 (9, 'new', 'guy', 1, 0);
 
 -- --------------------------------------------------------
@@ -90,7 +94,7 @@ INSERT INTO `user` (`ID`, `fName`, `lName`, `userTypeID`, `isDeleted`) VALUES
 CREATE TABLE `usertype` (
   `ID` int(11) NOT NULL,
   `type` varchar(100) NOT NULL,
-  `isDeleted` tinyint(4) NOT NULL
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -110,7 +114,7 @@ CREATE TABLE `usertypeattributes` (
   `ID` int(11) NOT NULL,
   `userTypeID` int(11) NOT NULL,
   `attributeID` int(11) NOT NULL,
-  `isDeleted` tinyint(4) NOT NULL
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -124,7 +128,7 @@ CREATE TABLE `uservalues` (
   `userTypeAttributeID` int(11) NOT NULL,
   `value` text NOT NULL,
   `userID` int(11) NOT NULL,
-  `isDeleted` tinyint(4) NOT NULL
+  `isDeleted` tinyint(4) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -186,7 +190,7 @@ ALTER TABLE `attribute`
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `user`
