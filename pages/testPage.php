@@ -19,7 +19,7 @@ $object = new helper("localhost", "root", "","newdb");
 // $aray = $object->selectFetchArray("*", "user", "ID = 2");
 // echo $aray["fName"]."</br>";
 
-$object->update("user", array("fName" => "not", "lName" => "tester"), "2");
+//$object->update("user", array("fName" => "not", "lName" => "tester"), "2");
 
 ?>
 
