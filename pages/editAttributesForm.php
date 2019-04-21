@@ -75,7 +75,7 @@ include_once "../class/attributeTypeClass.php";
                                 <div class="card">
                                     
                                     <div class="card-body">
-                                        <form class=".form-control-lg" method = "POST" action ="attributeEdit.php">
+                                        <form class=".form-control-lg" method = "POST" action ="../controllers/attributeEdit.php">
                                            <br>
                                            <div class="form-group">
                                             
@@ -83,7 +83,7 @@ include_once "../class/attributeTypeClass.php";
                                             <select name='attributeID'>
                                             <?php 
 
-                                                $IdToEdit=$_GET['ID'];
+                                                 $IdToEdit=$_GET['ID'];
                                                 $attributes=new Attribute($toEdit);
                                                 $variable=$attributes->ReadAll();
                                                 echo "x";

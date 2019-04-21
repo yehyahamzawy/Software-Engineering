@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
- 
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -32,7 +32,10 @@ include '../dbheader.html';
         <!-- ============================================================== -->
         <!-- ============================================================== -->
         <?php
-include '../dashboard.html';
+include '../dashboard.php';
+ 
+ include_once "../class/userClass.php";
+  
 
 ?>
         <!-- ============================================================== -->
@@ -61,137 +64,112 @@ include '../dashboard.html';
                         </div>
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- end pageheader -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- multiselects  -->
-                <!-- ============================================================== -->
                 
-                    <!-- <div class="row">
-                        ============================================================== 
-                        boxed multiselect  
-                         ============================================================== 
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="card">
-                                <h5 class="card-header">Boxed Multiselect</h5>
-                                <div class="card-body">
-                                    <select multiple="multiple" id="my-select" name="my-select[]">
-                                        <option value='elem_1'>Elements 1</option>
-                                        <option value='elem_2'>Elements 2</option>
-                                        <option value='elem_3'>Elements 3</option>
-                                        <option value='elem_4'>Elements 4</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- ============================================================== -->
-                        <!-- end boxed multiselect  -->
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                        <!-- pre multiselectd options  -->
-                        <!-- ============================================================== -->
-                        <!-- <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="card">
-                                <h5 class="card-header">Pre-selected options</h5>
-                                <div class="card-body">
-                                    <select id='pre-selected-options' multiple='multiple'>
-                                        <option value='elem_1' selected>Elements 1</option>
-                                        <option value='elem_2'>Elements 2</option>
-                                        <option value='elem_3'>Elements 3</option>
-                                        <option value='elem_4' selected>Elements 4</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- ============================================================== -->
-                        <!-- end pre multiselectd options  -->
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                        <!-- callbacks multiselectd  -->
-                        <!-- ============================================================== -->
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="section-block" id="basicform">
                                     <h3 class="section-title">Select Team members</h3>
                                     
                                 </div>
+                                <form action="../controllers/createMission.php" method="POST">
                                 <div class="card" style="margin:200px;margin-left:200px;margin-top:0px;">
-                                   
+                                   <div class="card-body">
 
-                                    <div class="form-group" style="height:50px;width:800px;margin-left:150px">
+                                    <div class="form-group" >
+                                         <label for="inputText3" class="col-form-label">Name/title</label>
+                                    <div class="input-group " id="datetimepicker4" data-target-input="nearest">
+                                        <input type="text" name="name" class="form-control datetimepicker-input" data-target="#datetimepicker4" />
+                                        <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker" >
+                                            
+
+                                        </div>
+                                    </div>
+
                                         <label for="inputText3" class="col-form-label">day</label>
                                     <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
-                                        <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker4" />
+                                        <input type="text" name="date" class="form-control datetimepicker-input" data-target="#datetimepicker4" />
                                         <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker" >
                                             <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
                                         </div>
                                     </div>
-                                </div>
+                                </div></div>
                                 <br>
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12"style="margin-left:300px">
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12"style="margin-left:50px">
                             <div class="card">
-                                <h5 class="card-header">doctors</h5>
+                                <h5 class="card-header">Doctors</h5>
                                 <div class="card-body">
-                                    <select id='callbacks' multiple='multiple'>
-                                        <option value='elem_1'>mohmed</option>
-                                        <option value='elem_2'>yehia</option>
-                                        <option value='elem_3'>hazzem</option>
-                                        <option value='elem_4'>kareem</option>
+                                    <select name="doctor" class="selectpicker dropup">
+                                        <?php 
+                                            $x=User::readType(3);
+                                            foreach ($x as $k) {
+                                             echo "<option value=".sha1($k['ID']).">".$k['fName']." ".$k['lName']."</option>";
+    
+                                            }
+                                         ?> 
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12"style="margin-left:300px">
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12"style="margin-left:50px">
                             <div class="card">
-                                <h5 class="card-header">pyshcology</h5>
+                                <h5 class="card-header">Pyshcologist</h5>
                                 <div class="card-body">
-                                    <select id='callbacks2' multiple='multiple'>
-                                        <option value='elem_1'>mohmed</option>
-                                        <option value='elem_2'>yehia</option>
-                                        <option value='elem_3'>hazzem</option>
-                                        <option value='elem_4'>kareem</option>
+                                    <select name="psych" class="selectpicker dropup">
+                                        <?php 
+                                            $x=User::readType(4);
+                                            foreach ($x as $k) {
+                                             echo "<option value=".sha1($k['ID']).">".$k['fName']." ".$k['lName']."</option>";
+    
+                                            }
+                                         ?> 
                                     </select>
                                 </div>
                             </div>
                         </div>
 
                  
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12"style="margin-left:300px">
+                        <div class="col-xl-4 col-lg-6 col-md-6    col-sm-12 col-12"style="margin-left:50px; ">
                             <div class="card">
-                                <h5 class="card-header">assistant</h5>
-                                <div class="card-body">
-                                    <select id='callbacks3' multiple='multiple'>
-                                        <option value='elem_1'>mohmed</option>
-                                        <option value='elem_2'>yehia</option>
-                                        <option value='elem_3'>hazzem</option>
-                                        <option value='elem_4'>kareem</option>
+                                <h5 class="card-header">Assistant</h5>
+                                <div class="card-body" >
+                                    <select name="assistant" class="selectpicker dropup">
+                                        <?php 
+                                            $x=User::readType(2);
+                                            foreach ($x as $k) {
+                                             echo "<option value=".sha1($k['ID']).">".$k['fName']." ".$k['lName']."</option>";
+    
+                                            }
+                                         ?> 
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12"style="margin-left:300px;">
-                            <div class="card">
-                                <h5 class="card-header">driver</h5>
-                                <div class="card-body">
-                                    <select id='callbacks4' multiple='multiple'>
-                                        <option value='elem_1'>mohmed</option>
-                                        <option value='elem_2'>yehia</option>
-                                        <option value='elem_3'>hazzem</option>
-                                        <option value='elem_4'>kareem</option>
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12"style="margin-left:50px;">
+                            <div class="card" >
+                                <h5 class="card-header">Driver</h5>
+                                <div class="card-body" >
+                                    <select name ="driver" class="selectpicker dropup">
+                                    <?php 
+                                            $x=User::readType(1);
+                                            foreach ($x as $k) {
+                                             echo "<option value=".sha1($k['ID']).">".$k['fName']." ".$k['lName']."</option>";
+    
+                                            }
+                                         ?> 
+                                        
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group" style="margin-left:150px">
+                        <div class="form-group" style="margin-left:50px">
                             <label for="exampleFormControlTextarea1" >additional Information</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="height:50px;width:800px"></textarea>
+                            <textarea name="description"class="form-control" id="exampleFormControlTextarea1" rows="3" style="height:250px;width:400px"></textarea>
                         </div>
-                        <div class="form-group" style="margin-left:150px">
+                        <!-- div class="form-group" style="margin-left: 50px">
                             <label for="exampleFormControlTextarea1">Location</label>
                             <br>
                             <iframe src="https://www.google.com/maps/embed?pb=" width="600" height="450" frameborder="0" style="border:0" allowfullscreen ></iframe>
-                        </div>
+                        </div> -->
                         <br><br>
                         <div class="col-sm-6 pl-0">
                             <p class="text-right" >

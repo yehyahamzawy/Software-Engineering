@@ -5,7 +5,8 @@
 include_once "db.php";
 include_once "CRUDinterface.php";
 include_once "userTypeClass.php";
-class User implements CRUD
+include_once "observerInterface.php";
+class User implements CRUD,iObserver
 {
 	private $fname;
 	private $lname;
@@ -20,7 +21,20 @@ class User implements CRUD
 	private $output;
 	//Fetches user info from db
 	function __construct($ID)
-	{
+	{	if($ID==0){
+		$this->DB= new database();
+		$this->output=array();
+		$sql="SELECT * FROM user WHERE isDeleted=0 ORDER BY ID DESC limit 1 ";
+		$result = $this->DB->db_query($sql);
+		$Row=mysqli_fetch_assoc($result);
+		array_push($this->output, $Row);
+				$this->fname=$Row["fName"];
+				$this->lname=$Row["lName"];
+				$this->userTypeID=$Row['userType'];
+				$this->ID=$Row['ID'];
+				return;
+	}
+	else{
 		$this->DB= new database();
 		$this->output=array();
 		$sql="SELECT * FROM user WHERE isDeleted=0";
@@ -36,7 +50,7 @@ class User implements CRUD
 				return;
 			}
 			
-		}
+		}}
 		} 		
 		
 		
@@ -74,7 +88,7 @@ class User implements CRUD
 	// }
 
 
-	function Create($fname,$lname,$usertype){
+	 function Create($fname,$lname,$usertype){
 		// $this->showForm($usertype);
 		
 		
@@ -147,9 +161,7 @@ class User implements CRUD
 	}}
 	
 	function getAllAttributes(){
-		// echo "x";
-		// $x= new userType($this->userTypeID);
-		// $x->Read();
+		
 		$this->output=array();
 		$sql="SELECT attribute.attributeName as aName,uservalues.value,usertypeattributes.attributeID,user.fName,user.lName FROM user INNER JOIN uservalues ON user.ID=uservalues.userID INNER JOIN usertypeattributes ON uservalues.userTypeOptionID=usertypeattributes.ID INNER JOIN attribute ON attribute.ID=usertypeattributes.attributeID WHERE user.ID=".$this->ID;
 
@@ -207,7 +219,7 @@ class User implements CRUD
 		}
 		// echo "<script src='user.js'>";
 		$this->output[]= "<input type='submit' name=''></form>";
-		
+	
 		return $this->output;
 	}
 
@@ -240,6 +252,23 @@ function Delete($id){
 
 	
 }
+}
+
+public function updateEvent(Event $subject) {
+      echo $subject->getName();  
+      echo "<br>";
+      echo $subject->getDate();   
+    }
+    static function readType($typeID){
+    	$DB=new Database();
+    	$output=array();
+    	$sql="SELECT * FROM user WHERE userType=$typeID AND isDeleted=0";
+    	$result=$DB->db_query($sql);
+    	while($Row = mysqli_fetch_array($result)){
+    			array_push($output, $Row);
+
+    }
+    return $output;
 }
 }		
 

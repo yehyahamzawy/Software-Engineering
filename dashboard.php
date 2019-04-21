@@ -67,7 +67,7 @@ include 'dbheader.html';
                                                         foreach ($output as $i) {
                                                             echo "<li class='nav-item'>
 
-                                                        <a class='nav-link' href=''>".$i['Tables_in_se']."</a>
+                                                        <a class='nav-link' href='pages/".$i['Tables_in_se']."Table.php'>".$i['Tables_in_se']."</a>
                                                     </li>";
                                                         }
                                                      ?>
@@ -101,7 +101,7 @@ include 'dbheader.html';
                                                     <a class="nav-link" href="driverform.php">Driver Form</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href=assistantform.php">Assistant Form</a>
+                                                    <a class="nav-link" href="assistantform.php">Assistant Form</a>
                                                 </li>
                                                 <li class="nav-item">
                                                     <a class="nav-link" href="userType.php">Promote Users</a>
@@ -120,7 +120,7 @@ include 'dbheader.html';
                                 
                             </li>
                             <li class="nav-item">
-                                    <a class="nav-link" href="pages/userprofile.php">User profile</a>
+                                    <a class="nav-link" href="userprofile.php">User profile</a>
                                 </li>
                                 <li class="nav-item">
                                         <a class="nav-link" href="accesscontrol.php">Access Control</a>

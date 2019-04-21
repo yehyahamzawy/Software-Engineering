@@ -31,7 +31,7 @@ include '../dbheader.html';
         <!-- end navbar -->
         <!-- ============================================================== -->
         <?php
-include '../dashboard.html';
+include '../dashboard.php';
 
 ?>
 <div class="dashboard-wrapper">
