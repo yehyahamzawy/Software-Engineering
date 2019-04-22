@@ -23,40 +23,8 @@
                                     <li>
                                         <div class="notification-title"> Notification</div>
                                         <div class="notification-list">
-                                            <div class="list-group" class='notList'>
-                                                <a href="#" class="list-group-item list-group-item-action active">
-                                                    <div class="notification-info">
-                                                        <div class="notification-list-user-img"><img src="../assets/images/avatar-2.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                        <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy Rakestraw</span>accepted your invitation to join the team.
-                                                            <div class="notification-date">2 min ago</div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                                <a href="#" class="list-group-item list-group-item-action">
-                                                    <div class="notification-info">
-                                                        <div class="notification-list-user-img"><img src="../assets/images/avatar-3.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                        <div class="notification-list-user-block"><span class="notification-list-user-name">
-    John Abraham</span>is now following you
-                                                            <div class="notification-date">2 days ago</div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                                <a href="#" class="list-group-item list-group-item-action">
-                                                    <div class="notification-info">
-                                                        <div class="notification-list-user-img"><img src="../assets/images/avatar-4.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                        <div class="notification-list-user-block"><span class="notification-list-user-name">Monaan Pechi</span> is watching your main repository
-                                                            <div class="notification-date">2 min ago</div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                                <a href="#" class="list-group-item list-group-item-action">
-                                                    <div class="notification-info">
-                                                        <div class="notification-list-user-img"><img src="../assets/images/avatar-5.jpg" alt="" class="user-avatar-md rounded-circle"></div>
-                                                        <div class="notification-list-user-block"><span class="notification-list-user-name">Jessica Caruso</span>accepted your invitation to join the team.
-                                                            <div class="notification-date">2 min ago</div>
-                                                        </div>
-                                                    </div>
-                                                </a>
+                                            <div class="list-group" class='notList' id='notify'>
+                                               
                                             </div>
                                         </div>
                                     </li>
@@ -129,9 +97,39 @@
                                 // alert(data[3]);
                                 var obj = JSON.parse(data);
                                     // var x="";
+                                    var link="";
                                     for (var i = 0; i < obj.length; i++) {
-                                         console.log(obj[i].senderID);
+                                         
+
+                                          link+="<a href='' class='list-group-item list-group-item'>";
+                                          link+="<div class='notification-info'>";
+                                          link+="<div class='notification-list-user-block'>";
+                                          link+="<span class='notification-list-user-name'>";
+                                          link+= obj[i].senderFname+ " "+ obj[i].senderLname;
+                                          link+="</span>";
+                                          link+=obj[i].type;
+                                          link+="</div></div></a>";
+                                          // document.getElementsByClassName("notList").innerHTML = link;
+                                          $('.notification-list').html(link);
+                                         // <a href="#" class="list-group-item list-group-item-action ">
+                                         //            <div class="notification-info">
+                                         //                
+                                         //                <div class="notification-list-user-block"><span class="notification-list-user-name">Jeremy Rakestraw</span>accepted your invitation to join the team.
+                                         //                    <div class="notification-date">2 min ago</div>
+                                         //                </div>
+                                         //            </div>
+                                         //        </a>
+
+
+
                                     }
+                                    if(obj.length>0){
+                                        $('.indicator').show();
+                                        // $('.numOfNotifications').html(obj.length);
+                                    }else{
+                                        $('.indicator').hide();
+                                    }
+
                             //         for(var i in obj) {
                            
                             // }

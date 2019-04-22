@@ -1,6 +1,7 @@
 <?php 
 include_once "../class/userClass.php";
 include_once "../class/notificationClass.php";
+include_once "../class/notifyTypeClass.php";
 $recID=2;
 
 
@@ -8,9 +9,11 @@ $recID=2;
 $variable=notification::readNew($recID);
 $entry=array();
 foreach ($variable as $key) {
-	$user=new User($key['senderID']);
-
-	$entry[]= array('id'=>$key['id'],'recID'=>$key['recID'],'senderID'=>$user->getfName());
+	$type=notificationType::read($key['notificationType']);
+	$user=new User(sha1($key['senderID']));
+	$fname=$user->getfName();
+	$lname=$user->getlName();
+	$entry[]= array('id'=>$key['id'],'recID'=>$key['recID'],'senderFname'=>$fname,'senderLname'=>$lname,'type'=>$type);
 }
 $data=json_encode($entry);
 echo $data;

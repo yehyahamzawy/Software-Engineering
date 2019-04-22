@@ -19,16 +19,18 @@
 // $mission=new Mission();
 // $mission->Create("demo1","23-5-2019",$doctor,$assistant,$driver,$psych);
 
-
+include "notifyTypeClass.php";
 include "notificationClass.php";
-$variable=notification::readNew(2);
-$entry=array();
-foreach ($variable as $key) {
-	$entry= $key;
-}
-$data=json_encode($entry);
-echo $data;
-// notification::create(2,1);
+echo notificationType::read(2);
+
+// $variable=notification::readNew(2);
+// $entry=array();
+// foreach ($variable as $key) {
+// 	$entry= $key;
+// }
+// $data=json_encode($entry);
+// echo $data;
+// // notification::create(2,1);
 // notification::setIsRead(1);
 // notification::setIsDeleted(1);
 
