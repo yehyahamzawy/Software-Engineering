@@ -109,93 +109,7 @@ include_once '../class/userTypeClass.php';
                                     
                                     
                                        
-                                        <form>
-                                            <div class="form-group">
-                                                <label for="inputText3" class="col-form-label">First Name</label>
-                                                <input id="inputText3" type="text" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputText3" class="col-form-label">Last Name</label>
-                                                <input  type="text" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputEmail">Email address</label>
-                                                <input id="inputEmail" type="email" placeholder="name@example.com" class="form-control">
-                                               
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputText4" class="col-form-label">Mobile Number</label>
-                                                <input id="inputText4" type="number" class="form-control" placeholder="Numbers">
-                                            </div>
-                                            <div class="form-group">
-                                                    <label for="inputText3" class="col-form-label">Date of Birth</label>
-                                                <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
-                                                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker4" />
-                                                    <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker" >
-                                                        <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                    <label for="inputText3" class="col-form-label">Address</label>
-                                                    <br>
-                                                    <label >Country</label>
-                                                    <select class="selectpicker dropup"  >
-                                                        
-                                                            <option>Egypt</option>
-                                                            <option>France</option>
-                                                            <option>America</option>
-                                                        </select>
-                                                        <br>
-                                                        <label for="inputText3" class="col-form-label">Gouvernement</label>
-
-                                                        <select class="selectpicker dropup">
-                                                                <option>Alex</option>
-                                                                <option>Giza</option>
-                                                                <option>Cairo</option>
-                                                            </select>
-                                                            <br>
-                                                            <label for="inputText3" class="col-form-label">City</label>
-                                                            <select class="selectpicker dropup">
-                                                                    <option>Shobra</option>
-                                                                    <option>Maadi</option>
-                                                                    <option>Nasr City</option>
-                                                                </select>
-                                                </div>
-                                            <div class="form-group">
-                                                <label for="inputText3" class="col-form-label">Job</label>
-                                                <input  type="text" class="form-control">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="inputText3" class="col-form-label">Experience</label>
-                                                <br>
-                                                <label class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" name="radio-inline" checked="" class="custom-control-input"><span class="custom-control-label">1-5</span>
-                                                    </label>
-                                                    <label class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" name="radio-inline" class="custom-control-input"><span class="custom-control-label">6-10</span>
-                                                    </label>
-                                                    <label class="custom-control custom-radio custom-control-inline">
-                                                        <input type="radio" name="radio-inline" class="custom-control-input"><span class="custom-control-label">No Experience</span>
-                                                    </label>
-                                            </div>
-                                            <div class="custom-file mb-3">
-                                                <input type="file" class="custom-file-input" id="customFile">
-                                                <label class="custom-file-label" for="customFile">File Input</label>
-                                            </div>
-                                            
-                                           
-                                            <div class="form-group">
-                                                <label for="exampleFormControlTextarea1">More Information</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                            </div>
-                                            <div class="col-sm-6 pl-0">
-                                                <p class="text-right">
-                                                    <button type="submit" class="btn btn-space btn-primary">Submit</button>
-                                                    <button class="btn btn-space btn-secondary">Cancel</button>
-                                                </p>
-                                            </div>
-                                        </form>
+                                     
                                     </div>
                                     </div>
                                     
@@ -233,7 +147,7 @@ include '../dbfooter.html';
         // alert(userType);
         // var storage = get_filter('storage');
         $.ajax({
-            url:"EavForm.php",
+            url:"../controllers/EavForm.php",
             method:"POST",
             data:{action:action, userType:userType },
             success:function(data){

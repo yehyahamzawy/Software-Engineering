@@ -65,7 +65,7 @@ class helper
   return  mysqli_fetch_array($result);
   }
 
-  function insert($table, $data)
+  static function insert($table, $data)
   {
       $colms = array_keys($data);
       $values = array_values($data);

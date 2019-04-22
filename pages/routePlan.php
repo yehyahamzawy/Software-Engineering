@@ -185,77 +185,7 @@ include '../dashboard.php';
                         <!-- end callbacks multiselectd  -->
                         <!-- ============================================================== -->
                     </div>
-                    <!-- <div class="row"> -->
-                        <!-- ============================================================== -->
-                        <!-- keep over multiselectd  -->
-                        <!-- ============================================================== -->
-                        <!-- <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="card">
-                                <h5 class="card-header">Keep Over</h5>
-                                <div class="card-body">
-                                    <select id='keep-order' multiple='multiple'>
-                                        <option value='elem_1'>Elements 1</option>
-                                        <option value='elem_2'>Elements 2</option>
-                                        <option value='elem_3'>Elements 3</option>
-                                        <option value='elem_4'>Elements 4</option>
-                                        <option value='elem_5'>Elements 5</option>
-                                        <option value='elem_6'>Elements 6</option>
-                                        <option value='elem_7'>Elements 7</option>
-                                        <option value='elem_8'>Elements 8</option>
-                                        <option value='elem_9'>Elements 9</option>
-                                        <option value='elem_10'>Elements 10</option>
-                                        <option value='elem_11'>Elements 11</option>
-                                        <option value='elem_12'>Elements 12</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- ============================================================== -->
-                        <!-- end keep over multiselectd  -->
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                        <!-- optgroup multiselectd  -->
-                        <!-- ============================================================== -->
-                        <!-- <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="card">
-                                <h5 class="card-header">Optgroup</h5>
-                                <div class="card-body">
-                                    <select id='optgroup' multiple='multiple'>
-                                        <optgroup label='Friends'>
-                                            <option value='1'>Yoda</option>
-                                            <option value='2' selected>Obiwan</option>
-                                        </optgroup>
-                                        <optgroup label='Enemies'>
-                                            <option value='3'>Palpatine</option>
-                                            <option value='4' disabled>Darth Vader</option>
-                                        </optgroup>
-                                    </select>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- ============================================================== -->
-                        <!-- end optgroup multiselectd  -->
-                        <!-- ============================================================== -->
-                        <!-- ============================================================== -->
-                        <!-- disabled multiselectd  -->
-                        <!-- ============================================================== -->
-                        <!-- <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
-                            <div class="card">
-                                <h5 class="card-header">Disabled attribute</h5>
-                                <div class="card-body">
-                                    <select id='disabled-attribute' disabled='disabled' multiple='multiple'>
-                                        <option value='elem_1'>Elements 1</option>
-                                        <option value='elem_2'>Elements 2</option>
-                                        <option value='elem_3'>Elements 3</option>
-                                        <option value='elem_4'>Elements 4</option>
-                                        <option value='elem_5'>Elements 5</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- ============================================================== -->
-                        <!-- disabled multiselectd  -->
-                        <!-- ============================================================== -->
+                    <
                     </div>
               
             </div>

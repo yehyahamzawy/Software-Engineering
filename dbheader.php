@@ -1,6 +1,5 @@
- <!-- ============================================================== -->
-    <!-- main wrapper -->
-    <!-- ============================================================== -->
+
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
     <div class="dashboard-main-wrapper">
             <!-- ============================================================== -->
             <!-- navbar -->
@@ -19,12 +18,12 @@
                                 </div>
                             </li>
                             <li class="nav-item dropdown notification">
-                                <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span class="indicator"></span></a>
+                                <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell" id='numOfNotifications'></i> <span class="indicator"></span></a>
                                 <ul class="dropdown-menu dropdown-menu-right notification-dropdown">
                                     <li>
                                         <div class="notification-title"> Notification</div>
                                         <div class="notification-list">
-                                            <div class="list-group">
+                                            <div class="list-group" class='notList'>
                                                 <a href="#" class="list-group-item list-group-item-action active">
                                                     <div class="notification-info">
                                                         <div class="notification-list-user-img"><img src="../assets/images/avatar-2.jpg" alt="" class="user-avatar-md rounded-circle"></div>
@@ -115,3 +114,44 @@
                     </div>
                 </nav>
             </div>
+            <script type="text/javascript">
+                $(document).ready(function(){
+
+                     $('.indicator').hide();
+
+                     setInterval(function(){ 
+
+                        $.ajax({url:"../controllers/notificationNum.php",
+                            method:"POST",
+                            dataType:"text",
+                            
+                            success: function(data){
+                                // alert(data[3]);
+                                var obj = JSON.parse(data);
+                                    // var x="";
+                                    for (var i = 0; i < obj.length; i++) {
+                                         console.log(obj[i].senderID);
+                                    }
+                            //         for(var i in obj) {
+                           
+                            // }
+                                // console.log(x);
+    // This will iterate over all of the values in the return object
+                            
+                            },
+                            error: function(xhr, textStatus, errorThrown){
+                        alert(errorThrown+textStatus+xhr);
+    }
+                        }
+                            );
+
+
+                     },3000);
+    
+    
+                 });
+             </script>
+
+                                                    
+                                                        
+                                                           

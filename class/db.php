@@ -23,18 +23,20 @@
 
         return $this->connect;
  	}
- 	function db_query($query){
+    function db_query($query){
 
- 		$result = mysqli_query($this->db_connect(), $query);
- 		if (!$result)
+    $result = mysqli_query($this->db_connect(), $query);
+    if (!$result)
   {
   echo("Error description: " . mysqli_error($this->db_connect()));
   }
 
 
 
- 		 return $result;
- 		 }
+     return $result;
+     }
+
+ 	
 
  	function db_query_row($query){
 

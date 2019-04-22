@@ -197,7 +197,7 @@ class User implements CRUD,iObserver
 		$result=$this->DB->db_query($sql);
 		$x= new userType($userType);
 		
-		 $this->output[]="<form action='submit_formEav.php' method='POST'>";
+		 $this->output[]="<form action='../controllers/submit_formEav.php' method='POST'>";
 		 $this->output[]="<h3>";
 		 foreach ($x->Read() as $key) {
 		 	$key;}

@@ -27,5 +27,5 @@ $result=$db->db_query($sql);
 // 	foreach ($output as $key ) {
 // 		echo $key['aName']." ".$key['value'];
 // 	}
-header('location:employeeform.php');
+header('location:../pages/employeeform.php');
  ?>
