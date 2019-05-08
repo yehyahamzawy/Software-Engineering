@@ -67,6 +67,8 @@ class helper
 
   static function insert($table, $data)
   {
+    // ----Example:---- $object->insert("user", array("fName" => "new", "lName" => "guy", "userTypeID" => "1");  
+
       $colms = array_keys($data);
       $values = array_values($data);
 

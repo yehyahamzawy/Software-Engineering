@@ -2,11 +2,11 @@
 
 interface CRUD{
 	
-	function Read();
-	// function ReadAll();
-	// function Create();
-	// function ReadInSelect();
-	// function Update($id);
-	function Delete($id);
+	//function Read();
+	function readAll();
+	function create($dataArray);
+	function readInSelect($selection);
+	function update($id, $dataArray);
+	function delete($id);
 }
  ?>

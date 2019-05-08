@@ -10,6 +10,7 @@ $object = new helper("localhost", "root", "","newdb");
 //$object->restore("user","2");
 
 
+
 // $aray = $object->selectFetchArray("*", "user", "ID = 2");
 // echo $aray["fName"]."</br>";
 // $object->delete("user", "2");
