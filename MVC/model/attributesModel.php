@@ -17,7 +17,7 @@ class attributes implements CRUD
 		
 	
 		$this->DB = new helper("localhost", "root", "" ,"newdb");
-		$this->Row=$this->DB->selectFetchArray("*", "attribute", " ID = $ID" );
+		$this->Row=$this->DB->selectIndexedArray("*", "attribute", " ID = $ID" );
 		
 		
 	}
@@ -29,7 +29,7 @@ class attributes implements CRUD
 	}
     
 	function readAll(){
-		$output = $this->DB->selectFetchArray("*", "attribute", NULL);
+		$output = $this->DB->selectIndexedArray("*", "attribute", NULL);
 		return $output;
 	}
     function readInSelect($selection)

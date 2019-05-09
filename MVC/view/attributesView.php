@@ -76,7 +76,7 @@ public function showmodal($Row)
 </div>
   ';
 }
-public function showtable($Row,$variable)
+public function showtable($data)
 {
   echo'
   <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
@@ -96,20 +96,20 @@ public function showtable($Row,$variable)
           ';  
 
           
-          foreach ($Row as $key ) {
+          foreach ($data as $Row) {
            
-            echo ' <tr><th scope="row">'.$key["ID"].'</th>
-        <td>'.$key["attributeName"].'</td>
+            echo ' <tr><th scope="row">'.$Row["ID"].'</th>
+        <td>'.$Row["attributeName"].'</td>
         <td>';
         
-             foreach ($variable as $key1) {
+            
              
-                                                      echo $key1['name'];
-                                                  }
+                                                      echo $Row['type'];
+                                                  
                                                   echo '</td>';
                                                   echo ' <td class="iconrow">
-                                                    <a href="editAttributesForm.php?ID='.$key["ID"].'"><i class="fas fa-edit"  ></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                      <a href="attributeDelete.php?ID='.$key["ID"].'"> <i class="fas fa-trash"></i></a>
+                                                    <a href="editAttributesForm.php?ID='.$Row["ID"].'"><i class="fas fa-edit"  ></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                      <a href="attributeDelete.php?ID='.$Row["ID"].'"> <i class="fas fa-trash"></i></a>
                                                   </td>
                                               </tr>';
                                             }

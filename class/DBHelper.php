@@ -33,9 +33,9 @@ class helper
   }
 
 
-  function selectIndexedArray($selection , $table, $condition)
+  function selectFetchArray($selection , $table, $condition)
   {
-    $indexedArray = array();
+   
     $sql = "SELECT ".$selection." FROM ".$table." WHERE isDeleted = 0";
     if ($condition != NULL)
     {
@@ -43,15 +43,12 @@ class helper
     }
     $result = $this->db_query($sql);
     
-    while($Row = mysqli_fetch_array($result))
-	{
-		array_push($indexedArray, $Row);
-
-  }
-  return $indexedArray;
+    
+	
+  return mysqli_fetch_array($result);
   }
 
-  function selectFetchArray($selection , $table, $condition)
+  function selectIndexedArray($selection , $table, $condition)
   {
     $indexedArray = array();
     $sql = "SELECT ".$selection." FROM ".$table." WHERE isDeleted = 0";
