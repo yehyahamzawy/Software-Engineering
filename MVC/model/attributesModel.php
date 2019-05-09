@@ -11,7 +11,7 @@ class attributes implements CRUD
 	public $DB ;
 	public $output = array();
 	public $updatedAt;
-	public $Row;
+	public $Row=array();
 	function __construct($ID)
 	{
 		
@@ -30,6 +30,7 @@ class attributes implements CRUD
     
 	function readAll(){
 		$output = $this->DB->selectFetchArray("*", "attribute", NULL);
+		return $output;
 	}
     function readInSelect($selection)
     {

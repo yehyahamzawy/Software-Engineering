@@ -62,7 +62,12 @@ class helper
     $result = $this->db_query($sql);
     
     
-  return  mysqli_fetch_array($result);
+    while($Row = mysqli_fetch_array($result))
+    {
+      array_push($indexedArray, $Row);
+  
+    }
+    return $indexedArray;
   }
 
   static function insert($table, $data)

@@ -14,13 +14,18 @@ private $previous;
 
   public function showheader()
   {
-    $Vdata = file_get_contents('../adminPanel/basicPageHeader.php');
-
+    $title1=$this->title1;
+    $title2=$this->title2;
+    $previous=$this->previous;
+  // $Vdata = file_get_contents('../adminPanel/basicPageHeader.php');
+  // echo $Vdata;
+  include('../adminPanel/basicPageHeader.php');
   }
   public function showfooter()
   {
-    $Vdata = file_get_contents('adminPanel/basicPageFooter.php');
-
+    // $Vdata = file_get_contents('adminPanel/basicPageFooter.php');
+    // echo $Vdata;
+    include ('../adminPanel/basicPageFooter.php');
   }
 public function showmodal($Row)
 
@@ -71,7 +76,7 @@ public function showmodal($Row)
 </div>
   ';
 }
-public function showtable($Row)
+public function showtable($Row,$variable)
 {
   echo'
   <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
@@ -89,12 +94,16 @@ public function showtable($Row)
           </thead>
   
           ';  
+
+          
           foreach ($Row as $key ) {
-            
+           
             echo ' <tr><th scope="row">'.$key["ID"].'</th>
         <td>'.$key["attributeName"].'</td>
         <td>';
+        
              foreach ($variable as $key1) {
+             
                                                       echo $key1['name'];
                                                   }
                                                   echo '</td>';

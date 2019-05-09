@@ -14,6 +14,7 @@ class attributeType implements CRUD
 	private $DB;
 	private $output;
 	
+	
 	function __construct($ID)
 	{	
 		$this->output=array();
@@ -26,6 +27,10 @@ class attributeType implements CRUD
 			$this->ID=$Row["ID"];
 			$this->Name=$Row["name"];
 		}
+		
+	}
+	function create($dataArray){
+
 		
 	}
 	function Read(){
@@ -47,7 +52,7 @@ class attributeType implements CRUD
 	
 	return $this->output;
 }
-	function Update($newName){
+	function Update($ID,$newName){
 		// $this->updatedAt=date("Y-m-d H:i:s");
 		// $sql="UPDATE attribute SET attributeName='$newName',updatedAt='$this->updatedAt' WHERE ID=".$this->ID;
 		// $query=$this->DB->db_query($sql);
@@ -82,7 +87,7 @@ class attributeType implements CRUD
 
 	}
 
-	function readInSelect(){
+	function readInSelect($selection){
 		unset($this->output);
 		$this->output[]= "<select name='selectAttribute'>";
 		$sql="SELECT * FROM attribute WHERE isDeleted=0";

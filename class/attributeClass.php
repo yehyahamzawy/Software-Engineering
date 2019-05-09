@@ -64,7 +64,7 @@ class attribute implements CRUD
 
 	}
 
-	function readInSelect(){
+	function readInSelect($selection){
 		unset($this->output);
 		$this->output[]= "<select name='selectAttribute'>";
 		$sql="SELECT * FROM attribute WHERE isDeleted=0";
