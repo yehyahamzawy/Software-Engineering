@@ -1,7 +1,7 @@
 <?php
 
 
-include '../MVC/view/attributesView.php';
+include_once "../MVC/controller/attributesControl.php";
 
 
 ?>

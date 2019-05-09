@@ -7,9 +7,9 @@ private $previous;
 
   public function __construct()
   {
-  $title1 = "Hello everyone xD";
-  $title2 = "Attributes testing page";
-  $previous =  array('editor' => "../pages/editor.php", 'checker' => "../pages/checker.php" );
+  $this->title1 = "Hello everyone xD";
+  $this->title2 = "Attributes testing page";
+  $this->previous =  array('editor' => "../pages/editor.php", 'checker' => "../pages/checker.php" );
   }
 
   public function showheader()

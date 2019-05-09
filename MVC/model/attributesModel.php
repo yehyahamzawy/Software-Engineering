@@ -1,6 +1,6 @@
 <?php 
-require_once "../../class/DBHelper.php";
-require_once "../../class/CRUDinterface.php";
+require_once "../class/DBHelper.php";
+require_once "../class/CRUDinterface.php";
 
 class attributes implements CRUD
 {
@@ -16,12 +16,9 @@ class attributes implements CRUD
 	{
 		
 	
-		$this->DB = new helper("localhost", "root", "","newdb");
-		$Row=$this->DB->selectIndexedArray("*", "attribute", "WHERE ID = $ID" );
-		$this->Row=$Row;
-		$this->ID=$Row["ID"];
-		$this->attributename=$Row['attributename'];
-		$this->type=$Row['type'];
+		$this->DB = new helper("localhost", "root", "" ,"newdb");
+		$this->Row=$this->DB->selectFetchArray("*", "attribute", " ID = $ID" );
+		
 		
 	}
 
