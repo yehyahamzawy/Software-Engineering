@@ -36,7 +36,7 @@ class helper
   function selectFetchArray($selection , $table, $condition)
   {
    
-    $sql = "SELECT ".$selection." FROM ".$table." WHERE isDeleted = 0";
+    $sql = "SELECT ".$selection." FROM ".$table." WHERE ".$table.".isDeleted = 0";
     if ($condition != NULL)
     {
       $sql = $sql." AND ".$condition;
@@ -51,7 +51,7 @@ class helper
   function selectIndexedArray($selection , $table, $condition)
   {
     $indexedArray = array();
-    $sql = "SELECT ".$selection." FROM ".$table." WHERE isDeleted = 0";
+    $sql = "SELECT ".$selection." FROM ".$table." WHERE ".$table.".isDeleted = 0";
     if ($condition != NULL)
     {
       $sql = $sql." AND ".$condition;

@@ -1,4 +1,4 @@
 <?php 
-include_once "../MVC/view/userValueView.php";
+include_once "../MVC/controller/userValueControl.php";
 
 ?>
