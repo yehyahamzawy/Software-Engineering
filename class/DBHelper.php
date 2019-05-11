@@ -67,7 +67,7 @@ class helper
     return $indexedArray;
   }
 
-  static function insert($table, $data)
+   function insert($table, $data)
   {
     // ----Example:---- $object->insert("user", array("fName" => "new", "lName" => "guy", "userTypeID" => "1");  
 
@@ -75,7 +75,7 @@ class helper
       $values = array_values($data);
 
       $sql ="INSERT INTO $table(`".join("`,`",$colms)."`) VALUES('".join("','", $values)."')";
-
+      $this->db_query($sql);
       
      //foreach ($colms as $key => $val) 
       //{
@@ -86,7 +86,7 @@ class helper
     //var_dump($sql);
     
     //echo $sql;
-    $this->db_query($sql);
+    
      
      $sql = "SELECT MAX(ID) AS ID FROM $table WHERE ";
 

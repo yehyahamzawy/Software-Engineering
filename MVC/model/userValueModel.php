@@ -29,9 +29,50 @@ class userValueModel implements CRUD
 		
 	}
     
-	function readAll(){
+	function readAllTable(){
 		$indexedArray = array();
 		$innerJoinSelection = "SELECT uservalues.ID, uservalues.userTypeAttributeID, uservalues.value, uservalues.userID, usertypeattributes.attributeID, attribute.attributeName,user.fName, user.lName FROM uservalues INNER JOIN usertypeattributes ON uservalues.userTypeAttributeID=usertypeattributes.ID INNER JOIN attribute ON usertypeattributes.attributeID=attribute.ID INNER JOIN user ON uservalues.userID=user.ID WHERE uservalues.isDeleted = 0";
+		
+		//echo $innerJoinSelection;
+		
+		$result = $this->DB->db_query($innerJoinSelection);
+    
+    
+    while($Row = mysqli_fetch_array($result))
+    {
+      array_push($indexedArray, $Row);
+  
+    }
+    return $indexedArray;
+		
+	}
+
+	function readAll()
+	{
+
+	}
+	
+	function readAllModal(){
+		$indexedArray = array();
+		$innerJoinSelection = "SELECT usertypeattributes.ID, usertypeattributes.userTypeID, usertypeattributes.attributeID, attribute.attributeName, usertype.type FROM usertypeattributes INNER JOIN usertype ON usertypeattributes.userTypeID=usertype.ID INNER JOIN attribute ON usertypeattributes.attributeID=attribute.ID WHERE usertypeattributes.isDeleted = 0";
+		
+		//echo $innerJoinSelection;
+		
+		$result = $this->DB->db_query($innerJoinSelection);
+    
+    
+    while($Row = mysqli_fetch_array($result))
+    {
+      array_push($indexedArray, $Row);
+  
+    }
+    return $indexedArray;
+		
+	}
+
+	function readAllModalUsers(){
+		$indexedArray = array();
+		$innerJoinSelection = "SELECT user.ID,usertypeattributes.userTypeID, usertypeattributes.attributeID, attribute.attributeName, usertype.type, user.fName, user.lName FROM usertypeattributes INNER JOIN usertype ON usertypeattributes.userTypeID=usertype.ID INNER JOIN attribute ON usertypeattributes.attributeID=attribute.ID INNER JOIN user ON usertypeattributes.userTypeID=user.userTypeID WHERE usertypeattributes.isDeleted = 0 ";
 		
 		//echo $innerJoinSelection;
 		
@@ -71,9 +112,9 @@ class userValueModel implements CRUD
 		return $attributeName;
 	}
 	
-	function getUserName($userID)
+	function getUsers()
 	{
-		$userName = $this->DB->selectIndexedArray("fName, lName", "user", "ID = $userID");
+		$userName = $this->DB->selectIndexedArray("*", "user", NULL);
 		return $userName;
 	}
 
@@ -84,6 +125,7 @@ class userValueModel implements CRUD
 
 		return $userTypeName;
 	}
+
 
  
 

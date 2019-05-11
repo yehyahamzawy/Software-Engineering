@@ -29,7 +29,7 @@ function footer()
   include_once "../adminPanel/basicPageFooter.php";
 }
 
-function addValueModal()
+function addValueModal($data1, $data2)
 {
   echo '<div class="row">
   <!-- pop up add/delete window-->
@@ -52,18 +52,18 @@ function addValueModal()
 
 </div>
 <div class="modal-body">
-<form method="POST" action="uservaluesAdd.php">
+<form method="POST" action="valueOpHandler.php?add">
 <div class="form-group">
 <label for="inputText3" class="col-form-label">Attributes</label>
 
-<select class="selectpicker dropup" name = "uniqueUserAttributeID" >
+<select class="selectpicker dropup" name = "userTypeAttributeID" >
   ';
  
-  // foreach($data as $row)
-  // {
-  //     echo '<option value= '.$Row["ID"].'> '.$Row[""].' </option>';
+   foreach($data1 as $Row)
+   {
+       echo '<option value= '.$Row["ID"].'> '.$Row["attributeName"].' ('.$Row["type"].') </option>';
       
-  // }
+   }
   //echo '<option value= '.$data["ID"].'>'.$data["value"].' ('.$func.'('.$data["userTypeAttributeID"].')'.')</option>';
   
   echo '
@@ -76,11 +76,15 @@ function addValueModal()
 <div class="form-group">
 <label for="inputText3" class="col-form-label">User</label>
 
-<select class="selectpicker dropup" name = "userID" >
+<select class="selectpicker dropup" name = "userID" >';
   
-  
+foreach($data2 as $Row)
+{
+    echo '<option value= '.$Row["ID"].'> '.$Row["fName"].' '.$Row["lName"].' ('.$Row["type"].')</option>';
+   
+}
       
-  </select>
+  echo '</select>
   </div>
 </div>
 <div class="modal-footer">
@@ -129,10 +133,10 @@ function valuesTable($data)
                 
                 <td>'.$Row["attributeName"].'</td>
                 <td>'.$Row["value"].'</td>
-                <td>'.$Row["fName"].'</td>
+                <td>'.$Row["fName"].' '.$Row["lName"].'</td>
                 <td class="iconrow">
-                    <a href="edituservaluesForm.php?ID='.$Row["ID"].'&attID='.$Row["attributeID"].'"><i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="uservaluesDelete.php?ID='.$Row["ID"].'"> <i class="fas fa-trash"></i></a>
+                    <a href="valueEditForm.php?ID='.$Row["ID"].'&attID='.$Row["attributeID"].'"><i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="valueOpHandler.php?ID='.$Row["ID"].'&del"> <i class="fas fa-trash"></i></a>
                 </td>
             </tr>';
                 }
@@ -153,6 +157,77 @@ function valuesTable($data)
 
 
 }
+function showValuesEdit($data, $users)
+{
+  echo'<div class="row">
+  <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+      <div class="section-block" id="basicform">
+          <h3 class="section-title">update user value</h3>
+          <!-- ============================================================== -->
+
+<!-- ============================================================== -->
+      </div>
+      <div class="card">
+          
+          <div class="card-body">
+              <form class=".form-control-lg" method="POST" action="valueOpHandler.php?valID='.$_GET["ID"].'&updt">
+                 
+               
+                              <label for="inputText3" value=".form-control-lg" class="col-form-label">attributes</label>
+
+                              <select class="selectpicker dropup" value=".form-control-lg" name = "userTypeAttributeID">
+                                      ';
+
+                                      foreach($data as $Row)
+                                      {
+                                        echo "<option value = ".$Row["ID"]." >".$Row['attributeName']." (".$Row['type'].")</option>";
+                                      }
+
+
+                                      echo '
+                                      
+                                  </select>
+                                  <br>
+                                  <div class="form-group">
+                  <label for="inputText3" class="col-form-label">value</label>
+                  <input id="inputText3" type="text" class="form-control" name = "value">
+              </div>
+              <br>                                         
+               <label for="inputText3" value=".form-control-lg" class="col-form-label">users</label>
+
+               <select class="selectpicker dropup" value=".form-control-lg" name = "userID" >
+                       ';
+                       foreach($users as $Row)
+                       {
+                         echo "<option value = ".$Row["ID"]." >".$Row['fName']." ".$Row['lName']."</option>";
+                       }
+                       
+                       
+                       echo'
+                   </select>
+                   <br>
+
+
+
+
+                                  
+                      </div>
+           
+                  <div class="col-sm-6 pl-0">
+                      <p class="text-right">
+                          <button type="submit" class="btn btn-space btn-primary">Submit</button>
+                          <button class="btn btn-space btn-secondary">Cancel</button>
+                      </p>
+                  </div>
+              </form>
+          </div>
+          </div>
+          </div>';
+}
+
+
+
+
 }
 
 
