@@ -96,23 +96,17 @@ public function showtable($data)
           ';  
 
           
-          foreach ($data as $Row) {
-           
+          foreach ($data as $Row) 
+          {
             echo ' <tr><th scope="row">'.$Row["ID"].'</th>
-        <td>'.$Row["attributeName"].'</td>
-        <td>';
-        
-            
-             
-                                                      echo $Row['type'];
-                                                  
-                                                  echo '</td>';
-                                                  echo ' <td class="iconrow">
-                                                    <a href="editAttributesForm.php?ID='.$Row["ID"].'"><i class="fas fa-edit"  ></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                      <a href="attributeDelete.php?ID='.$Row["ID"].'"> <i class="fas fa-trash"></i></a>
-                                                  </td>
-                                              </tr>';
-                                            }
+                    <td>'.$Row["attributeName"].'</td>
+                    <td>'; echo $Row['type']; echo '</td>';
+              echo ' <td class="iconrow">
+                  <a href="../pages/testhazem.php?ID='.$Row["ID"].'"><i class="fas fa-edit"  ></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="../controllers/attributeDelete.php?ID='.$Row["ID"].'"> <i class="fas fa-trash"></i></a>
+                </td>
+                  </tr>';
+          }
            echo '
           <tbody>
           </tbody>

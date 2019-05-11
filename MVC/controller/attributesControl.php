@@ -1,17 +1,26 @@
 <?php
-include '..\MVC\view\attributesView.php';
-include '..\MVC\model\attributesModel.php';
+include_once '..\MVC\view\attributesView.php';
+include_once '..\MVC\model\attributesModel.php';
+include_once '..\MVC\view\editAttributeView.php';
+
 //include_once "../class/attributeTypeClass.php";
-// include '..\class\adminPanel\basicPageHeader.php';
 
 $modelobj=new attributes(1);
 $viewobj=new attributesview();
+$editattributeviewobj=new editattributes();
 
-$viewobj->showheader();
+
+
 $viewobj->showmodal($modelobj->readAll());
 $viewobj->showtable($modelobj->Row);
 
-// include '..\class\adminPanel\basicPageFooter.php';
+if (strpos($_SERVER['REQUEST_URI'], 'editAttributeView?ID=') !== FALSE ) {
+    
+    $editattributeviewobj->form($_GET['ID']);
+    
+}
+
+ include_once '..\adminPanel\basicPageFooter.php';
 
 
 
