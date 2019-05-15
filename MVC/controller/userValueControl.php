@@ -1,21 +1,27 @@
 <?php 
+require_once "../../class/DBHelper.php";
+$DB = new helper("localhost", "root", "","newdb");
+if(isset($_GET["del"]))
+{
+    
+        $DB->delete("uservalues", $_GET["ID"]);
+        header("location:../../pages/valuesTable.php");
+    
+}
 
-require_once "../MVC/view/userValueView.php";
-require_once "../MVC/model/userValueModel.php";
-
-$model = new userValueModel(1);
-$view = new userValueView(array('editor' => "../pages/editor.php", 'checker' => "../pages/checker.php" ),"Hello","testing page");
-$data1 = $model->readAllTable();
-$data2 = $model->readAllModal();
-$data3 = $model->readAllModalUsers();
-$data4 = $model->getUsers();
-
-$view->header();
-$view->addValueModal($data2,$data3);
-$view->valuesTable($data1);
-//$view->showValuesEdit($data2,$data4);
-$view->footer();
-
-
+else if(isset($_GET["updt"]))
+{
+    //echo "edit";
+    $DB->update("uservalues",$arrayName = array('value' => $_POST["value"], 'userID' => $_POST["userID"], 'userTypeAttributeID' => $_POST["userTypeAttributeID"]),$_GET["valID"]);
+    //var_dump($_POST);
+    header("location:../../pages/valuesTable.php");
+}
+else if(isset($_GET["add"]))
+{
+    
+    $DB->insert("uservalues",$arrayName = array('value' => $_POST["value"], 'userID' => $_POST["userID"], 'userTypeAttributeID' => $_POST["userTypeAttributeID"]));
+    //var_dump($_POST);
+    header("location:../../pages/valuesTable.php");
+}
 
 ?>

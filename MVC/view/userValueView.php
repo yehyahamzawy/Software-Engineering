@@ -52,7 +52,7 @@ function addValueModal($data1, $data2)
 
 </div>
 <div class="modal-body">
-<form method="POST" action="valueOpHandler.php?add">
+<form method="POST" action="../MVC/controller/userValueControl.php?add">
 <div class="form-group">
 <label for="inputText3" class="col-form-label">Attributes</label>
 
@@ -136,7 +136,7 @@ function valuesTable($data)
                 <td>'.$Row["fName"].' '.$Row["lName"].'</td>
                 <td class="iconrow">
                     <a href="valueEditForm.php?ID='.$Row["ID"].'&attID='.$Row["attributeID"].'"><i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="valueOpHandler.php?ID='.$Row["ID"].'&del"> <i class="fas fa-trash"></i></a>
+                    <a href="../MVC/controller/userValueControl.php?ID='.$Row["ID"].'&del"> <i class="fas fa-trash"></i></a>
                 </td>
             </tr>';
                 }
@@ -170,7 +170,7 @@ function showValuesEdit($data, $users)
       <div class="card">
           
           <div class="card-body">
-              <form class=".form-control-lg" method="POST" action="valueOpHandler.php?valID='.$_GET["ID"].'&updt">
+              <form class=".form-control-lg" method="POST" action="../MVC/controller/userValueControl.php?valID='.$_GET["ID"].'&updt">
                  
                
                               <label for="inputText3" value=".form-control-lg" class="col-form-label">attributes</label>
