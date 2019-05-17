@@ -1,0 +1,42 @@
+<?php 
+include_once '../class/db.php';
+include_once '../class/pdfClass.php';
+include_once '../class/candidateClass.php';
+$overall='x';
+$job='ay haga';
+$recName='HR';
+$recPos='Manager';
+$candName="kiko";
+$email=$_POST['email'];
+$phoneNum=$_POST['num'];
+$exp=$_POST['Experience'];
+$expComm=$_POST['expComm'];
+$tech=$_POST['Technicality'];
+$techComm=$_POST['TechnicalityComm'];
+$analyze=$_POST['Analyze'];
+$analyzeComm=$_POST['AnalyzeComm'];
+$planning=$_POST['Thinking'];
+$planningComm=$_POST['ThinkingComm'];
+$flexibility=$_POST['Flexibility'];
+$flexibilityComm=$_POST['FlexibilityComm'];
+$curiosity=$_POST['Curiosity'];
+$curiosityComm=$_POST['CuriosityComm'];
+$interest=$_POST['Interest'];
+$interestComm=$_POST['InterestComm'];
+$auth=$_POST['Authority'];
+$authComm=$_POST['AuthorityComm'];
+$resp=$_POST['responsibility'];
+$respComm=$_POST['responsibilityComm'];
+$spirit=$_POST['Spirit'];
+$spiritComm=$_POST['SpiritComm'];
+$interpersonal=$_POST['Interpersonal'];
+$interpersonalComm=$_POST['InterpersonalComm'];
+$attitude=$_POST['Attitude'];
+$attitudeComm=$_POST['AttitudeComm'];
+$express=$_POST['handle'];
+$expressComm=$_POST['handleComm'];
+$cand=new candidate();
+
+$cand->Create($candName,$job,$email,$phoneNum,$recName,$recPos,$exp,$expComm,$tech,$techComm,$analyze,$analyzeComm,$planning,$planningComm,$flexibility,$flexibilityComm,$curiosity,$curiosityComm,$interest,$interestComm,$auth,$authComm,$resp,$respComm,$spirit,$spiritComm,$interpersonal,$interpersonalComm,$attitude,$attitudeComm,$express,$expressComm,$overall);
+header('location:../pages/candidateForm.php');
+ ?>

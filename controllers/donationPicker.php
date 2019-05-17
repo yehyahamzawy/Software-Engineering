@@ -1,8 +1,8 @@
 <?php 
-include_once "../controllers/chooseDonation.php";
-include_once "clothDonation.php";
-include_once "eventDonation.php";
-include_once "donationGeneratorClass.php";
+include_once "chooseDonation.php";
+include_once "../class/clothDonation.php";
+include_once "../class/eventDonation.php";
+include_once "../class/donationGeneratorClass.php";
 $don = "event";
 $donObj = donationObjectGenerator($don);
 $donationGenerator = new donationGenerator($donObj);
