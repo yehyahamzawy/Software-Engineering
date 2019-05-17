@@ -4,7 +4,7 @@
   */
  class database 
  { 
- 	public $connect;
+ 	private static $connect;
  		
  	function __construct()
 	{
@@ -13,15 +13,18 @@
 	}
 	
  	function db_connect(){
- 		$this->connect = new mysqli("localhost", "root", "","se");
+    if(!self::$connect){
+      
+ 		self::$connect = new mysqli("localhost", "root", "","se");
 
 
-	if ($this->connect->connect_error) {
+	if (self::$connect->connect_error) {
         die("Connection failed: " . $connect->connect_error);
         
         }
-
-        return $this->connect;
+}
+        
+        return self::$connect;
  	}
     function db_query($query){
 
@@ -29,6 +32,18 @@
     if (!$result)
   {
   echo("Error description: " . mysqli_error($this->db_connect()));
+  }
+
+
+
+     return $result;
+     }
+     static function static_query($query){
+      $db=new database();
+    $result = mysqli_query($db->db_connect(), $query);
+    if (!$result)
+  {
+  echo("Error description: " . mysqli_error($db->db_connect()));
   }
 
 

@@ -2,6 +2,7 @@
 include "EventInterface.php";
 include_once "db.php";
 include_once "CRUDinterface.php";
+include_once "notificationClass.php";
 /**
   * 
   */
@@ -26,7 +27,7 @@ include_once "CRUDinterface.php";
   function ReadAll(){}
   function ReadInSelect(){}
   function Delete($id){}
-   function create($name,$date,Doctor $doctor,Assistant $assistant, Driver $driver,psychologist $psych,$description){
+   function create($makerID,$name,$date,Doctor $doctor,Assistant $assistant, Driver $driver,psychologist $psych,$description){
     $this->name=$name;
     $this->date=$date;
     $this->description=$description;
@@ -44,6 +45,10 @@ include_once "CRUDinterface.php";
     $sql2="INSERT INTO missionParticipants(userID,roleID,missionID) VALUES (".$assistant->getID().",2,$this->ID)";
     $sql3="INSERT INTO missionParticipants(userID,roleID,missionID) VALUES (".$driver->getID().",3,$this->ID)";
     $sql4="INSERT INTO missionParticipants(userID,roleID,missionID) VALUES (".$psych->getID().",4,$this->ID)";
+    notification::create($doctor->getID(),$makerID,1);
+    notification::create($assistant->getID(),$makerID,3);
+    notification::create($driver->getID(),$makerID,2);
+    notification::create($psych->getID(),$makerID,4);
     $this->DB->db_query($sql1);
     $this->DB->db_query($sql2);
     $this->DB->db_query($sql3);
