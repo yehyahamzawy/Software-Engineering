@@ -14,18 +14,24 @@ class attributeType implements CRUD
 	private $DB;
 	private $output;
 	
+	
 	function __construct($ID)
 	{	
-		$this->output=array();
-		$this->DB= new database();
-		$sql="SELECT * FROM attributetypes WHERE ID=".$ID;
-		$result=$this->DB->db_query($sql);
-		if($Row=mysqli_fetch_array($result)){
-			// $Row = mysqli_fetch_array($result);
-            array_push($this->output, $Row);
-			$this->ID=$Row["ID"];
-			$this->Name=$Row["name"];
-		}
+			
+			$this->output=array();
+			$this->DB= new database();
+			$sql="SELECT * FROM attributetypes WHERE ID=".$ID;
+			$result=$this->DB->db_query($sql);
+			if($Row=mysqli_fetch_array($result)){
+				// $Row = mysqli_fetch_array($result);
+				array_push($this->output, $Row);
+				$this->ID=$Row["ID"];
+				$this->Name=$Row["name"];
+			}
+		
+	}
+	  function create($dataArray){
+        echo'Hey';
 		
 	}
 	function Read(){
@@ -34,7 +40,7 @@ class attributeType implements CRUD
 		
 		return $this->output;	
 	}
-	function ReadAll(){
+	function readAll(){
 		$this->output=array();
 		$sql="SELECT * FROM attributetypes";
 		$result=$this->DB->db_query($sql);
@@ -47,11 +53,11 @@ class attributeType implements CRUD
 	
 	return $this->output;
 }
-	function Update($newName){
+	function update($id, $dataArray){
 		// $this->updatedAt=date("Y-m-d H:i:s");
 		// $sql="UPDATE attribute SET attributeName='$newName',updatedAt='$this->updatedAt' WHERE ID=".$this->ID;
 		// $query=$this->DB->db_query($sql);
-				
+				echo 'hi';
 
 	}
 	function showSelect($id,$att){
@@ -82,7 +88,7 @@ class attributeType implements CRUD
 
 	}
 
-	function readInSelect(){
+	function readInSelect($selection){
 		unset($this->output);
 		$this->output[]= "<select name='selectAttribute'>";
 		$sql="SELECT * FROM attribute WHERE isDeleted=0";
@@ -116,13 +122,15 @@ class attributeType implements CRUD
 	// 	$this->output[]= "</select>";
 	// 	return $this->output;
 	// }
-	function Delete($ID){
+	function delete($id){
 		// $this->updatedAt=date("Y-m-d H:i:s");
 		// $sql="UPDATE attributetypes SET isDeleted=1,updatedAt='$this->updatedAt' WHERE ID=".$ID;
 		// $this->DB->db_query($sql);
+		echo'Hello';
 
 	}
 }
+
 
  ?>
 

@@ -30,7 +30,7 @@ class attribute implements CRUD
 	function getType(){
 		return $this->attributeType;
 	}
-	function Create($name,$typeID){	
+	function Create($dataArray){	
 		$sql="INSERT INTO `attribute` ( `attributeName`, `type`) VALUES ('$name',$typeID)";
 		$this->DB->db_query($sql);
 		$this->attributeName=$name;
@@ -56,7 +56,7 @@ class attribute implements CRUD
 	
 	return $this->output;
 }
-	function Update($id,$newName,$newTypeID){
+	function Update($id,$newName){
 		$this->updatedAt=date("Y-m-d H:i:s");
 		$sql="UPDATE attribute SET attributeName='$newName',updatedAt='$this->updatedAt' WHERE ID=".$id;
 		$query=$this->DB->db_query($sql);
@@ -64,7 +64,7 @@ class attribute implements CRUD
 
 	}
 
-	function readInSelect(){
+	function readInSelect($selection){
 		unset($this->output);
 		$this->output[]= "<select name='selectAttribute'>";
 		$sql="SELECT * FROM attribute WHERE isDeleted=0";

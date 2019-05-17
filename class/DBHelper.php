@@ -33,45 +33,49 @@ class helper
   }
 
 
+  function selectFetchArray($selection , $table, $condition)
+  {
+   
+    $sql = "SELECT ".$selection." FROM ".$table." WHERE ".$table.".isDeleted = 0";
+    if ($condition != NULL)
+    {
+      $sql = $sql." AND ".$condition;
+    }
+    $result = $this->db_query($sql);
+    
+    
+	
+  return mysqli_fetch_array($result);
+  }
+
   function selectIndexedArray($selection , $table, $condition)
   {
     $indexedArray = array();
-    $sql = "SELECT ".$selection." FROM ".$table." WHERE isDeleted = 0";
+    $sql = "SELECT ".$selection." FROM ".$table." WHERE ".$table.".isDeleted = 0";
     if ($condition != NULL)
     {
       $sql = $sql." AND ".$condition;
     }
     $result = $this->db_query($sql);
+    
     
     while($Row = mysqli_fetch_array($result))
-	{
-		array_push($indexedArray, $Row);
-
-  }
-  return $indexedArray;
-  }
-
-  function selectFetchArray($selection , $table, $condition)
-  {
-    $indexedArray = array();
-    $sql = "SELECT ".$selection." FROM ".$table." WHERE isDeleted = 0";
-    if ($condition != NULL)
     {
-      $sql = $sql." AND ".$condition;
+      array_push($indexedArray, $Row);
+  
     }
-    $result = $this->db_query($sql);
-    
-    
-  return  mysqli_fetch_array($result);
+    return $indexedArray;
   }
 
-  static function insert($table, $data)
+   function insert($table, $data)
   {
+    // ----Example:---- $object->insert("user", array("fName" => "new", "lName" => "guy", "userTypeID" => "1");  
+
       $colms = array_keys($data);
       $values = array_values($data);
 
       $sql ="INSERT INTO $table(`".join("`,`",$colms)."`) VALUES('".join("','", $values)."')";
-
+      $this->db_query($sql);
       
      //foreach ($colms as $key => $val) 
       //{
@@ -82,7 +86,7 @@ class helper
     //var_dump($sql);
     
     //echo $sql;
-    $this->db_query($sql);
+    
      
      $sql = "SELECT MAX(ID) AS ID FROM $table WHERE ";
 
