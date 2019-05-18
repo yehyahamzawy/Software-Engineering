@@ -1,14 +1,18 @@
 <?php
+require_once "DBHelper.php";
     class permission 
     {
         private $id;
         public $linkconnection  = array();
         public $link = array();
         public $userTypes = array();
+        public $DB;
 
         public function __construct($id)
         {
-            $this->id = $id;
+            
+            $this->DB = new helper("localhost", "root", "","newdb");
+            $Row=$this->DB->selectIndexedArray("*", "uservalues", " ID = $ID" );
         }
         function allData()
         {
