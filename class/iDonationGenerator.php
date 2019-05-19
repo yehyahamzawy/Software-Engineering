@@ -5,7 +5,7 @@
 interface iDonationGenerator 
 {
 	
-	function createDonation();
+	function createDonation($amount,$donor);
 	function reportDonation();
 }
 

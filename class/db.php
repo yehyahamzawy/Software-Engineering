@@ -11,6 +11,9 @@
 		$this->db_connect();
 		
 	}
+  function getConn(){
+    return self::$connect;
+  }
 	
  	function db_connect(){
     if(!self::$connect){

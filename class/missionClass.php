@@ -7,7 +7,8 @@ include_once "notificationClass.php";
   * 
   */
  class Mission implements iEvent,CRUD
- {private $id;	
+ {private $makerID;
+  private $id;	
   private $name;
  	private $date;
   private $description;
@@ -18,41 +19,51 @@ include_once "notificationClass.php";
  	private $observers;
   private $DB;
  	
- 	function __construct()
+ 	function __construct($name,$date,$makerID,$description)
  	{
  		$this->DB=new Database();
+    $this->makerID=$makerID;
+    $this->name=$name;
+    $this->date=$date;
+    $this->description=$description;
+    $sql="INSERT INTO mission(name,missionDate,Description) VALUES ('$this->name','$this->date','$this->description')";
+    $this->DB->db_query($sql);
+    echo "zzz";
+    $this->ID= mysqli_insert_id($this->DB->getConn());
  		// $this->date=$date;
  	}
+  function getMakerID(){
+    return $this->makerID;
+  }
   function Read(){}
   function ReadAll(){}
   function ReadInSelect(){}
   function Delete($id){}
-   function create($makerID,$name,$date,Doctor $doctor,Assistant $assistant, Driver $driver,psychologist $psych,$description){
-    $this->name=$name;
-    $this->date=$date;
-    $this->description=$description;
+   function create(Doctor $doctor,Assistant $assistant, Driver $driver,psychologist $psych){
+    
+    
     $this->doctor=$doctor;
     $this->assistant=$assistant;
     $this->driver=$driver;
     $this->psychologist=$psych;
     $this->attachAll(); 
-    $sql="INSERT INTO mission(name,missionDate,Description) VALUES ('$this->name','$this->date','$this->description')";
-    $this->DB->db_query($sql);
-    echo "x";
-    $this->ID= mysqli_insert_id($this->DB->connect);
+    
 
     $sql1="INSERT INTO missionParticipants(userID,roleID,missionID) VALUES (".$doctor->getID().",1,$this->ID)";
     $sql2="INSERT INTO missionParticipants(userID,roleID,missionID) VALUES (".$assistant->getID().",2,$this->ID)";
     $sql3="INSERT INTO missionParticipants(userID,roleID,missionID) VALUES (".$driver->getID().",3,$this->ID)";
     $sql4="INSERT INTO missionParticipants(userID,roleID,missionID) VALUES (".$psych->getID().",4,$this->ID)";
-    notification::create($doctor->getID(),$makerID,1);
-    notification::create($assistant->getID(),$makerID,3);
-    notification::create($driver->getID(),$makerID,2);
-    notification::create($psych->getID(),$makerID,4);
+    // notification::create($doctor->getID(),$makerID,1);
+    // notification::create($assistant->getID(),$makerID,3);
+    // notification::create($driver->getID(),$makerID,2);
+    // notification::create($psych->getID(),$makerID,4);
     $this->DB->db_query($sql1);
+    // echo 'x';
     $this->DB->db_query($sql2);
+    echo 'x';
     $this->DB->db_query($sql3);
     $this->DB->db_query($sql4);
+    echo 'x';
 
   }
  	function getName(){

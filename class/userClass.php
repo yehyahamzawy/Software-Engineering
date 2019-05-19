@@ -6,6 +6,7 @@ include_once "db.php";
 include_once "CRUDinterface.php";
 include_once "userTypeClass.php";
 include_once "observerInterface.php";
+include_once "daysOffClass.php";
 class User implements CRUD,iObserver
 {
 	private $fname;
@@ -21,7 +22,7 @@ class User implements CRUD,iObserver
 	private $output;
 	//Fetches user info from db
 	function __construct($ID)
-	{	if($ID==0){
+	{	if($ID===0){
 		$this->DB= new database();
 		$this->output=array();
 		$sql="SELECT * FROM user WHERE isDeleted=0 ORDER BY ID DESC limit 1 ";
@@ -32,6 +33,7 @@ class User implements CRUD,iObserver
 				$this->lname=$Row["lName"];
 				$this->userTypeID=$Row['userType'];
 				$this->ID=$Row['ID'];
+				echo 'bug';
 				return;
 	}
 	else{
@@ -40,17 +42,21 @@ class User implements CRUD,iObserver
 		$sql="SELECT * FROM user WHERE isDeleted=0";
 		$result=$this->DB->db_query($sql);
 		while($Row = mysqli_fetch_array($result)){
-			if(sha1($Row['ID'])==$ID){
+			if($ID==sha1($Row['ID'])){
 				array_push($this->output, $Row);
 				$this->fname=$Row["fName"];
 				$this->lname=$Row["lName"];
 				$this->userTypeID=$Row['userType'];
 				$this->ID=$Row['ID'];
 				// $this->updatedAt=0;
+				echo 'user Found';
 				return;
 			}
 			
-		}}
+			
+		}
+		echo 'not found';
+	}
 		} 		
 		
 		
@@ -96,12 +102,13 @@ class User implements CRUD,iObserver
 		$sql="INSERT INTO `user`( `fname`,`lname`, `userType`) VALUES ('$fname','$lname','$usertype')
 			 
 			";
+			
 		$this->DB->db_query($sql);
 		$this->fname=$fname;
 		$this->lname=$lname;
 		$this->userTypeID=$usertype;
 		$this->ID= mysqli_insert_id($this->DB->connect);
-
+		daysOff::newRecord($this->ID);
 		// $sql="SELECT ID AS LastID FROM `user` WHERE ID = @@Identity";
 		// echo "x";
 		// $result=$this->DB->db_query_row($sql);
@@ -253,11 +260,11 @@ function Delete($id){
 	
 }
 }
-
+public function updateMission(Mission $subject) {
+      notification::create($this->getID(),$subject->getmakerID(),$this->getUserType());
+    }
 public function updateEvent(Event $subject) {
-      echo $subject->getName();  
-      echo "<br>";
-      echo $subject->getDate();   
+      notification::create($this->getID(),$subject->makerID,$this->getUserType());
     }
     static function readType($typeID){
     	$DB=new Database();
@@ -270,6 +277,13 @@ public function updateEvent(Event $subject) {
     }
     return $output;
 }
+function requestDayOff($date){
+	$sql="INSERT INTO `dayOffRequests`( `userID`, `date`, `isApproved`) VALUES ($this->ID,'$date',0)";
+	$result=database::static_query($sql);
 }		
+function viewDaysOffLeft(){
+
+}
+}
 
  ?>

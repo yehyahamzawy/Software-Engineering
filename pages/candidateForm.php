@@ -14,15 +14,9 @@
     <link rel="stylesheet" href="../assets/vendor/datepicker/tempusdominus-bootstrap-4.css" />
     <link rel="stylesheet" href="../assets/vendor/inputmask/css/inputmask.css" />
     <style type="text/css">
-        textarea{
-            height:200px;
-            width:400px;
-        }
-        input{display: inline-block;}
         input[type="radio"]{
-    -webkit-appearance: radio;
-    display: inline-block;
-}
+            display:inline-block;
+        }
     </style>
 </head>
 
@@ -44,8 +38,8 @@
         <!-- ============================================================== -->
         <?php
 include '../dashboard.php';
-include_once '../class/userClass.php';
-include_once '../class/userTypeClass.php';
+// include_once '../class/userClass.php';
+// include_once '../class/userTypeClass.php';
 
 ?>
         <!-- ============================================================== -->
@@ -54,8 +48,7 @@ include_once '../class/userTypeClass.php';
         <!-- ============================================================== -->
         <div class="dashboard-wrapper">
             <div class="container-fluid dashboard-content">
-
-                <div style="text-align: center">
+                   <div style="text-align: center">
         <form method="POST" action='../controllers/candidateFormController.php'>
     <h1 style="text-align: center">Interview Form</h1>
     FullName:<input type="text" name="fullname"><br><br>
@@ -154,7 +147,9 @@ include_once '../class/userTypeClass.php';
 <textarea name="handleComm"></textarea><br>
 <input type="submit" name="sub">    
 </form>
-</div>   </div>
+</div>
+
+                   </div>
                                     
                                     
                                        
@@ -188,9 +183,41 @@ include '../dbfooter.html';
     <script src="../assets/vendor/datepicker/tempusdominus-bootstrap-4.js"></script>
     <script src="../assets/vendor/datepicker/datepicker.js"></script>
     <script>
-    
+        function UserTypeForm()
+    {
+        // alert(1);
+        var action = 'fetch_form';
+        var userType = $('#userType').val();
+        // alert(userType);
+        // var storage = get_filter('storage');
+        $.ajax({
+            url:"../controllers/EavForm.php",
+            method:"POST",
+            data:{action:action, userType:userType },
+            success:function(data){
+                $('.eav').html(data);
+            }
+        });
+    }
 
-   
+    //         function submit_form()
+    // {
+    //     // alert(1);
+    //     var action = 'fetch_form';
+    //     var userType = $('#userType').val();
+    //     // alert(userType);
+    //     // var storage = get_filter('storage');
+    //     while($input)
+    //     $.ajax({
+    //         url:"EavForm.php",
+    //         method:"POST",
+    //         data:{action:action, userType:userType },
+    //         success:function(data){
+    //             $('.eav').html(data);
+    //         }
+    //     });
+    // }
+
 
 
     $(function(e) {

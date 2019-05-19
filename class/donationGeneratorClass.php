@@ -9,9 +9,9 @@ class donationGenerator {
   }
    
   // Use the object's methods to generate the coupon. 
-  public function getDonation()
+  public function makeDonation($amount,$donor)
   {
-    $discount = $this->donation->createDonation();
+    $discount = $this->donation->createDonation($amount,$donor);
     $discount = $this->donation->reportDonation();
     
     

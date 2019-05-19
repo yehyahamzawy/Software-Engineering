@@ -153,7 +153,7 @@ include 'dbheader.php';
             <div class="container-fluid dashboard-content">
                 <div class="row">
                     <div class="col-xl-10">
-                        <!-- ============================================================== -->
+                        <============================================================== -->
                         <!-- pageheader  -->
                         <!-- ============================================================== -->
                         <!-- <div class="row">
@@ -186,67 +186,9 @@ include 'dbheader.php';
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="section-block" id="basicform">
                                     <h3 class="section-title">update attribute type</h3>
-                                    <!-- ============================================================== -->
-                
-                        <!-- ============================================================== -->
-                                <!-- </div> -->
-                            <!--     <div class="card">
                                     
-                                    <div class="card-body">
-                                        <form class=".form-control-lg" method = "POST" action = <?php echo "'attributeEdit.php?ID=".$_GET["ID"]."'"?>>
-                                           <br>
-                                           <div class="form-group">
-                                            <label for="inputText3" class="col-form-label">attribute Name</label>
-                                            <input id="inputText3" type="text" class="form-control" name = "attributeName">
-                                            <!-- <?php 
-                                            $Connection = new mysqli("localhost", "root", "", "se");
-                                            $sql = "SELECT * FROM attribute WHERE ID = ".$_GET["ID"];
-                                            $result = mysqli_query($Connection, $sql);
-                                            $attribute = mysqli_fetch_array($result);
-                                            echo "value = '".$attribute["attributeName"]."'"; ?>  -->
-<!-- <!-- <!-- 
-                                        </div>
-                                        <br>
-                                         
-                                                        <label for="inputText3" value=".form-control-lg" class="col-form-label">type</label>
-
-                                                        <!-- <select class="selectpicker dropup" name = "attributeDType" > -->
-                                                    <!--     <?php include "../class/attributeClass.php";
-                                                            $attributes =new Attribute(2);
-                                                            $output=$attributes->readInSelect();
-                                                            foreach ($output as $i) {
-                                                                # code...
-                                                                echo $i;
-                                                            }
-                                                         ?>
-
-                                                    <option value = "int">INT</option>
-                                                    <option  value = "varchar">VARCHAR</option>
-                                                    <option  value = "text">TEXT</option>
-                                                <!-- </select> -->
-                                                            <!-- </select> -->
-                                                           <!--  <br>
-                                                            
-                                                </div> -->
-                                     
-                                            <!-- <div class="col-sm-6 pl-0">
-                                                <p class="text-right">
-                                                    <button type="submit" class="btn btn-space btn-primary">Submit</button>
-                                                    <button class="btn btn-space btn-secondary">Cancel</button>
-                                                </p>
-                                            </div>
-                                        </form>
-                                    </div> --> -->
-                                    <!-- </div> --> -->
-                                     --> --> --> -->
-                        
-            <!-- ============================================================== -->
-            <!-- footer -->
-            <!-- ============================================================== -->
-            <?php
-// include_once 'dbfooter.html';
-
-?>
+                        <!- ============================================================== -->
+                       
             <!-- ============================================================== -->
             <!-- end footer -->
             <!-- ============================================================== -->

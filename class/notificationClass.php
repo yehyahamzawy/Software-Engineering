@@ -23,6 +23,7 @@ class notification implements CRUD
 		notification::setIsDeleted($id);
 	}
 	function read(){}
+	function readAll(){}
 
 	static function readNew($recID){
 		$output=array();
