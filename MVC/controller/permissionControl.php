@@ -5,7 +5,7 @@ if(isset($_GET["del"]))
 {
     
         $DB->delete("permission", $_GET["ID"]);
-        header("location:../../pages/valuesTable.php");
+        header("location:../../pages/permissionTable.php");
     
 }
 
@@ -14,14 +14,14 @@ else if(isset($_GET["updt"]))
     //echo "edit";
     $DB->update("permission",$arrayName = array('linkID' => $_POST["linkID"], 'userTypeID' => $_POST["userTypeID"]),$_GET["permID"]);
     //var_dump($_POST);
-    header("location:../../pages/valuesTable.php");
+    header("location:../../pages/permissionTable.php");
 }
 else if(isset($_GET["add"]))
 {
     
     $DB->insert("permission",$arrayName = array('linkID' => $_POST["linkID"], 'userTypeID' => $_POST["userTypeID"]));
     //var_dump($_POST);
-    header("location:../../pages/valuesTable.php");
+    header("location:../../pages/permissionTable.php");
 }
 
 ?>

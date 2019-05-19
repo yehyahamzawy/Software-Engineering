@@ -3,7 +3,7 @@
 
 
 
-class permissionView
+class linksView
 {
   public $title1;
   public $title2;
@@ -29,7 +29,7 @@ function footer()
   include_once "../adminPanel/basicPageFooter.php";
 }
 
-function addPermModal($data1, $data2)
+function addValueModal($data1, $data2)
 {
   echo '<div class="row">
   <!-- pop up add/delete window-->
@@ -52,34 +52,35 @@ function addPermModal($data1, $data2)
 
 </div>
 <div class="modal-body">
-<form method="POST" action="../MVC/controller/permissionControl.php?add">
+<form method="POST" action="../MVC/controller/userValueControl.php?add">
 <div class="form-group">
-<label for="inputText3" class="col-form-label">User Type</label>
+<label for="inputText3" class="col-form-label">Attributes</label>
 
-<select class="selectpicker dropup" name = "userTypeID" >
+<select class="selectpicker dropup" name = "userTypeAttributeID" >
   ';
  
    foreach($data1 as $Row)
    {
-       echo '<option value= '.$Row["ID"].'> '.$Row["type"].'</option>';
+       echo '<option value= '.$Row["ID"].'> '.$Row["attributeName"].' ('.$Row["type"].') </option>';
       
    }
-  
+  //echo '<option value= '.$data["ID"].'>'.$data["value"].' ('.$func.'('.$data["userTypeAttributeID"].')'.')</option>';
   
   echo '
   </select>
   </div>
 <div class="form-group">
-
+<label for="inputText3" class="col-form-label">Value</label>
+<input id="inputText3" type="text" class="form-control" name = "value">
 </div>
 <div class="form-group">
-<label for="inputText3" class="col-form-label">Link</label>
+<label for="inputText3" class="col-form-label">User</label>
 
-<select class="selectpicker dropup" name = "linkID" >';
+<select class="selectpicker dropup" name = "userID" >';
   
 foreach($data2 as $Row)
 {
-    echo '<option value= '.$Row["ID"].'> '.$Row["friendlyName"].'</option>';
+    echo '<option value= '.$Row["ID"].'> '.$Row["fName"].' '.$Row["lName"].' ('.$Row["type"].')</option>';
    
 }
       
@@ -100,7 +101,7 @@ foreach($data2 as $Row)
     <br><br>';
 }
 
-function valuesTable($data)
+function linksTable($data)
 {
  
 
@@ -111,14 +112,14 @@ function valuesTable($data)
     
     <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
     <div class="card">
-        <h5 class="card-header">Permission Table</h5>
+        <h5 class="card-header">Links Table</h5>
         <div class="card-body">
             <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Link</th>
-                        <th scope="col">User Type</th>
+                        <th scope="col">URL</th>
+                        <th scope="col">Friendly Name</th>
                         
                         <th scope="col">Edit/Delete</th>
                     </tr>
@@ -130,12 +131,11 @@ function valuesTable($data)
                 echo '<tr>
                 <th scope="row">'.$Row["ID"].'</th>
                 
+                <td>'.$Row["URL"].'</td>
                 <td>'.$Row["friendlyName"].'</td>
-                <td>'.$Row["type"].'</td>
-                
                 <td class="iconrow">
-                    <a href="permissionEditForm.php?ID='.$Row["ID"].'"><i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="../MVC/controller/permissionControl.php?ID='.$Row["ID"].'&del"> <i class="fas fa-trash"></i></a>
+                    <a href="linksEditForm.php?ID='.$Row["ID"].'"><i class="fas fa-edit"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="../MVC/controller/linksControl.php?ID='.$Row["ID"].'&del"> <i class="fas fa-trash"></i></a>
                 </td>
             </tr>';
                 }
@@ -156,7 +156,7 @@ function valuesTable($data)
 
 
 }
-function showPermEdit($data2,$data)
+function showValuesEdit($data, $users)
 {
   echo'<div class="row">
   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -169,17 +169,17 @@ function showPermEdit($data2,$data)
       <div class="card">
           
           <div class="card-body">
-              <form class=".form-control-lg" method="POST" action="../MVC/controller/permissionControl.php?permID='.$_GET["ID"].'&updt">
+              <form class=".form-control-lg" method="POST" action="../MVC/controller/userValueControl.php?valID='.$_GET["ID"].'&updt">
                  
                
-                              <label for="inputText3" value=".form-control-lg" class="col-form-label">Link</label>
+                              <label for="inputText3" value=".form-control-lg" class="col-form-label">attributes</label>
 
-                              <select class="selectpicker dropup" value=".form-control-lg" name = "linkID">
+                              <select class="selectpicker dropup" value=".form-control-lg" name = "userTypeAttributeID">
                                       ';
 
                                       foreach($data as $Row)
                                       {
-                                        echo "<option value = ".$Row["ID"]." >".$Row['friendlyName']." </option>";
+                                        echo "<option value = ".$Row["ID"]." >".$Row['attributeName']." (".$Row['type'].")</option>";
                                       }
 
 
@@ -188,15 +188,17 @@ function showPermEdit($data2,$data)
                                   </select>
                                   <br>
                                   <div class="form-group">
+                  <label for="inputText3" class="col-form-label">value</label>
+                  <input id="inputText3" type="text" class="form-control" name = "value">
               </div>
               <br>                                         
-               <label for="inputText3" value=".form-control-lg" class="col-form-label">User Type</label>
+               <label for="inputText3" value=".form-control-lg" class="col-form-label">users</label>
 
-               <select class="selectpicker dropup" value=".form-control-lg" name = "userTypeID" >
+               <select class="selectpicker dropup" value=".form-control-lg" name = "userID" >
                        ';
-                       foreach($data2 as $Row)
+                       foreach($users as $Row)
                        {
-                         echo "<option value = ".$Row["ID"]." >".$Row['type']."</option>";
+                         echo "<option value = ".$Row["ID"]." >".$Row['fName']." ".$Row['lName']."</option>";
                        }
                        
                        
