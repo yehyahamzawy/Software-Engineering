@@ -29,7 +29,7 @@ function footer()
   include_once "../adminPanel/basicPageFooter.php";
 }
 
-function addValueModal($data1, $data2)
+function addLinkModal()
 {
   echo '<div class="row">
   <!-- pop up add/delete window-->
@@ -39,7 +39,7 @@ function addValueModal($data1, $data2)
       <!-- Trigger the modal with a button -->
 
 
-<button type="button"id="addattributebtn" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add User Value</button>
+<button type="button"id="addattributebtn" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add New Link</button>
     
 <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
@@ -52,39 +52,37 @@ function addValueModal($data1, $data2)
 
 </div>
 <div class="modal-body">
-<form method="POST" action="../MVC/controller/userValueControl.php?add">
+<form method="POST" action="../MVC/controller/linksControl.php?add">
 <div class="form-group">
-<label for="inputText3" class="col-form-label">Attributes</label>
 
-<select class="selectpicker dropup" name = "userTypeAttributeID" >
+<label for="inputText3" class="col-form-label">Friendly Name:</label>
+<input id="inputText3" type="text" class="form-control" name = "friendlyName">
+
+<label for="inputText3" class="col-form-label">URL:</label>
+<input id="inputText3" type="text" class="form-control" name = "URL">
+
+<label for="inputText3" class="col-form-label">Is Local?</label>
+
+<select class="selectpicker dropup" name = "isLocal" >
   ';
  
-   foreach($data1 as $Row)
-   {
-       echo '<option value= '.$Row["ID"].'> '.$Row["attributeName"].' ('.$Row["type"].') </option>';
+   
+       echo '<option value= "1"> Yes </option>';
+       echo '<option value= "0"> No </option>';
       
-   }
-  //echo '<option value= '.$data["ID"].'>'.$data["value"].' ('.$func.'('.$data["userTypeAttributeID"].')'.')</option>';
+   
+  
   
   echo '
   </select>
   </div>
 <div class="form-group">
-<label for="inputText3" class="col-form-label">Value</label>
-<input id="inputText3" type="text" class="form-control" name = "value">
+
 </div>
 <div class="form-group">
-<label for="inputText3" class="col-form-label">User</label>
 
-<select class="selectpicker dropup" name = "userID" >';
-  
-foreach($data2 as $Row)
-{
-    echo '<option value= '.$Row["ID"].'> '.$Row["fName"].' '.$Row["lName"].' ('.$Row["type"].')</option>';
-   
-}
-      
-  echo '</select>
+
+
   </div>
 </div>
 <div class="modal-footer">
@@ -156,7 +154,7 @@ function linksTable($data)
 
 
 }
-function showValuesEdit($data, $users)
+function showLinksEdit()
 {
   echo'<div class="row">
   <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
@@ -169,41 +167,35 @@ function showValuesEdit($data, $users)
       <div class="card">
           
           <div class="card-body">
-              <form class=".form-control-lg" method="POST" action="../MVC/controller/userValueControl.php?valID='.$_GET["ID"].'&updt">
+              <form class=".form-control-lg" method="POST" action="../MVC/controller/linksControl.php?linkID='.$_GET["ID"].'&updt">
                  
                
-                              <label for="inputText3" value=".form-control-lg" class="col-form-label">attributes</label>
+              <div class="form-group">
 
-                              <select class="selectpicker dropup" value=".form-control-lg" name = "userTypeAttributeID">
-                                      ';
-
-                                      foreach($data as $Row)
-                                      {
-                                        echo "<option value = ".$Row["ID"]." >".$Row['attributeName']." (".$Row['type'].")</option>";
-                                      }
-
-
-                                      echo '
-                                      
-                                  </select>
-                                  <br>
-                                  <div class="form-group">
-                  <label for="inputText3" class="col-form-label">value</label>
-                  <input id="inputText3" type="text" class="form-control" name = "value">
+              <label for="inputText3" class="col-form-label">Friendly Name:</label>
+              <input id="inputText3" type="text" class="form-control" name = "friendlyName">
+              
+              <label for="inputText3" class="col-form-label">URL:</label>
+              <input id="inputText3" type="text" class="form-control" name = "URL">
+              
+              <label for="inputText3" class="col-form-label">Is Local?</label>
+              
+              <select class="selectpicker dropup" name = "isLocal" >
+                ';
+               
+                 
+                     echo '<option value= "1"> Yes </option>';
+                     echo '<option value= "0"> No </option>';
+                    
+                 
+                
+                
+                echo '
+                </select>
+              
               </div>
               <br>                                         
-               <label for="inputText3" value=".form-control-lg" class="col-form-label">users</label>
-
-               <select class="selectpicker dropup" value=".form-control-lg" name = "userID" >
-                       ';
-                       foreach($users as $Row)
-                       {
-                         echo "<option value = ".$Row["ID"]." >".$Row['fName']." ".$Row['lName']."</option>";
-                       }
-                       
-                       
-                       echo'
-                   </select>
+               
                    <br>
 
 

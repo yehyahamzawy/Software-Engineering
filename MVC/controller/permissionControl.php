@@ -20,7 +20,7 @@ else if(isset($_GET["add"]))
 {
     
     $DB->insert("permission",$arrayName = array('linkID' => $_POST["linkID"], 'userTypeID' => $_POST["userTypeID"]));
-    //var_dump($_POST);
+    
     header("location:../../pages/permissionTable.php");
 }
 
