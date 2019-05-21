@@ -5,18 +5,17 @@ require_once "../MVC/model/scheduleModel.php";
 
 $model = new scheduleModel();
 $view = new scheduleView(array('editor' => "../pages/editor.php", 'checker' => "../pages/checker.php" ),"Hello","testing page");
-//$data1 = $model->readAllTable();
-//$data2 = $model->readAllModal();
-//$data3 = $model->readAllModalUsers();
 $users = $model->getUser($_GET["ID"]);
-$days = $model->getDays();
-$shifts = $model->getUserShifts($_GET["ID"]);
+$model->getDays();
+$model->getUserShifts($_GET["ID"]);
+//$model->ramadanTimes();
+//$model->overTime();
+//$model->alterDay(6,"9:30:00", "16:00:00");
+//$model->alterDay(2,"9:30:00", "16:00:00");
 
 
 $view->header();
-$view->viewUserSchedule($users,$shifts,$days);
-//$view->valuesTable($data1);
-//$view->showValuesEdit($data2,$data4);
+$view->viewUserSchedule($users,$model->shifts,$model->days);
 $view->footer();
 
 

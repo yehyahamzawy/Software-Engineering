@@ -105,7 +105,74 @@ function viewUserSchedule($user, $shifts, $days)
              
               
              
-            
+        
+          ';
+
+          foreach($days as $Row) 
+          {
+              echo '<th scope="col">'.$Row["short"].'</th>';
+          }
+          echo'
+          </tr>
+      </thead>
+      <tbody>
+          <tr>';
+          $hasShift = 0;
+          foreach($days as $Row1)
+          {
+
+              $hasShift = 0;
+
+            foreach($shifts as $Row2)
+            {
+
+                
+              if($Row2["dayID"]==$Row1["ID"])
+              {
+                echo "<td>From ".$Row2["shiftStart"]." To ".$Row2["shiftEnd"]."</td>";
+                $hasShift = 1;
+                break;
+              }
+
+            }
+
+            if($hasShift == 0)
+            {
+                echo "<td>Day Off</td>";
+            }
+
+          }
+          echo'
+              
+          </tr>
+      </tbody>
+  </table>    
+</div>
+</div>
+</div>
+</div>';
+}
+
+
+function viewUserSchedule2($user, $shifts, $days)
+{
+  echo '<div class="row">
+		
+  <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+    <div class="card">
+        <h5 class="card-header">'.$user["fName"].' '.$user["lName"].''."'".'s Schedule</h5>
+        <div class="card-body">
+            <table class="table table-striped">
+          
+         
+          
+  <table class="table table-striped">
+      <thead>
+          
+             
+              
+             
+        
           ';
 
           foreach($days as $Row) 
