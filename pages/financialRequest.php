@@ -18,17 +18,12 @@
     <!-- main wrapper -->
     <!-- ============================================================== -->
     <div class="dashboard-main-wrapper">
-         <!-- ============================================================== -->
-        <!-- navbar -->
-        <!-- ============================================================== -->
-  
-        <!-- ============================================================== -->
-        <!-- end navbar -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
+      
         <?php
-include_once '../dashboard.php';
-include_once '../MVC/view/userView.php';
+include '../dashboard.php';
+include '../class/userClass.php';
+include '../MVC/view/userView.php';
+$_SESSION['ID']=224;
 
 ?>
         <!-- ============================================================== -->
@@ -36,22 +31,19 @@ include_once '../MVC/view/userView.php';
         <!-- wrapper  -->
         <!-- ============================================================== -->
         <div class="dashboard-wrapper">
-            <div class="container-fluid  dashboard-content" >
-                <?php 
+            <div class="container-fluid  dashboard-content">
 
-                $view=new userView('Children');
-                $view->showTitle(3);
-                $view->showChildren();
-
-
-                 ?>
                     </div>
+                    <?php 
+                        userView::financialRequestForm();
 
+                    ?>
 
                     <!-- footer -->
             <!-- ============================================================== -->
             <?php
 include '../dbfooter.html';
+
 ?>
             
             <!-- ============================================================== -->

@@ -24,6 +24,9 @@ class userType implements CRUD
 		
 		
 	}
+	function ReadTypeName(){
+		return $this->typeName;
+	}
 	function Read(){
 		// unset($this->output);
 		// // echo "ID: ".$this->ID."<br>";

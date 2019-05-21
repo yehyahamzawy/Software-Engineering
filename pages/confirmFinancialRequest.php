@@ -18,40 +18,38 @@
     <!-- main wrapper -->
     <!-- ============================================================== -->
     <div class="dashboard-main-wrapper">
-         <!-- ============================================================== -->
-        <!-- navbar -->
-        <!-- ============================================================== -->
-  
-        <!-- ============================================================== -->
-        <!-- end navbar -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
+      
         <?php
 include_once '../dashboard.php';
+include_once '../class/userClass.php';
 include_once '../MVC/view/userView.php';
+include_once '../class/financeClass.php'; 
+
 
 ?>
         <!-- ============================================================== -->
         <!-- ============================================================== -->
         <!-- wrapper  -->
         <!-- ============================================================== -->
-        <div class="dashboard-wrapper">
-            <div class="container-fluid  dashboard-content" >
-                <?php 
+        <div class="dashboard-wrapper" >
+            
 
-                $view=new userView('Children');
-                $view->showTitle(3);
-                $view->showChildren();
+            <div class="container-fluid  dashboard-content">
+                
 
+                 <?php 
 
-                 ?>
+                        userView::showUnconfirmedFinance(finance::readAllUnconfirmed());
+
+                    ?>
                     </div>
-
+                   
 
                     <!-- footer -->
             <!-- ============================================================== -->
             <?php
-include '../dbfooter.html';
+    // include '../dbfooter.html';
+
 ?>
             
             <!-- ============================================================== -->

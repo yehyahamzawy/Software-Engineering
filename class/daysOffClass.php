@@ -5,7 +5,10 @@
 include_once "db.php";
 class daysOff
 {
-	
+	static function requestDayOff($userID,$date,$type,$reason){
+		$sql="INSERT into dayOffrequests(userID,date,type,text) VALUES ($userID,'$date',$type,'$reason')";
+		database::static_query($sql);
+	}
 	
 	static function newRecord($userID){
 		$sql="INSERT into daysOff(userID,daysOffLeft) VALUES ($userID,30)";
@@ -27,7 +30,7 @@ class daysOff
 	static function showRequests(){
 			$output=[];
 
-		$sql="SELECT * FROM dayOffRequests WHERE isApproved=0";
+		$sql="SELECT * FROM dayOffRequests WHERE isApproved=0 AND isDeleted=0";
 		$result=database::static_query($sql);
 		while($Row = mysqli_fetch_array($result)){
     			array_push($output, $Row);
@@ -44,6 +47,13 @@ class daysOff
 		daysOff::Decrement($row['userID']);
 
 	}
+	static function delete($ID){
+		$sql="UPDATE `dayOffRequests` SET `isDeleted`=1 WHERE ID=".$ID;
+		database::static_query($sql);
+		
+
+	}
+
 }
 
 

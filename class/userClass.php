@@ -16,7 +16,7 @@ class User implements CRUD,iObserver
 	// private $password;
 	private $isDeleted;
 	private $createdAt;
-	private $updatedAt;
+	private $updatedAt;	
 	private $ID;
 	public $DB;
 	private $output;
@@ -33,7 +33,6 @@ class User implements CRUD,iObserver
 				$this->lname=$Row["lName"];
 				$this->userTypeID=$Row['userType'];
 				$this->ID=$Row['ID'];
-				echo 'bug';
 				return;
 	}
 	else{
@@ -283,6 +282,10 @@ function requestDayOff($date){
 }		
 function viewDaysOffLeft(){
 
+}
+function makeFinancialRequest($amount,$reason){
+	$sql="INSERT INTO financialRequests(userID,amount,reason) VALUES ($this->ID,$amount,'$reason')";
+	database::static_query($sql);	
 }
 }
 

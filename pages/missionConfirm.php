@@ -42,7 +42,7 @@ include '../dashboard.php';
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Dashboard</a></li>
                                         <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Database Control</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Users table</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Missions table</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -52,18 +52,17 @@ include '../dashboard.php';
 
 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
                             <div class="card">
-                                <h5 class="card-header">Users Table</h5>
+                                <h5 class="card-header">Missions Table</h5>
                                 <div class="card-body">
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>
                                                 <th scope="col">#</th>
-                                                <th scope="col">First Name</th>
-                                                <th scope="col">Last Name</th>
-                                                <th scope="col">user type</th>
-                                                <th scope="col">is Deleted</th>
-                                                <th scope="col">Created at</th>
-                                                <th scope="col">Updated at</th>
+                                                <th scope="col">Mission Name</th>
+                                                <th scope="col">Date</th>
+                                                <th scope="col">Description</th>
+                                               
+                                        
                                                 <th scope="col">Edit/Delete</th>
                                             </tr>
                                         </thead>
@@ -71,14 +70,10 @@ include '../dashboard.php';
                                            
 
                                                 <?php   
-                                                        include_once '../class/userClass.php';
-                                                         include_once '../MVC/view/userView.php';
-                                                    $user=new User(0);
-                                                    $var=$user->ReadAll();
-                                                    $view= new userView('All Users');
-                                                    $view->showTitle(3);
-                                                    $view->ReadUsers($var);
-                                                    
+                                                        include_once '../class/missionClass.php';
+                                                         include_once '../MVC/view/missionView.php';
+                                                    $view=new missionView();
+                                                    $view->showUnconfirmedMissions(Mission::ReadAllUnconfirmed());
                                                  ?>
                                                
                                             

@@ -5,7 +5,7 @@
 	 */
 	include_once "db.php";
 	include_once "CRUDinterface.php";
-	class Child implements CRUD
+	class Child extends User implements CRUD
 	{
 		private $updatedAt;
 		private $ID;
@@ -15,7 +15,11 @@
 			$this->DB= new database();
 		}
 
-		function Create(){}
+		 function create($fname,$lname,$x=5){
+		parent::create($fname,$lname,$x);
+		
+			}
+		
 		function Update(){
 			$this->updatedAt=date("Y-m-d H:i:s");
 		}

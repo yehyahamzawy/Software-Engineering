@@ -1,5 +1,6 @@
 <?php 
-include '../class/userClass.php';
+include_once '../class/userClass.php';
+include_once '../class/userTypeClass.php';
 /**
  * 
  */
@@ -84,8 +85,109 @@ class userView
 
 
 
+	function showReportForm($ID){
+		$user=new User(sha1($ID));
+		$type=new userType($user->getUserType());
+		echo "<h3>".$type->readTypeName()." Report</h3>";
+		echo "<form action='../controllers/createReport.php' method='POST'>
+				<input type='textarea' name ='report' style='height:200px;width:300px'><br><input type='submit'></form>
+				";
+	}
+
+	function showChildren(){
+		$data=User::readType(5);
+			echo '<div style="text-align: center"><table>
+                <tr>
+                    <th>Child Name</th>
+
+                <th>Age</th>
+            </tr>';
+                  
+              
+			foreach ($data as $children) {
+					echo "<tr><td>".$children['fName']." ". $children['lName'] ."</td><td>12</td></tr>";
+
+				}
+				echo '</table></div>';
+
+	}
+	function childForm(){
+		$user=new User(0);
+		$data=$user->showForm(5);
+		foreach ($data as $children) {
+					echo $children ;
+
+				}	
+	}
+	function ReadUsers($var){
+		
+                                                    foreach ($var as $key) {
+                                                            echo " <tr> <th scope='row'>".$key['ID']."</th>
+                                                <td>".$key['fName']."</td>
+                                                <td>".$key['lName']."</td>
+                                                <td> ".$key['userType']."</td>
+                                                <td>".$key['isDeleted']."</td>
+                                                <td>".$key['createdAt']."</td>
+                                                <td>".$key['updatedAt']."</td>
+                                                <td class='iconrow'>
+                                                <a href='../controllers/editusertable.php?ID=".sha1($key['ID'])."'> 
+                                                <i class='fas fa-edit' ></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                   <a href='..controllers/deleteUser.php?ID=".sha1($key['ID'])."'> <i class='fas fa-trash'></i></a>
+                                                     
+                                                </td>
+                                            </tr>";
+	}}
+	function editUserForm($ID){
 
 
+	}
+	static function financialRequestForm(){
+		echo " <div style='text-align:center'>
+                <form method='POST' action='../MVC/controller/makeFinancialRequest.php'>
+                Amount: <input type='number' name='amount'><br><br>
+                Reason: <input type='textarea' name='reason'><br><br>
+                <input type='submit' name=''><br>
+                </form>
+                </div>";
+	}
+	function showUnconfirmedFinance($data){
+		
+		echo "<div style='text-align:center'><table><tr><th>amount</th><th>reason</th><th>Request Maker</th></tr>";
+		foreach ($data as $key) {
+			$user=new User(sha1($key['userID']));
+			   echo " <tr> <th scope='row'>".$key['ID']."</th>
+                     <td>".$key['amount']."</td>
+                     <td>".$key['reason']."</td>
+                     <td>".$user->getFname()."</td>
+                     <td class='iconrow'>
+                     <a href='../MVC/controller/confirmFinanceController.php?ID=".$key['ID']."'> Confirm
+                     </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href='../MVC/controller/deleteFinanceController.php?ID=".$key['ID']."'> <i class='fas fa-trash'></i></a>
+                                                     
+                     </td>
+                                            </tr>";
+		}
+		echo "</table></div>";
+	}
+	function vacationRequests($data){
+		echo "<div style='text-align:center'><table><tr><th>date</th><th>reason</th><th>type</th><th>Person</th></tr>";
+		foreach ($data as $key) {
+			$user=new User(sha1($key['userID']));
+			   echo " <tr> <th scope='row'>".$key['ID']."</th>
+                     <td>".$key['date']."</td>
+                     <td>".$key['type']."</td>
+                     <td>".$key['text']."</td>
+                     <td>".$user->getFname()." ".$user->getlName()."</td>
+                     <td class='iconrow'>
+                     <a href='../MVC/controller/approveVacationController.php?ID=".$key['ID']."'> Confirm
+                     </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href='../MVC/controller/deleteVacationController.php?ID=".$key['ID']."'> <i class='fas fa-trash'></i></a>
+                                                     
+                     </td>
+                                            </tr>";
+		}
+		echo "</table></div>";
+	}
 
 }
 

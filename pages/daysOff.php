@@ -24,16 +24,13 @@
         <!-- ============================================================== -->
         <!-- navbar -->
         <!-- ============================================================== -->
-        <?php
-include '../dbheader.html';
-
-?>
+        
         <!-- ============================================================== -->
         <!-- end navbar -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
         <?php
-include '../dashboard.html';
+include '../dashboard.php';
 
 ?>
         <!-- ============================================================== -->
@@ -76,25 +73,25 @@ include '../dashboard.html';
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="section-block" id="basicform">
-                                    <h3 class="section-title">request day off</h3>
+                                    <h3 class="section-title">Request Day Off</h3>
                                     
                                 </div>
                                 <div class="card">
                                    
-
+                                    <form action='../MVC/controller/requestVacationController.php' method='post' >
                                     <div class="form-group">
-                                        <label for="inputText3" class="col-form-label">from</label>
+                                        <label for="inputText3" class="col-form-label">  From</label>
                                     <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
-                                        <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker4" />
+                                        <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker4" name='from'/>
                                         <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker" >
                                             <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputText3" class="col-form-label">till</label>
+                                    <label for="inputText3" class="col-form-label">  Till</label>
                                 <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker4" />
+                                    <input type="text" name='till' class="form-control datetimepicker-input" data-target="#datetimepicker4" />
                                     <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker" >
                                         <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
                                     </div>
@@ -104,27 +101,23 @@ include '../dashboard.html';
                                 <label for="inputText3" class="col-form-label"> Excuse Reason</label>
                                 <br>
                                 <label class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" name="radio-inline" checked="" class="custom-control-input"><span class="custom-control-label">medical </span>
+                                        <input type="radio" name="radio-inline" checked="" value='1' class="custom-control-input"><span class="custom-control-label">medical </span>
                                     </label>
                                     <label class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" name="radio-inline" class="custom-control-input"><span class="custom-control-label">urgent case</span>
+                                        <input type="radio" name="radio-inline" class="custom-control-input value='2"><span class="custom-control-label">urgent case</span>
                                     </label>
                                     <label class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" name="radio-inline" class="custom-control-input"><span class="custom-control-label">No Specific Reason</span>
+                                        <input type="radio" name="radio-inline" class="custom-control-input" value='3'><span class="custom-control-label">No Specific Reason</span>
                                     </label>
                                     <label class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" name="radio-inline" class="custom-control-input"><span class="custom-control-label">Other</span>
+                                        <input type="radio" name="radio-inline" class="custom-control-input" value='4'><span class="custom-control-label">Other</span>
                                     </label>
 
                             </div>
-                            <h5>upload excuse file ( ex. medical report ,death certificate ...):</h5>
-                            <div class="custom-file mb-3">
-                                <input type="file" class="custom-file-input" id="customFile">
-                                <label class="custom-file-label" for="customFile">Upload file </label>
-                            </div>
+                            
                                             <div class="form-group">
                                                 <label for="exampleFormControlTextarea1">More Information</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                                <textarea class="form-control" id="exampleFormControlTextarea1" name='text' rows="3"></textarea>
                                             </div>
                                             <div class="col-sm-6 pl-0">
                                                 <p class="text-right">

@@ -13,6 +13,11 @@ class Report
 		$this->DB=new Database();
 		$this->output= array();
 	}
+	static function createReport($userType,$childID,$report){
+		$sql="INSERT INTO `childReport`(`reportType`,`childID`,`report`) VALUES ($userType,$childID,'$report')";
+		database::static_query($sql);
+		echo "x";
+	}
 	function reportUserType(){
 		$ids=array();
 		$names=array();

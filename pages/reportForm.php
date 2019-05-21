@@ -1,6 +1,6 @@
-<!doctype html>
+ <!doctype html>
 <html lang="en">
- 
+<?php $_SESSION['ID']=5; ?>
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -13,7 +13,11 @@
     <link rel="stylesheet" href="../assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
     <link rel="stylesheet" href="../assets/vendor/datepicker/tempusdominus-bootstrap-4.css" />
     <link rel="stylesheet" href="../assets/vendor/inputmask/css/inputmask.css" />
-    
+    <style type="text/css">
+        input[type="radio"]{
+            display:inline-block;
+        }
+    </style>
 </head>
 
 <body>
@@ -24,14 +28,19 @@
         <!-- ============================================================== -->
         <!-- navbar -->
         <!-- ============================================================== -->
-     
+        <!-- <?php
+// include '../dbheader.html';
+
+?> -->
         <!-- ============================================================== -->
         <!-- end navbar -->
         <!-- ============================================================== -->
+        <!-- ============================================================== -->
         <?php
-include_once '../dashboard.php';
+include '../dashboard.php';
+// include_once '../class/userClass.php';
+// include_once '../class/userTypeClass.php';
 include_once '../MVC/view/userView.php';
-include_once '../class/userClass.php';
 
 ?>
         <!-- ============================================================== -->
@@ -40,17 +49,22 @@ include_once '../class/userClass.php';
         <!-- ============================================================== -->
         <div class="dashboard-wrapper">
             <div class="container-fluid dashboard-content">
-                <?php 
-                    $view=new userView('Child Form');
-                    $view->showTitle(3);
-                    $view->childForm();
 
-                 ?>
+                
+                <?php
+                $view=new userView('Choose Members');
+                // $view->showTitle(1);
+                $view->showReportForm(224); 
+                ?>                        
+                                            
+                                       
+                                     
+                                    </div>
                                     </div>
                                     
                         
-            <!-- ============================================================== -->
-            <!-- footer -->
+            <!--/ ============================================================== 
+            footer -->
             <!-- ============================================================== -->
             <?php
 include '../dbfooter.html';
@@ -59,8 +73,9 @@ include '../dbfooter.html';
             <!-- ============================================================== -->
             <!-- end footer -->
             <!-- ============================================================== -->
+
         </div>
-    </div>
+    
     <!-- ============================================================== -->
     <!-- end main wrapper -->
     <!-- ============================================================== -->
@@ -73,8 +88,12 @@ include '../dbfooter.html';
     <script src="../assets/vendor/datepicker/moment.js"></script>
     <script src="../assets/vendor/datepicker/tempusdominus-bootstrap-4.js"></script>
     <script src="../assets/vendor/datepicker/datepicker.js"></script>
-    
     <script>
+
+  
+
+
+
     $(function(e) {
         "use strict";
         $(".date-inputmask").inputmask("dd/mm/yyyy"),

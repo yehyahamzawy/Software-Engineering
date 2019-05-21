@@ -53,17 +53,14 @@ include_once "notificationClass.php";
     $sql2="INSERT INTO missionParticipants(userID,roleID,missionID) VALUES (".$assistant->getID().",2,$this->ID)";
     $sql3="INSERT INTO missionParticipants(userID,roleID,missionID) VALUES (".$driver->getID().",3,$this->ID)";
     $sql4="INSERT INTO missionParticipants(userID,roleID,missionID) VALUES (".$psych->getID().",4,$this->ID)";
-    // notification::create($doctor->getID(),$makerID,1);
-    // notification::create($assistant->getID(),$makerID,3);
-    // notification::create($driver->getID(),$makerID,2);
-    // notification::create($psych->getID(),$makerID,4);
+    ;
     $this->DB->db_query($sql1);
-    // echo 'x';
+    
     $this->DB->db_query($sql2);
-    echo 'x';
+    
     $this->DB->db_query($sql3);
     $this->DB->db_query($sql4);
-    echo 'x';
+    
 
   }
  	function getName(){
@@ -112,4 +109,30 @@ include_once "notificationClass.php";
         $obs->updateMission($this);
       }
     }
+    static function ReadAllUnconfirmed(){
+      $DB=new database();
+      $output=array();
+      $sql="SELECT * FROM mission where isConfirmed=0 and isDeleted=0";
+      $result=$DB->static_query($sql);
+    while($Row = mysqli_fetch_array($result))
+    {
+      array_push($output, $Row);
+
+    } 
+    return $output;
+    }
+
+    static function confirmMission($ID){
+      $DB=new database();
+      $sql="UPDATE `mission` SET `isConfirmed`=1 WHERE id=".$ID;
+      $DB->static_query($sql);
+
+    }
+    static function deleteMission($ID){
+      $DB=new database();
+      $sql="UPDATE `mission` SET `isDeleted`=1 WHERE id=".$ID;
+      $DB->static_query($sql);
+
+    }
+
  } ?>

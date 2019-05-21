@@ -24,14 +24,15 @@
         <!-- ============================================================== -->
         <!-- navbar -->
         <!-- ============================================================== -->
-     
+        
         <!-- ============================================================== -->
         <!-- end navbar -->
         <!-- ============================================================== -->
+        <!-- ============================================================== -->
         <?php
-include_once '../dashboard.php';
-include_once '../MVC/view/userView.php';
-include_once '../class/userClass.php';
+include '../dashboard.php';
+include '../class/daysOffClass.php';
+include '../MVC/view/userView.php';
 
 ?>
         <!-- ============================================================== -->
@@ -40,12 +41,17 @@ include_once '../class/userClass.php';
         <!-- ============================================================== -->
         <div class="dashboard-wrapper">
             <div class="container-fluid dashboard-content">
-                <?php 
-                    $view=new userView('Child Form');
-                    $view->showTitle(3);
-                    $view->childForm();
+                <div class="row">
+                    <div class="col-xl-10">
+                      <?php 
+                      $view=new userView('Vacation Requests');
+                        $view->vacationRequests(daysOff::showRequests());
+                        
 
-                 ?>
+
+                       ?>
+
+                                    </div>
                                     </div>
                                     
                         
@@ -73,7 +79,6 @@ include '../dbfooter.html';
     <script src="../assets/vendor/datepicker/moment.js"></script>
     <script src="../assets/vendor/datepicker/tempusdominus-bootstrap-4.js"></script>
     <script src="../assets/vendor/datepicker/datepicker.js"></script>
-    
     <script>
     $(function(e) {
         "use strict";

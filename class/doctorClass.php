@@ -9,9 +9,9 @@ class Doctor extends User implements iMissionMember{
 		parent::create($fname,$lname,$x);
 		// echo "x";
 	}
-	function getfName(){
-		return parent::getfName();
-	}
+	// function getfName(){
+	// 	return parent::getfName();
+	// }
 	
 	// function updateMission(Mission $event){
 	// 	// echo $event->getName();
