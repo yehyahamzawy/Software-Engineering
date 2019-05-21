@@ -14,7 +14,7 @@ class UTAttModel implements CRUD
 		
 		$this->DB = new helper("localhost", "root", "","newdb");
 
-		$Row=$this->DB->selectIndexedArray("*", "usertypeattributes", " ID = $ID" );
+		$Row=$this->DB->selectIndexedArray("*", "usertypeattributes", NULL );
 		
 		
 		

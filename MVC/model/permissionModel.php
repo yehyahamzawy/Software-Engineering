@@ -7,7 +7,7 @@ require_once "../class/CRUDinterface.php";
         {
             
             $this->DB = new helper("localhost", "root", "","newdb");
-            $object = $this->DB->selectIndexedArray("*", "permission", "ID = $id" );
+            $object = $this->DB->selectIndexedArray("*", "permission", NULL );
         }
 
         function create($dataArray)

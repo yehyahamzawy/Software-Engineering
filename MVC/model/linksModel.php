@@ -7,7 +7,7 @@ require_once "../class/CRUDinterface.php";
         {
             
             $this->DB = new helper("localhost", "root", "","newdb");
-            $object = $this->DB->selectIndexedArray("*", "links", "ID = $id" );
+            $object = $this->DB->selectIndexedArray("*", "links", NULL );
         }
 
         function create($dataArray)
