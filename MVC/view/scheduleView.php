@@ -29,6 +29,64 @@ function footer()
   include_once "../adminPanel/basicPageFooter.php";
 }
 
+function viewUsers($data)
+{
+ 
+
+
+
+
+    echo '
+    
+    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+    <div class="card">
+        <h5 class="card-header">Schedules List</h5>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Full Name</th>
+                        
+                        
+                        
+                        
+                        
+                        <th scope="col">View Schedule</th>
+                    </tr>
+                </thead>
+                <tbody>';
+
+                foreach($data as $Row)
+                {
+                echo '<tr>
+               
+                
+                <td>'.$Row["fName"].' '.$Row["lName"].'</td>
+                
+                <td class="iconrow">
+                    <a href="userSchedule.php?ID='.$Row["ID"].'">&nbsp;&nbsp;&nbsp;<i class="fas fa-calendar-alt"></i></a>&nbsp;&nbsp;&nbsp;
+                    
+                </td>
+            </tr>';
+                }
+                   
+                    
+                echo '</tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+';
+
+
+
+
+}
+
 function viewUserSchedule($user, $shifts, $days)
 {
   echo '<div class="row">

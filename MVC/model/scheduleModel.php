@@ -3,11 +3,11 @@ require_once "../class/DBHelper.php";
 require_once "../class/CRUDinterface.php";
     class scheduleModel implements CRUD
     {
-        public function __construct($id)
+        public function __construct()
         {
             
             $this->DB = new helper("localhost", "root", "","newdb");
-            $object = $this->DB->selectIndexedArray("*", "shifts", "ID = $id" );
+            
         }
 
         function create($dataArray)
@@ -16,21 +16,8 @@ require_once "../class/CRUDinterface.php";
 		
 	}
     
-	function readAllTable(){
-		$indexedArray = array();
-		$innerJoinSelection = "SELECT permission.ID, permission.userTypeID, permission.linkID, links.friendlyName, usertype.type FROM permission INNER JOIN links ON links.ID=permission.linkID INNER JOIN usertype ON permission.userTypeID=usertype.ID WHERE permission.isDeleted = 0";
-		
-		//echo $innerJoinSelection;
-		
-		$result = $this->DB->db_query($innerJoinSelection);
-    
-    
-    while($Row = mysqli_fetch_array($result))
-    {
-      array_push($indexedArray, $Row);
-  
-    }
-    return $indexedArray;
+	function readAllTable()
+	{
 		
 	}
 
@@ -75,8 +62,13 @@ require_once "../class/CRUDinterface.php";
 		$user = $this->DB->selectFetchArray("*", "user", "ID = $ID");
 
 		return $user;
-    }
-    
+	}
+	
+    function getUsers()
+    {
+        return $this->DB->selectIndexedArray("*", "user", NULL);
+	}
+	
     function getUserShifts($userID)
 	{
 		

@@ -8,15 +8,12 @@ $view = new scheduleView(array('editor' => "../pages/editor.php", 'checker' => "
 //$data1 = $model->readAllTable();
 //$data2 = $model->readAllModal();
 //$data3 = $model->readAllModalUsers();
-$users = $model->getUser($_GET["ID"]);
-$days = $model->getDays();
-$shifts = $model->getUserShifts($_GET["ID"]);
+$users = $model->getUsers();
 
 
 $view->header();
-$view->viewUserSchedule($users,$shifts,$days);
-//$view->valuesTable($data1);
-//$view->showValuesEdit($data2,$data4);
+$view->viewUsers($users);
+
 $view->footer();
 
 
