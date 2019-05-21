@@ -1,7 +1,8 @@
 <?php
 class helper
 {
-  private $connect;
+  public $connect;
+  public $lastID;
  		
  	function __construct($host, $name, $password, $database)
 	{
@@ -25,6 +26,8 @@ class helper
   {
 
     $result = mysqli_query($this->connect, $query);
+    
+        
     if (!$result)
     {
     echo("Error description: " . mysqli_error($this->db_connect()));
@@ -76,6 +79,9 @@ class helper
 
       $sql ="INSERT INTO $table(`".join("`,`",$colms)."`) VALUES('".join("','", $values)."')";
       $this->db_query($sql);
+      $this->lastID = mysqli_insert_id($this->connect);
+      
+      
       
      //foreach ($colms as $key => $val) 
       //{

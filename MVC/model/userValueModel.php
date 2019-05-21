@@ -17,7 +17,7 @@ class userValueModel implements CRUD
 		
 		$this->DB = new helper("localhost", "root", "","newdb");
 
-		$Row=$this->DB->selectIndexedArray("*", "uservalues", " ID = $ID" );
+		$Row=$this->DB->selectIndexedArray("*", "uservalues", NULL );
 		
 		
 		
