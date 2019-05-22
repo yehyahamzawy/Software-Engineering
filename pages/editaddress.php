@@ -87,19 +87,19 @@ include '../dashboard.html';
                                         <form>
                                             <div class="form-group">
                                                 <label for="inputText3" class="col-form-label">Country</label>
-                                                <input id="inputText3" type="text" class="form-control">
+                                                <input id="inputText3" type="text" class="form-control" pattern="[A-Za-z0-9][A-Za-z0-9 ]{2,}" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputText3" class="col-form-label">Government</label>
-                                                <input  type="text" class="form-control">
+                                                <input  type="text" class="form-control"pattern="[A-Za-z0-9][A-Za-z0-9 ]{2,}" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputText3" class="col-form-label">City</label>
-                                                <input  type="text" class="form-control">
+                                                <input  type="text" class="form-control"pattern="[A-Za-z0-9][A-Za-z0-9 ]{2,}" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputText3" class="col-form-label">Street</label>
-                                                <input  type="text" class="form-control">
+                                                <input  type="text" class="form-control"pattern="[A-Za-z0-9][A-Za-z0-9 ]{2,}" required>
                                             </div>
                                             <div class="col-sm-6 pl-0">
                                                 <p class="text-right">
@@ -116,10 +116,7 @@ include '../dashboard.html';
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <<?php
-include '../dbfooter.html';
-
-?>
+  
             <!-- ============================================================== -->
             <!-- end footer -->
             <!-- ============================================================== -->
