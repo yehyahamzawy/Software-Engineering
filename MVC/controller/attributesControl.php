@@ -1,28 +1,27 @@
-<?php
-include_once '..\MVC\view\attributesView.php';
-include_once '..\MVC\model\attributesModel.php';
-include_once '..\MVC\view\editAttributeView.php';
-
-//include_once "../class/attributeTypeClass.php";
-
-$modelobj=new attributes(1);
-$viewobj=new attributesview();
-$editattributeviewobj=new editattributes();
-
-
-
-$viewobj->showmodal($modelobj->readAll());
-$viewobj->showtable($modelobj->Row);
-
-if (strpos($_SERVER['REQUEST_URI'], 'editAttributeView?ID=') !== FALSE ) {
+<?php 
+require_once "../../class/DBHelper.php";
+$DB = new helper("localhost", "root", "","se1");
+if(isset($_GET["del"]))
+{
     
-    $editattributeviewobj->form($_GET['ID']);
+        $DB->delete("attribute", $_GET["ID"]);
+        header("location:../../pages/attributeTable.php");
     
 }
 
- include_once '..\adminPanel\basicPageFooter.php';
-
-
-
+else if(isset($_GET["updt"]))
+{
+    //echo "edit";
+    $DB->update("attribute",$arrayName = array('attributeName' => $_POST["attributeName"], 'type' => $_POST["attType"]),$_GET["attID"]);
+    //var_dump($_POST);
+    header("location:../../pages/attributeTable.php");
+}
+else if(isset($_GET["add"]))
+{
+    //var_dump($_POST);
+    $DB->insert("attribute",$arrayName = array('attributeName' => $_POST["attributeName"], 'type' => $_POST["attType"]));
+    
+    header("location:../../pages/attributeTable.php");
+}
 
 ?>

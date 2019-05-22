@@ -10,8 +10,8 @@ $data2 = $model->getTypes();
 
 
 $view->header();
-$view->addAttModal($data2);
-$view->showTable($data1);
+$view->editForm($data2);
+//$view->showTable($data1);
 //$view->showValuesEdit($data2,$data4);
 $view->footer();
 
