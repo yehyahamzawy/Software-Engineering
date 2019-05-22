@@ -59,8 +59,8 @@ function addLinkModal()
 <input id="inputText3" type="text" class="form-control" name = "friendlyName"  pattern="[A-Za-z]{3,}" title="Three or more characters with no spaces" required>
 
 <label for="inputText3" class="col-form-label">URL:</label>
-<input id="inputText3" type="text" class="form-control" name = "URL"  placeholder="https://example.com"
-  pattern="https://.*" required>
+<input id="inputText3" type="text" class="form-control" name = "URL"  
+   required>
 
 <label for="inputText3" class="col-form-label">Is Local?</label>
 
