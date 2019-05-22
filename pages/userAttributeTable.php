@@ -9,9 +9,9 @@ $model = new UTAttModel(1);
 $tableData = $model->readAllTable();
 $types =  $model->getUserTypes();
 $attributes =  $model->getAttributes();
-
+ 
 $view->header();
-$view->addUserAttModal($attributes,$types);
+$view->addUserAttModal($types,$attributes);
 $view->userAttTable($tableData);
 $view->footer();
 ?>

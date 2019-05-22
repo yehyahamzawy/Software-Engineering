@@ -18,9 +18,9 @@ else if(isset($_GET["updt"]))
 }
 else if(isset($_GET["add"]))
 {
-    
+    //var_dump($arr = array('value' => $_POST["value"], 'userID' => $_POST["userID"], 'userTypeOptionID' => $_POST["userTypeAttributeID"]));
     $DB->insert("uservalues",$arrayName = array('value' => $_POST["value"], 'userID' => $_POST["userID"], 'userTypeOptionID' => $_POST["userTypeAttributeID"]));
-    //var_dump($_POST);
+    //var_dump($arrayName);
     header("location:../../pages/valuesTable.php");
 }
 

@@ -71,7 +71,7 @@ function addValueModal($data1, $data2)
   </div>
 <div class="form-group">
 <label for="inputText3" class="col-form-label">Value</label>
-<input id="inputText3" type="text" class="form-control" name = "value"  pattern="[A-Za-z]{3,}" title="Three or more characters with no spaces" required>
+<input id="inputText3" type="text" class="form-control" name = "value"  pattern="[A-Za-z-@.]{3,40}" title="Three or more characters with no spaces" required>
 </div>
 <div class="form-group">
 <label for="inputText3" class="col-form-label">User</label>
@@ -190,7 +190,7 @@ function showValuesEdit($data, $users)
                                   <br>
                                   <div class="form-group">
                   <label for="inputText3" class="col-form-label">value</label>
-                  <input id="inputText3" type="text" class="form-control" name = "value"  pattern="[A-Za-z]{3,}" title="Three or more characters with no spaces" required>
+                  <input id="inputText3" type="text" class="form-control" name = "value"  pattern="[A-Za-z_@.]{3,40}" title="Three or more characters with no spaces" required>
               </div>
               <br>                                         
                <label for="inputText3" value=".form-control-lg" class="col-form-label">users</label>

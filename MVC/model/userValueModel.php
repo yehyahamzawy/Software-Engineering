@@ -72,7 +72,7 @@ class userValueModel implements CRUD
 
 	function readAllModalUsers(){
 		$indexedArray = array();
-		$innerJoinSelection = "SELECT user.ID,usertypeattributes.userTypeID, usertypeattributes.attributeID, attribute.attributeName, usertype.type, user.fName, user.lName FROM usertypeattributes INNER JOIN usertype ON usertypeattributes.userTypeID=usertype.ID INNER JOIN attribute ON usertypeattributes.attributeID=attribute.ID INNER JOIN user ON usertypeattributes.userTypeID=user.userTypeID WHERE usertypeattributes.isDeleted = 0 ";
+		$innerJoinSelection = "SELECT user.ID,usertypeattributes.userTypeID, usertypeattributes.attributeID, attribute.attributeName, usertype.type, user.fName, user.lName FROM usertypeattributes INNER JOIN usertype ON usertypeattributes.userTypeID=usertype.ID INNER JOIN attribute ON usertypeattributes.attributeID=attribute.ID INNER JOIN user ON usertypeattributes.userTypeID=user.userType WHERE usertypeattributes.isDeleted = 0 ";
 		
 		//echo $innerJoinSelection;
 		
@@ -105,9 +105,9 @@ class userValueModel implements CRUD
 	
 	}
 
-	function getAttributeName($userTypeAttributeID)
+	function getAttributeName($userTypeOptionID)
 	{
-		$attributeID = $this->DB->selectIndexedArray("attributeID", "usertypeattributes", "ID = $userTypeAttributeID");
+		$attributeID = $this->DB->selectIndexedArray("attributeID", "usertypeattributes", "ID = $userTypeOptionID");
 		$attributeName = $this->DB->selectIndexedArray("attributeName", "attribute", "ID = ". $attributeID["attributeID"]);
 		return $attributeName;
 	}
@@ -118,9 +118,9 @@ class userValueModel implements CRUD
 		return $userName;
 	}
 
-	function getUserType($userTypeAttributeID)
+	function getUserType($userTypeOptionID)
 	{
-		$userTypeID = $this->DB->selectIndexedArray("userTypeID", "usertypeattributes", "ID = $userTypeAttributeID");
+		$userTypeID = $this->DB->selectIndexedArray("userTypeID", "usertypeattributes", "ID = $userTypeOptionID");
 		$userTypeName = $this->DB->selectIndexedArray("type", "usertype", "ID = ". $userTypeID["userTypeID"] );
 
 		return $userTypeName;
