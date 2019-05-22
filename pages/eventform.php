@@ -26,14 +26,14 @@
         <!-- navbar -->
         <!-- ============================================================== -->
         <?php
-include '../dbheader.html';
+include '../dbheader.php';
 
 ?>
         <!-- ============================================================== -->
         <!-- end navbar -->
         <!-- ============================================================== -->
         <?php
-include '../dashboard.php';
+include '../dashboard.html';
 
 ?>
         <!-- ============================================================== -->
@@ -86,15 +86,12 @@ include '../dashboard.php';
                                         <form>
                                         <div class="form-group">
                                                 <label for="inputText3" class="col-form-label">Event Name</label>
-                                                <input id="inputText3" type="text" class="form-control">
+                                                <input id="inputText3" type="text" class="form-control" pattern="[A-Za-z]{3,}"title=" Three or more characters with no spaces" required>
                                             </div>
                                         <div class="form-group">
                                                     <label for="inputText3" class="col-form-label">Date</label>
                                                 <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
-                                                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker4" />
-                                                    <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker" >
-                                                        <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
-                                                    </div>
+                                                <input type="date" class="form-control datetimepicker-input"  min="2019-5-22" max="2030-12-31" required>                                                   
                                                 </div>
                                             </div>
 
@@ -117,15 +114,13 @@ include '../dashboard.php';
                                                 <input type="checkbox" class="custom-control-input"><span class="custom-control-label">Sponsor 2</span>
                                             </label>
                                             <label class="custom-control custom-checkbox custom-control-inline">
-                                                <input type="checkbox" class="custom-control-input"><span class="custom-control-label">Sponsor 3</span>
+                                                <input type="checkbox" class="custom-control-input"><span class="custom-control-label">No sponsors</span>
                                             </label>
                                             </div>
                                             <div class="form-group">
                                             <label for="inputText3" class="col-form-label">Description</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-</div>
-                                            <div class="col-sm-6 pl-0">
-                                                <p class="text-right">
+                                            <input type="text" class="form-control" id="exampleFormControlTextarea1" name='text'  style="height:250px;width:400px" pattern="[A-Za-z0-9][A-Za-z0-9 ]{2,}" required>                                            <div class="col-sm-6 pl-0">
+                                               <br> <p class="text-right">
                                                     <button type="submit" class="btn btn-space btn-primary">Submit</button>
                                                     <button class="btn btn-space btn-secondary">Cancel</button>
                                                 </p>
@@ -140,10 +135,7 @@ include '../dashboard.php';
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <<?php
-include '../dbfooter.html';
 
-?>
             <!-- ============================================================== -->
             <!-- end footer -->
             <!-- ============================================================== -->

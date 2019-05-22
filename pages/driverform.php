@@ -25,7 +25,7 @@
         <!-- navbar -->
         <!-- ============================================================== -->
         <?php
-include '../dbheader.html';
+include '../dbheader.php';
 
 ?>
         <!-- ============================================================== -->
@@ -33,7 +33,7 @@ include '../dbheader.html';
         <!-- ============================================================== -->
         <!-- ============================================================== -->
         <?php
-include '../dashboard.php';
+include '../dashboard.html';
 
 ?>
         <!-- ============================================================== -->
@@ -83,31 +83,34 @@ include '../dashboard.php';
                                     
                                     <div class="card-body">
                                         <form>
-                                            <div class="form-group">
+                                        <div class="form-group">
                                                 <label for="inputText3" class="col-form-label">First Name</label>
-                                                <input id="inputText3" type="text" class="form-control">
-                                            </div>
-                                            <div class="form-group">
+                                                <input id="inputText3" type="text" class="form-control"  pattern="[A-Za-z]{3,}"title=" Three or more characters with no spaces" required>
+                                                
+                                              </div>
+                                              <div class="form-group">
                                                 <label for="inputText3" class="col-form-label">Last Name</label>
-                                                <input  type="text" class="form-control">
-                                            </div>
+                                                <input id="inputText3" type="text" class="form-control"  pattern="[A-Za-z]{3,}"title=" Three or more characters with no spaces" required>
+                                                
+                                              </div>
+                                       
+                                           
                                             <div class="form-group">
                                                 <label for="inputEmail">Email address</label>
-                                                <input id="inputEmail" type="email" placeholder="name@example.com" class="form-control">
+                                                <input id="inputEmail" type="text" placeholder="name@example.com" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"required>
                                                
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputText4" class="col-form-label">Mobile Number</label>
-                                                <input id="inputText4" type="number" class="form-control" placeholder="Numbers">
+                                                <input id="inputText4" type="text" class="form-control" placeholder="Numbers" pattern="[0][1][0-9]{9}"title="11 numbers starts with 0 and 1"required>
+                                               
                                             </div>
                                             <div class="form-group">
                                                     <label for="inputText3" class="col-form-label">Date of Birth</label>
-                                                <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
-                                                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker4" />
-                                                    <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker" >
-                                                        <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
-                                                    </div>
-                                                </div>
+                                                <div class="input-group date" >
+                                                    <input type="date" class="form-control datetimepicker-input"  min="1940-12-31" max="2000-12-31" required>
+                                                   
+                                              
                                             </div>
                                             <div class="form-group">
                                                     <label for="inputText3" class="col-form-label">Address</label>
@@ -137,7 +140,7 @@ include '../dashboard.php';
                                                 </div>
                                             <div class="form-group">
                                                 <label for="inputText3" class="col-form-label">Job</label>
-                                                <input  type="text" class="form-control">
+                                                <input  type="text" class="form-control"pattern="[A-Za-z]{3,}"title=" Three or more characters with no spaces" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputText3" class="col-form-label">Experience</label>
@@ -160,7 +163,7 @@ include '../dashboard.php';
                                            
                                             <div class="form-group">
                                                 <label for="exampleFormControlTextarea1">More Information</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                                <input type="text" class="form-control" id="exampleFormControlTextarea1" name='text'  style="height:250px;width:400px" pattern="[A-Za-z0-9][A-Za-z0-9 ]{2,}" required>
                                             </div>
                                             <div class="col-sm-6 pl-0">
                                                 <p class="text-right">
@@ -176,10 +179,7 @@ include '../dashboard.php';
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <?php
-include '../dbfooter.html';
-
-?>
+  
             <!-- ============================================================== -->
             <!-- end footer -->
             <!-- ============================================================== -->

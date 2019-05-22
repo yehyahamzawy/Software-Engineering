@@ -26,7 +26,7 @@
         <!-- navbar -->
         <!-- ============================================================== -->
         <?php
-include '../dbheader.html';
+include '../dbheader.php';
 
 ?>
         <!-- ============================================================== -->
@@ -77,12 +77,12 @@ include '../dashboard.html';
                                         <form>
                                         
                                             <div class="form-group">
-                                                <label for="inputText3" class="col-form-label">First Name</label>
-                                                <input id="inputText3" type="text" class="form-control">
+                                                <label for="inputText3" class="col-form-label" >First Name</label>
+                                                <input id="inputText3" type="text" class="form-control"pattern="[A-Za-z]{3,}"title=" Three or more characters with no spaces" required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputText3" class="col-form-label">Last Name</label>
-                                                <input  type="text" class="form-control">
+                                                <input  type="text" class="form-control" pattern="[A-Za-z]{3,}"title=" Three or more characters with no spaces" required>
 </div>
 <div class="form-group">
                                                     <label for="inputText3" class="col-form-label">Data Type</label>
