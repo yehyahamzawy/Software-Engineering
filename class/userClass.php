@@ -8,7 +8,8 @@ include_once "CRUDinterface.php";
 include_once "userTypeClass.php";
 include_once "observerInterface.php";
 include_once "daysOffClass.php";
-class User implements CRUD,iObserver
+include_once "missionMember.php";
+class User implements CRUD,iObserver,iMissionMember
 {
 	private $fname;
 	private $lname;
@@ -49,13 +50,13 @@ class User implements CRUD,iObserver
 				$this->userTypeID=$Row['userType'];
 				$this->ID=$Row['ID'];
 				// $this->updatedAt=0;
-				echo 'user Found';
+				// echo 'user Found';
 				return;
 			}
 			
 			
 		}
-		echo 'not found';
+		// echo 'not found';
 	}
 		} 		
 		
@@ -107,7 +108,7 @@ class User implements CRUD,iObserver
 		$this->fname=$fname;
 		$this->lname=$lname;
 		$this->userTypeID=$usertype;
-		$this->ID= mysqli_insert_id($this->DB->connect);
+		$this->ID= mysqli_insert_id($this->DB->getConn());
 		daysOff::newRecord($this->ID);
 		// $sql="SELECT ID AS LastID FROM `user` WHERE ID = @@Identity";
 		// echo "x";
@@ -233,7 +234,7 @@ class User implements CRUD,iObserver
 
 function createinput($type){
 		if($type=5){
-			return"tala3 select";
+			$this->output[]="<input type='radio' name=''><input type='radio' name=''>";
 		}
 		else if($type=6){
 			return "tala3 check box";
@@ -244,22 +245,17 @@ function createinput($type){
 
 
 function Delete($id){
-	$this->updatedAt=date("Y-m-d H:i:s");
-	$sql="SELECT * FROM user WHERE isDeleted=0";
-		$result=$this->DB->db_query($sql);
-		while($Row = mysqli_fetch_array($result)){
+	
 
-			if(sha1($Row['ID'])==$id){
-						echo "x";
-
-				$sql="UPDATE user SET isDeleted=1,updatedAt='$this->updatedAt' WHERE ID=".$Row['ID'];
-				$result=$this->DB->db_query($sql);
-				return;
-			}
+				$sql="UPDATE user SET isDeleted=1,updatedAt='$this->updatedAt' WHERE ID=".$id;
+				// $result=$this->DB->db_query($sql);
+				database::static_query($sql);
+				
+			
 
 
 	
-}
+
 }
 public function updateMission(Mission $subject) {
       notification::create($this->getID(),$subject->getmakerID(),$this->getUserType());

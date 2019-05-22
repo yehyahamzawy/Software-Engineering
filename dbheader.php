@@ -85,6 +85,11 @@
             <script type="text/javascript">
                 $(document).ready(function(){
 
+function storeurl() {
+varurl = document.URL;
+return varurl;
+}
+
                      $('.indicator').hide();
 
                      setInterval(function(){ 
@@ -95,6 +100,7 @@
                             
                             success: function(data){
                                 // alert(data[3]);
+                                // alert(data);
                                 var obj = JSON.parse(data);
                                     // var x="";
                                     var link="";
@@ -108,7 +114,8 @@
                                           link+= obj[i].senderFname+ " "+ obj[i].senderLname;
                                           link+="</span>";
                                           link+=obj[i].type;
-                                          link+="</div></div></a>";
+                                          link+="<a href='../MVC/controller/readNotification.php?ID="+ obj[i].id+"&prev="+ storeurl()+"'> ";
+                                          link+="Got it</a></div></div></a>";
                                           // document.getElementsByClassName("notList").innerHTML = link;
                                           $('.notification-list').html(link);
                                          // <a href="#" class="list-group-item list-group-item-action ">

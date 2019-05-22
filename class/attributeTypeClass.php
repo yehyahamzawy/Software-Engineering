@@ -74,11 +74,11 @@ class attributeType implements CRUD
 	function showInput($type,$id,$attID){
 		// unsert($this->output);
 		if($type==1)
-			echo "<input type='email' name=".$id.">";
+			echo "<input type='email' name=".$id." required>";
 		elseif($type==2)
-			echo "<input type='text' name=".$id.">";
+			echo "<input type='text' name=".$id." required>";
 		elseif($type==3)
-			echo "<input type='number' name=".$id.">";
+			echo "<input type='number' name=".$id." required>";
 		elseif($type==4)
 			showSelect($id,$attID);
 		elseif($type==5)

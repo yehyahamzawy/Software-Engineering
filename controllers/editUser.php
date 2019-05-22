@@ -16,6 +16,6 @@ $user=new User($userID);
 
 $user->Update($fname,$lname,$type,$userID);
 // echo "x";
-header('location:userstable.php');
+header('location:../pages/usertable.php');
 
  ?>

@@ -2,7 +2,7 @@
 include_once "../class/userClass.php";
 include_once "../class/notificationClass.php";
 include_once "../class/notifyTypeClass.php";
-$recID=220;
+$recID=224;
 
 
 

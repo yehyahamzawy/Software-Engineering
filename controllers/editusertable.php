@@ -76,7 +76,7 @@ include '../dashboard.php';
                                                 
                                             <div class="form-group">
                                                 <label for="inputText3" class="col-form-label">First Name</label>
-                                                <input id="inputText3" type="text" class="form-control" name='fname'>
+                                                <input id="inputText3" type="text" class="form-control" name='fname'  pattern="[A-Za-z]{3,}"title=" Three or more characters with no spaces" required>
                                                 <?php   
                                                     $userID=$_GET['ID'];
 
@@ -84,7 +84,7 @@ include '../dashboard.php';
                                                 <input type="hidden" name="userID" value=<?php  echo $userID ?> >
                                             </div>
                                             <div class="form-group">
-                                                <label for="inputText3" class="col-form-label">Last Name</label>
+                                                <label for="inputText3" class="col-form-label" pattern="[A-Za-z]{3,}"title=" Three or more characters with no spaces" required>Last Name</label>
                                                 <input  type="text" class="form-control" name='lname'>
 </div>
 <div class="form-group">
