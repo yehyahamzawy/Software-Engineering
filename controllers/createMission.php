@@ -17,16 +17,16 @@ $desc=$_POST['info'];
 
 
 
-$doctor=new Doctor($doctorID);
+$doctor=new User($doctorID);
 
 
-$assistant=new Assistant($assistantID);
+$assistant=new User($assistantID);
 
 echo $assistant->getfName();
 
-$psych=new Psychologist($psychID);
+$psych=new User($psychID);
 
-$driver=new Driver($driverID );
+$driver=new User($driverID );
 
 $mission=new Mission($missionName,$date,$makerID,$desc);
 $mission->create($doctor,$assistant,$driver,$psych);

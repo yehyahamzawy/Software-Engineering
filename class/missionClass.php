@@ -39,7 +39,7 @@ include_once "notificationClass.php";
   function ReadAll(){}
   function ReadInSelect(){}
   function Delete($id){}
-   function create(Doctor $doctor,Assistant $assistant, Driver $driver,psychologist $psych){
+   function create( $doctor, $assistant, $driver, $psych){
     
     
     $this->doctor=$doctor;
@@ -49,11 +49,11 @@ include_once "notificationClass.php";
     $this->attachAll(); 
     
 
-    $sql1="INSERT INTO missionParticipants(userID,roleID,missionID) VALUES (".$doctor->getID().",1,$this->ID)";
-    $sql2="INSERT INTO missionParticipants(userID,roleID,missionID) VALUES (".$assistant->getID().",2,$this->ID)";
-    $sql3="INSERT INTO missionParticipants(userID,roleID,missionID) VALUES (".$driver->getID().",3,$this->ID)";
-    $sql4="INSERT INTO missionParticipants(userID,roleID,missionID) VALUES (".$psych->getID().",4,$this->ID)";
-    ;
+    $sql1="INSERT INTO missionParticipants(userID,roleID,missionID) VALUES (".$doctor->getID().",".$doctor->getUserType().",$this->ID)";
+    $sql2="INSERT INTO missionParticipants(userID,roleID,missionID) VALUES (".$assistant->getID().",".$assistant->getUserType().",$this->ID)";
+    $sql3="INSERT INTO missionParticipants(userID,roleID,missionID) VALUES (".$driver->getID().",".$driver->getUserType().",$this->ID)";
+    $sql4="INSERT INTO missionParticipants(userID,roleID,missionID) VALUES (".$psych->getID().",".$psych->getUserType().",$this->ID)";
+    
     $this->DB->db_query($sql1);
     
     $this->DB->db_query($sql2);
@@ -74,19 +74,19 @@ include_once "notificationClass.php";
  		return $this->date;
  	}
  function attach(User $user){}
- 	function attachDoctor(Doctor $doctor){
+ 	function attachDoctor(User $doctor){
  		 $this->observers[] = $doctor;
 
  	}
-  function attachAssistant(Assistant $assistant){
+  function attachAssistant(User $assistant){
      $this->observers[] = $assistant;
 
   }
-  function attachPsychologist(psychologist $psych){
+  function attachPsychologist(User $psych){
      $this->observers[] = $psych;
 
   }
-  function attachDriver(Driver $driver){
+  function attachDriver(User $driver){
      $this->observers[] = $driver;
 
   }

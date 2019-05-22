@@ -1,14 +1,14 @@
 <?php
 session_start();
 
-$Connection= new mysqli("localhost", "root", "", "olddb");
+$Connection= new mysqli("localhost", "root", "", "newdb");
             
 $sql1 = "SELECT uservalues.value, uservalues.userID FROM uservalues INNER JOIN usertypeattributes ON 
-uservalues.uniqueUserAttributeID=usertypeattributes.ID INNER JOIN attribute ON 
+uservalues.userTypeAttributeID=usertypeattributes.ID INNER JOIN attribute ON 
 attribute.ID=usertypeattributes.attributeID WHERE attribute.type = 'email'";
 
 $sql2 = "SELECT uservalues.value, uservalues.userID FROM uservalues INNER JOIN usertypeattributes ON 
-uservalues.uniqueUserAttributeID=usertypeattributes.ID INNER JOIN attribute ON 
+uservalues.userTypeAttributeID=usertypeattributes.ID INNER JOIN attribute ON 
 attribute.ID=usertypeattributes.attributeID WHERE attribute.type = 'password'";
 
 $emails = mysqli_query($Connection, $sql1);

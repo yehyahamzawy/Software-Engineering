@@ -8,17 +8,17 @@
  		
  	function __construct()
 	{
-		$this->db_connect();
+		self::db_connect();
 		
 	}
   function getConn(){
     return self::$connect;
   }
 	
- 	function db_connect(){
+ static	function db_connect(){
     if(!self::$connect){
       
- 		self::$connect = new mysqli("localhost", "root", "","se");
+ 		self::$connect = new mysqli("localhost", "root", "","se1");
 
 
 	if (self::$connect->connect_error) {
