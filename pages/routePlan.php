@@ -24,7 +24,7 @@
         <!-- navbar -->
         <!-- ============================================================== -->
         <?php
-include '../dbheader.html';
+include '../dbheader.php';
 
 ?>
         <!-- ============================================================== -->
@@ -32,7 +32,7 @@ include '../dbheader.html';
         <!-- ============================================================== -->
         <!-- ============================================================== -->
         <?php
-include '../dashboard.php';
+include '../dashboard.html';
  
  include_once "../class/userClass.php";
   
@@ -76,29 +76,23 @@ include '../dashboard.php';
                                    <div class="card-body">
 
                                     <div class="form-group" >
-                                         <label for="inputText3" class="col-form-label">Name/title</label>
+                                         <label for="inputText3" class="col-form-label" pattern="[A-Za-z][A-Za-z ]{2,}" required>Name/title</label>
                                     <div class="input-group " id="datetimepicker4" data-target-input="nearest">
                                         <input type="text" name="name" class="form-control datetimepicker-input" data-target="#datetimepicker4" />
-                                        <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker" >
-                                            
-
-                                        </div>
+                                        
                                     </div>
 
                                         <label for="inputText3" class="col-form-label">day</label>
                                     <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
-                                        <input type="text" name="date" class="form-control datetimepicker-input" data-target="#datetimepicker4" />
-                                        <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker" >
-                                            <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
-                                        </div>
-                                    </div>
+                                        <input type="date" name="date" class="form-control datetimepicker-input" data-target="#datetimepicker4" min='2019-05-22' max='2030-12-31'required />
+                                        
                                 </div></div>
                                 <br>
                         <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12"style="margin-left:50px">
                             <div class="card">
                                 <h5 class="card-header">Doctors</h5>
                                 <div class="card-body">
-                                    <select name="doctor" class="selectpicker dropup">
+                                    <select name="doctor" class="selectpicker dropup" required>
                                         <?php 
                                             $x=User::readType(3);
                                             foreach ($x as $k) {
@@ -114,7 +108,7 @@ include '../dashboard.php';
                             <div class="card">
                                 <h5 class="card-header">Pyshcologist</h5>
                                 <div class="card-body">
-                                    <select name="psych" class="selectpicker dropup">
+                                    <select name="psych" class="selectpicker dropup" required>
                                         <?php 
                                             $x=User::readType(4);
                                             foreach ($x as $k) {
@@ -132,7 +126,7 @@ include '../dashboard.php';
                             <div class="card">
                                 <h5 class="card-header">Assistant</h5>
                                 <div class="card-body" >
-                                    <select name="assistant" class="selectpicker dropup">
+                                    <select name="assistant" class="selectpicker dropup" required>
                                         <?php 
                                             $x=User::readType(2);
                                             foreach ($x as $k) {
@@ -163,7 +157,7 @@ include '../dashboard.php';
                         </div>
                         <div class="form-group" style="margin-left:50px">
                             <label for="exampleFormControlTextarea1" >additional Information</label>
-                            <textarea name="description"class="form-control" id="exampleFormControlTextarea1" rows="3" style="height:250px;width:400px"></textarea>
+                            <input type="text" name="description"class="form-control" id="exampleFormControlTextarea1" rows="3" style="height:250px;width:400px" pattern="[A-Za-z0-9][A-Za-z0-9 ]{2,}" required>
                         </div>
                         <!-- div class="form-group" style="margin-left: 50px">
                             <label for="exampleFormControlTextarea1">Location</label>

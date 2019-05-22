@@ -1,4 +1,5 @@
 <?php 
+include '../MVC/controller\validations.php';
 include_once "../class/userClass.php";
 include "../class/missionClass.php";
 include "../class/doctorClass.php";

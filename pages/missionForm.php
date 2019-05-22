@@ -1,5 +1,12 @@
+<?php
+include '../dashboard.php';
+// include_once '../class/userClass.php';
+// include_once '../class/userTypeClass.php';
+include_once '../MVC/view/userView.php';
+?>
 <!doctype html>
 <html lang="en">
+
 <?php $_SESSION['ID']=5; ?>
 <head>
     <!-- Required meta tags -->
@@ -36,13 +43,7 @@
         <!-- end navbar -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
-        <?php
-include '../dashboard.php';
-// include_once '../class/userClass.php';
-// include_once '../class/userTypeClass.php';
-include_once '../MVC/view/userView.php';
-
-?>
+       
         <!-- ============================================================== -->
         <!-- ============================================================== -->
         <!-- wrapper  -->

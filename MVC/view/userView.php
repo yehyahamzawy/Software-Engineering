@@ -58,9 +58,9 @@ class userView
 		echo "<div  id='missionForm'><form action='../controllers/createMission.php' method='POST'>";
 
 		echo "<h4>Mission name:</h4>";
-		echo "<input type='text'  name='name'><br>";
+		echo "<input type='text'  name='name' pattern='[A-Za-z][A-Za-z ]{2,}' title='Three or more characters' required><br> ";
 		echo "<h4>Mission date:</h4>";
-		echo "<input type='text'  name='date'>";
+		echo "<input type='date'  name='date' min='2019-05-22' max='2030-12-31' required>";
 		echo "<h4>Doctor:</h4>";
 		$this->showDoctorDropDown();
 		echo "<br>";
@@ -78,8 +78,10 @@ class userView
 		echo "<br>";
 		echo "<br>";
 		echo "<h4>Description and Location</h4>";	
-		echo "<input type='textarea' style='width: 300px; height: 200px' name='info'><br><br>";
+		
+		echo "<input type='text' style='width: 300px; height: 200px' name='info' pattern='[A-Za-z0-9][A-Za-z0-9 ]{2,}' title='Three or more characters' required><br><br>";
 		echo "<input type='submit' ></form></div>";
+		
 	}
 
 
