@@ -124,17 +124,18 @@ class userView
 	function ReadUsers($var){
 		
                                                     foreach ($var as $key) {
+                                                    	$type=new userType($key['userType']);
                                                             echo " <tr> <th scope='row'>".$key['ID']."</th>
                                                 <td>".$key['fName']."</td>
                                                 <td>".$key['lName']."</td>
-                                                <td> ".$key['userType']."</td>
+                                                <td> ".$type->ReadTypeName()."</td>
                                                 <td>".$key['isDeleted']."</td>
                                                 <td>".$key['createdAt']."</td>
                                                 <td>".$key['updatedAt']."</td>
                                                 <td class='iconrow'>
                                                 <a href='../controllers/editusertable.php?ID=".sha1($key['ID'])."'> 
                                                 <i class='fas fa-edit' ></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                   <a href='..controllers/deleteUser.php?ID=".sha1($key['ID'])."'> <i class='fas fa-trash'></i></a>
+                                                   <a href='../controllers/deleteUser.php?ID=".sha1($key['ID'])."'> <i class='fas fa-trash'></i></a>
                                                      
                                                 </td>
                                             </tr>";
