@@ -14,13 +14,21 @@ class accessCheck
         }
         function checkAccess()
         {
-            $linkUserTypeID = $this->DB->selectFetchArray("userTypeID","permission","linkID = ".$_SESSION["pageID"]);
-            $sessionUserTypeID = $this->DB->selectFetchArray("userType","user","ID = ". $_SESSION["userID"]);
             
-            if($linkUserTypeID["userTypeID"]!=$sessionUserTypeID["userType"])
+            $access = 0;
+            $linkUserTypeID = $this->DB->selectIndexedArray("userTypeID","permission","linkID = ".$_SESSION["pageID"]);
+            $sessionUserTypeID = $this->DB->selectFetchArray("userType","user","ID = ". $_SESSION["userID"]);
+           
+            foreach($linkUserTypeID as $row){
+            if($row["userTypeID"]==$sessionUserTypeID["userType"])
             {
-                header('location:denied.php');
+                $access = 1;
             }
+        }
+        if($access == 0)
+        {
+            header("location:../pages/denied.php");
+        }
         }
     }
 

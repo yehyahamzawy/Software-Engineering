@@ -31,7 +31,7 @@ while($Row = mysqli_fetch_array($emails))
                // echo "success <br>";
                 $_SESSION["userID"] = $Row2["userID"];
                 //echo $_SESSION["ID"];
-                header('location:permissionTable.php');
+                header('location:viewSchedules.php');
                 break;
             }
         }
