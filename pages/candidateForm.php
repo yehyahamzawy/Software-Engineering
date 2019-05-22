@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
  
@@ -51,100 +52,100 @@ include '../dashboard.php';
                    <div style="text-align: center">
         <form method="POST" action='../controllers/candidateFormController.php'>
     <h1 style="text-align: center">Interview Form</h1>
-    FullName:<input type="text" name="fullname"><br><br>
-    Email:<input type="email" name="email"><br><br>
-    Number:<input type="number" name="num"><br><br>
+    FullName:<input type="text" name="fullname" pattern="[A-Za-z][A-Za-z ]{2,}"title=" Three or more characters " required><br><br>
+    Email:<input type="text" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"required><br><br>
+    Mobile:<input type="text" name="num" pattern="[0][1][0-9]{9}"title="11 numbers starts with 0 and 1"required><br><br>
     <h4>Experience</h4>
  <input type="radio" name="Experience" value="5"> Excellent
-<input type="radio" name="Experience" value="4"> Very Good
+<input type="radio" name="Experience" value="4" checked=""> Very Good
 <input type="radio" name="Experience" value="3"> Good
 <input type="radio" name="Experience" value="2"> Poor
 <input type="radio" name="Experience" value="1"> Very Poor<br>
-<textarea name="expComm"></textarea>
+<input type="text" name="expComm"pattern="[A-Za-z0-9][A-Za-z0-9 ]{2,}" required style="height:120px">
 <h4>Technicality</h4>
     <input type="radio" name="Technicality" value="5"> Excellent
-<input type="radio" name="Technicality" value="4"> Very Good
+<input type="radio" name="Technicality" value="4" checked=""> Very Good
 <input type="radio" name="Technicality" value="3"> Good
 <input type="radio" name="Technicality" value="2"> Poor
 <input type="radio" name="Technicality" value="1"> Very Poor<br>
-<textarea name="TechnicalityComm"></textarea>
+<input type="text" name="TechnicalityComm"pattern="[A-Za-z0-9][A-Za-z0-9 ]{2,}" required style="height:120px">
 <h4>Ability to analyze and summarize</h4>
     <input type="radio" name="Analyze" value="5"> Excellent
-<input type="radio" name="Analyze" value="4"> Very Good
+<input type="radio" name="Analyze" value="4" checked=""> Very Good
 <input type="radio" name="Analyze" value="3"> Good
 <input type="radio" name="Analyze" value="2"> Poor
 <input type="radio" name="Analyze" value="1"> Very Poor<br>
-<textarea name="AnalyzeComm"></textarea>
+<input type="text" name="AnalyzeComm" pattern="[A-Za-z0-9][A-Za-z0-9 ]{2,}" required style="height:120px">
 <h4>Systematic Thinking</h4>
     <input type="radio" name="Thinking" value="5"> Excellent
-<input type="radio" name="Thinking" value="4"> Very Good
+<input type="radio" name="Thinking" value="4" checked=""> Very Good
 <input type="radio" name="Thinking" value="3"> Good
 <input type="radio" name="Thinking" value="2"> Poor
 <input type="radio" name="Thinking" value="1"> Very Poor<br>
-<textarea name="ThinkingComm"></textarea>
+<input type="text" name="ThinkingComm" pattern="[A-Za-z0-9][A-Za-z0-9 ]{2,}" required style="height:120px">
 <h4>Flexibility/Adaptability</h4>
     <input type="radio" name="Flexibility" value="5"> Excellent
-<input type="radio" name="Flexibility" value="4"> Very Good
+<input type="radio" name="Flexibility" value="4" checked=""> Very Good
 <input type="radio" name="Flexibility" value="3"> Good
 <input type="radio" name="Flexibility" value="2"> Poor
 <input type="radio" name="Flexibility" value="1"> Very Poor<br>
-<textarea name="FlexibilityComm"></textarea>
+<input type="text" name="FlexibilityComm" pattern="[A-Za-z0-9][A-Za-z0-9 ]{2,}" required style="height:120px">
 <h4>Curiosity and open-mindedness</h4>
     <input type="radio" name="Curiosity" value="5"> Excellent
-<input type="radio" name="Curiosity" value="4"> Very Good
+<input type="radio" name="Curiosity" value="4" checked=""> Very Good
 <input type="radio" name="Curiosity" value="3"> Good
 <input type="radio" name="Curiosity" value="2"> Poor
 <input type="radio" name="Curiosity" value="1"> Very Poor<br>
-<textarea name="CuriosityComm"></textarea>
+<input type="text" name="CuriosityComm"pattern="[A-Za-z0-9][A-Za-z0-9 ]{2,}" required style="height:120px">
 <h4>Interest in the job</h4>
     <input type="radio" name="Interest" value="5"> Excellent
-<input type="radio" name="Interest" value="4"> Very Good
+<input type="radio" name="Interest" value="4" checked=""> Very Good
 <input type="radio" name="Interest" value="3"> Good
 <input type="radio" name="Interest" value="2"> Poor
 <input type="radio" name="Interest" value="1"> Very Poor<br>
-<textarea name="InterestComm"></textarea>
+<input type="text" name="InterestComm"pattern="[A-Za-z0-9][A-Za-z0-9 ]{2,}" required style="height:120px">
 <h4>Authority</h4>
     <input type="radio" name="Authority" value="5"> Excellent
-<input type="radio" name="Authority" value="4"> Very Good
+<input type="radio" name="Authority" value="4" checked=""> Very Good
 <input type="radio" name="Authority" value="3"> Good
 <input type="radio" name="Authority" value="2"> Poor
 <input type="radio" name="Authority" value="1"> Very Poor<br>
-<textarea name="AuthorityComm"></textarea>
+<input type="text" name="AuthorityComm" pattern="[A-Za-z0-9][A-Za-z0-9 ]{2,}" required style="height:120px">
 <h4>Able to deal with responsibility</h4>
     <input type="radio" name="responsibility" value="5"> Excellent
-<input type="radio" name="responsibility" value="4"> Very Good
+<input type="radio" name="responsibility" value="4" checked=""> Very Good
 <input type="radio" name="responsibility" value="3"> Good
 <input type="radio" name="responsibility" value="2"> Poor
 <input type="radio" name="responsibility" value="1"> Very Poor<br>
-<textarea name="responsibilityComm"></textarea>
+<input type="text" name="responsibilityComm" pattern="[A-Za-z0-9][A-Za-z0-9 ]{2,}" required style="height:120px">
 <h4>Spirit initiative /resourcefulness</h4>
     <input type="radio" name="Spirit" value="5"> Excellent
-<input type="radio" name="Spirit" value="4"> Very Good
+<input type="radio" name="Spirit" value="4" checked=""> Very Good
 <input type="radio" name="Spirit" value="3"> Good
 <input type="radio" name="Spirit" value="2"> Poor
 <input type="radio" name="Spirit" value="1"> Very Poor<br>
-<textarea name="SpiritComm"></textarea>
+<input type="text" name="SpiritComm" pattern="[A-Za-z0-9][A-Za-z0-9 ]{2,}" required style="height:120px">
 <h4>Interpersonal Skills</h4>
     <input type="radio" name="Interpersonal" value="5"> Excellent
-<input type="radio" name="Interpersonal" value="4"> Very Good
+<input type="radio" name="Interpersonal" value="4" checked=""> Very Good
 <input type="radio" name="Interpersonal" value="3"> Good
 <input type="radio" name="Interpersonal" value="2"> Poor
 <input type="radio" name="Interpersonal" value="1"><br>
-<textarea name="InterpersonalComm"></textarea>
+<input type="text" name="InterpersonalComm" pattern="[A-Za-z0-9][A-Za-z0-9 ]{2,}" required style="height:120px">
     <h4>Attitude</h4>
     <input type="radio" name=" Attitude"value="5"> Excellent
-<input type="radio" name="Attitude" value="4"> Very Good
+<input type="radio" name="Attitude" value="4" checked=""> Very Good
 <input type="radio" name="Attitude" value="3"> Good
 <input type="radio" name="Attitude" value="2"> Poor
 <input type="radio" name="Attitude" value="1"> Very Poor<br>
-<textarea name="AttitudeComm"></textarea>
+<input type="text" name="AttitudeComm" pattern="[A-Za-z0-9][A-Za-z0-9 ]{2,}" required style="height:120px">
 <h4>Able to express/handle herself/himself</h4>
     <input type="radio" nahandleme="handle" value="5"> Excellent
-<input type="radio" name="handle" value="4"> Very Good
+<input type="radio" name="handle" value="4" checked=""> Very Good
 <input type="radio" name="handle" value="3"> Good
 <input type="radio" name="handle" value="2"> Poor
 <input type="radio" name="handle" value="1"> Very Poor<br>
-<textarea name="handleComm"></textarea><br>
+<input type="text" name="handleComm" pattern="[A-Za-z0-9][A-Za-z0-9 ]{2,}" required style="height:120px"><br>
 <input type="submit" name="sub">    
 </form>
 </div>

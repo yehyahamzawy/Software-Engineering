@@ -1,4 +1,10 @@
 <!doctype html>
+<?php
+
+include "../MVC/controller/validations.php"
+
+
+?>
 <html lang="en">
  
 <head>
@@ -25,16 +31,17 @@
         <!-- navbar -->
         <!-- ============================================================== -->
         <?php
-include '../dbheader.html';
+include '../dbheader.php';
+
+?>
+<?php
+include '../dashboard.html';
 
 ?>
         <!-- ============================================================== -->
         <!-- end navbar -->
         <!-- ============================================================== -->
-        <?php
-include '../dashboard.php';
-
-?>
+ 
         <!-- ============================================================== -->
         <!-- ============================================================== -->
         <!-- wrapper  -->
@@ -81,45 +88,46 @@ include '../dashboard.php';
                                 <div class="card">
                                     
                                     <div class="card-body">
-                                        <form>
+                                    <div class="card-body">
+                                    <form method="post" action="<?php $_SERVER["PHP_SELF"];?>">
                                             <div class="form-group">
                                                 <label for="inputText3" class="col-form-label">First Name</label>
-                                                <input id="inputText3" type="text" class="form-control">
-                                            </div>
-                                            <div class="form-group">
+                                                <input id="inputText3" type="text" class="form-control"  pattern="[A-Za-z]{3,}"title=" Three or more characters with no spaces" required>
+                                                
+                                              </div>
+                                              <div class="form-group">
                                                 <label for="inputText3" class="col-form-label">Last Name</label>
-                                                <input  type="text" class="form-control">
-                                            </div>
+                                                <input id="inputText3" type="text" class="form-control"  pattern="[A-Za-z]{3,}"title=" Three or more characters with no spaces" required>
+                                                
+                                              </div>
+                                       
+                                           
                                             <div class="form-group">
                                                 <label for="inputEmail">Email address</label>
-                                                <input id="inputEmail" type="email" placeholder="name@example.com" class="form-control">
+                                                <input id="inputEmail" type="text" placeholder="name@example.com" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"required>
                                                
                                             </div>
                                             <div class="form-group">
                                                 <label for="inputText4" class="col-form-label">Mobile Number</label>
-                                                <input id="inputText4" type="number" class="form-control" placeholder="Numbers">
+                                                <input id="inputText4" type="text" class="form-control" placeholder="Numbers" pattern="[0][1][0-9]{9}"title="11 numbers starts with 0 and 1"required>
+                                               
                                             </div>
                                             <div class="form-group">
                                                     <label for="inputText3" class="col-form-label">Date of Birth</label>
-                                                <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
-                                                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker4" />
-                                                    <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker" >
-                                                        <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
-                                                    </div>
-                                                </div>
+                                                <div class="input-group date" >
+                                                    <input type="date" class="form-control datetimepicker-input"  min="1940-12-31" max="2000-12-31" required>
+                                                   
+                                              
                                             </div>
                                             <div class="form-group">
-                                                <label for="inputText4" class="col-form-label">Your medical registration number</label>
-                                                <input id="inputText4" type="number" class="form-control" placeholder="Numbers">
+                                                <label for="inputText4" class="col-form-label" >Your medical registration number</label>
+                                                <input id="inputText4" type="number" class="form-control" placeholder="Numbers" min="0" max="999999" required>
                                             </div>
-                                            <div class="custom-file mb-3">
-                                                <input type="file" class="custom-file-input" id="customFile">
-                                                <label class="custom-file-label" for="customFile">Your Photo</label>
-                                            </div>
+                                           
                                             <div class="form-group">
                                                 <label for="inputText3" class="col-form-label">Specialist</label>
                                                 
-                                                <select class="selectpicker dropup" multiple >
+                                                <select class="browser-default custom-select" >
                                                     
                                                         <option>Allergy Specialist</option>
                                                         <option>Pediatrician</option>
@@ -127,10 +135,9 @@ include '../dashboard.php';
                                                     </select>
                                                     </div>
                                             <div class="form-group">
-                                                    <label for="inputText3" class="col-form-label">Address</label>
-                                                    <br>
+                                                
                                                     <label >Country</label>
-                                                    <select class="selectpicker dropup"  >
+                                                    <select class="browser-default custom-select"  >
                                                         
                                                             <option>Egypt</option>
                                                             <option>France</option>
@@ -139,14 +146,14 @@ include '../dashboard.php';
                                                         <br>
                                                         <label for="inputText3" class="col-form-label">Gouvernement</label>
 
-                                                        <select class="selectpicker dropup">
+                                                        <select class="browser-default custom-select">
                                                                 <option>Alex</option>
                                                                 <option>Giza</option>
                                                                 <option>Cairo</option>
                                                             </select>
                                                             <br>
                                                             <label for="inputText3" class="col-form-label">City</label>
-                                                            <select class="selectpicker dropup">
+                                                            <select class="browser-default custom-select">
                                                                     <option>Shobra</option>
                                                                     <option>Maadi</option>
                                                                     <option>Nasr City</option>
@@ -155,7 +162,7 @@ include '../dashboard.php';
                                                 <div class="form-group">
                                                     <label for="inputText3" class="col-form-label">Languages you can speak</label>
                                                     
-                                                    <select class="selectpicker dropup" multiple >
+                                                    <select class="custom-select" multiple required>
                                                         
                                                             <option>English</option>
                                                             <option>Arabic</option>
@@ -175,15 +182,13 @@ include '../dashboard.php';
                                                         <input type="radio" name="radio-inline" class="custom-control-input"><span class="custom-control-label">No Experience</span>
                                                     </label>
                                             </div>
-                                            <div class="custom-file mb-3">
-                                                <input type="file" class="custom-file-input" id="customFile">
-                                                <label class="custom-file-label" for="customFile">Upload Your Certificate Copies</label>
-                                            </div>
+                                           
                                             
                                            
                                             <div class="form-group">
                                                 <label for="exampleFormControlTextarea1">More Information</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                                <textarea type="text" class="form-control" id="exampleFormControlTextarea1" rows="3" name="message"></textarea>
+                                                <span class="error"style="color:red"><?php echo $message_error ?>   </span>
                                             </div>
                                             <div class="col-sm-6 pl-0">
                                                 <p class="text-right">
@@ -199,10 +204,7 @@ include '../dashboard.php';
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <<?php
-include '../dbfooter.html';
-
-?>
+  
             <!-- ============================================================== -->
             <!-- end footer -->
             <!-- ============================================================== -->
@@ -222,38 +224,7 @@ include '../dbfooter.html';
     <script src="../assets/vendor/datepicker/datepicker.js"></script>
     
     <script>
-    $(function(e) {
-        "use strict";
-        $(".date-inputmask").inputmask("dd/mm/yyyy"),
-            $(".phone-inputmask").inputmask("(999) 999-9999"),
-            $(".international-inputmask").inputmask("+9(999)999-9999"),
-            $(".xphone-inputmask").inputmask("(999) 999-9999 / x999999"),
-            $(".purchase-inputmask").inputmask("aaaa 9999-****"),
-            $(".cc-inputmask").inputmask("9999 9999 9999 9999"),
-            $(".ssn-inputmask").inputmask("999-99-9999"),
-            $(".isbn-inputmask").inputmask("999-99-999-9999-9"),
-            $(".currency-inputmask").inputmask("$9999"),
-            $(".percentage-inputmask").inputmask("99%"),
-            $(".decimal-inputmask").inputmask({
-                alias: "decimal",
-                radixPoint: "."
-            }),
 
-            $(".email-inputmask").inputmask({
-                mask: "*{1,20}[.*{1,20}][.*{1,20}][.*{1,20}]@*{1,20}[*{2,6}][*{1,2}].*{1,}[.*{2,6}][.*{1,2}]",
-                greedy: !1,
-                onBeforePaste: function(n, a) {
-                    return (e = e.toLowerCase()).replace("mailto:", "")
-                },
-                definitions: {
-                    "*": {
-                        validator: "[0-9A-Za-z!#$%&'*+/=?^_`{|}~/-]",
-                        cardinality: 1,
-                        casing: "lower"
-                    }
-                }
-            })
-    });
     </script>
 </body>
  

@@ -44,6 +44,9 @@ include '../dashboard.php';
                         <!-- ============================================================== -->
                         <!-- pageheader  -->
                         <!-- ============================================================== -->
+                        <div class="card">
+                                    
+                                    <div class="card-body">
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="page-header" id="top">
@@ -81,20 +84,16 @@ include '../dashboard.php';
                                     <form action='../MVC/controller/requestVacationController.php' method='post' >
                                     <div class="form-group">
                                         <label for="inputText3" class="col-form-label">  From</label>
-                                    <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
-                                        <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker4" name='from'/>
-                                        <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker" >
-                                            <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
-                                        </div>
+                                    <div class="input-group date" id="datetimepicker4" >
+                                        <input type="date" class="form-control datetimepicker-input"  name='from'min='2019-05-22' max='2030-12-31' required >
+                                        
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputText3" class="col-form-label">  Till</label>
-                                <div class="input-group date" id="datetimepicker4" data-target-input="nearest">
-                                    <input type="text" name='till' class="form-control datetimepicker-input" data-target="#datetimepicker4" />
-                                    <div class="input-group-append" data-target="#datetimepicker4" data-toggle="datetimepicker" >
-                                        <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
-                                    </div>
+                                <div class="input-group date" id="datetimepicker4" >
+                                    <input type="date" name='till' class="form-control datetimepicker-input" min='2019-05-22' max='2030-12-31' required>
+                                    
                                 </div>
                             </div>
                             <div class="form-group">
@@ -117,7 +116,7 @@ include '../dashboard.php';
                             
                                             <div class="form-group">
                                                 <label for="exampleFormControlTextarea1">More Information</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1" name='text' rows="3"></textarea>
+                                                <input type="text" class="form-control" id="exampleFormControlTextarea1" name='text'  style="height:250px;width:400px" pattern="[A-Za-z0-9][A-Za-z0-9 ]{2,}" required>
                                             </div>
                                             <div class="col-sm-6 pl-0">
                                                 <p class="text-right">
@@ -128,15 +127,13 @@ include '../dashboard.php';
                                         </form>
                                     </div>
                                     </div>
-                                    
+                                    </div>
+                                    </div>
                         
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <?php
-include '../dbfooter.html';
-
-?>
+    
             <!-- ============================================================== -->
             <!-- end footer -->
             <!-- ============================================================== -->

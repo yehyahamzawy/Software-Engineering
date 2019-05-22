@@ -2,6 +2,7 @@
 /**
  * 
  */
+
 include_once "db.php";
 include_once "CRUDinterface.php";
 include_once "userTypeClass.php";
@@ -199,6 +200,7 @@ class User implements CRUD,iObserver,iMissionMember
 		// echo "<script> olo();</script>";
 		
 		// echo " <script src='user.js'>";
+	
 		unset($this->output);
 		$sql="SELECT attribute.attributeName as aName,attributetypes.name aTypeName, attributetypes.ID as aTypeID,usertypeattributes.ID as relationID FROM attribute INNER JOIN usertypeattributes ON usertypeattributes.attributeID=attribute.ID INNER JOIN attributetypes ON attribute.type=attributetypes.ID WHERE usertypeattributes.userTypeID=".$userType;
 		$result=$this->DB->db_query($sql);
@@ -209,8 +211,8 @@ class User implements CRUD,iObserver,iMissionMember
 		 foreach ($x->Read() as $key) {
 		 	$key;}
 		 $this->output[]="</h3>";
-		 $this->output[]="<label>First Name:<input type='text' name='fname'></label><br>";
-		 $this->output[]="<label>Last Name:<input type='text' name='lname'></label><br>";
+		 $this->output[]="<label>First Name:<input type='text' name='fname' pattern='[A-Za-z]{3,}' title='Three or more characters with no spaces' required ></label><br>";
+		 $this->output[]="<label>Last Name:<input type='text' name='lname' pattern='[A-Za-z]{3,}' title='Three or more characters with no spaces' required></label><br>";
 		 $this->output[]="<input type='hidden' value=".$userType." name='type'>";
 
 		while($Row = mysqli_fetch_array($result)){

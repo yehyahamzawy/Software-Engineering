@@ -48,7 +48,7 @@ public function showmodal($Row)
               <div class="form-group">
                       <label for="inputText3" class="col-form-label">Attribute Name</label>
                       
-                      <input id="inputText3" type="text" class="form-control" name = "attributeName">
+                      <input id="inputText3" type="text" class="form-control" name = "attributeName"  >
                   </div>
               <div class="form-group">
                       <label for="inputText3" class="col-form-label">DataType</label>
