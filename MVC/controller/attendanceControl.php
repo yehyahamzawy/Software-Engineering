@@ -1,6 +1,6 @@
 <?php 
 require_once "../../class/DBHelper.php";
-$DB = new helper("localhost", "root", "","newdb");
+$DB = new helper("localhost", "root", "","se1");
 // if(isset($_GET["del"]))
 // {
     

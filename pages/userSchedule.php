@@ -4,7 +4,7 @@ require_once "../MVC/view/scheduleView.php";
 require_once "../MVC/model/scheduleModel.php";
 
 $model = new scheduleModel();
-$view = new scheduleView(array('editor' => "../pages/editor.php", 'checker' => "../pages/checker.php" ),"Hello","testing page");
+$view = new scheduleView(array('View Schedules' => "../pages/viewSchedules.php", ),"User Schedule","Table");
 $users = $model->getUser($_GET["ID"]);
 $model->getDays();
 $model->getUserShifts($_GET["ID"]);

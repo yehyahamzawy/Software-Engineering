@@ -6,7 +6,7 @@ require_once "../class/CRUDinterface.php";
         public function __construct($id)
         {
             
-            $this->DB = new helper("localhost", "root", "","newdb");
+            $this->DB = new helper("localhost", "root", "","se1");
             $object = $this->DB->selectIndexedArray("*", "permission", NULL );
         }
 
@@ -18,7 +18,7 @@ require_once "../class/CRUDinterface.php";
     
 	function readAllTable(){
 		$indexedArray = array();
-		$innerJoinSelection = "SELECT permission.ID, permission.userTypeID, permission.linkID, links.friendlyName, usertype.type FROM permission INNER JOIN links ON links.ID=permission.linkID INNER JOIN usertype ON permission.userTypeID=usertype.ID WHERE permission.isDeleted = 0";
+		$innerJoinSelection = "SELECT permission.ID, permission.userTypeID, permission.linkID, link.friendlyName, usertype.type FROM permission INNER JOIN link ON link.ID=permission.linkID INNER JOIN usertype ON permission.userTypeID=usertype.ID WHERE permission.isDeleted = 0";
 		
 		//echo $innerJoinSelection;
 		
@@ -63,7 +63,7 @@ require_once "../class/CRUDinterface.php";
 	function getLinks()
 	{
 		
-		$links = $this->DB->selectIndexedArray("*", "links", NULL);
+		$links = $this->DB->selectIndexedArray("*", "link", NULL);
 		return $links;
 	}
 	

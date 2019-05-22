@@ -6,8 +6,8 @@ require_once "../class/CRUDinterface.php";
         public function __construct($id)
         {
             
-            $this->DB = new helper("localhost", "root", "","newdb");
-            $object = $this->DB->selectIndexedArray("*", "links", NULL );
+            $this->DB = new helper("localhost", "root", "","se1");
+            $object = $this->DB->selectIndexedArray("*", "link", NULL );
         }
 
         function create($dataArray)
@@ -18,7 +18,7 @@ require_once "../class/CRUDinterface.php";
     
 	function readAllTable(){
 		
-        return $this->DB->selectIndexedArray("*", "links", NULL);
+        return $this->DB->selectIndexedArray("*", "link", NULL);
 
 		
 	}
@@ -34,18 +34,18 @@ require_once "../class/CRUDinterface.php";
 
     function readInSelect($selection)
     {
-        $output = $this->DB->selectIndexedArray($selection, "links", NULL);
+        $output = $this->DB->selectIndexedArray($selection, "link", NULL);
     }
 
 	function update($ID,$dataArray)
 	{
-		$this->DB->update("links", $dataArray, $ID);
+		$this->DB->update("link", $dataArray, $ID);
 		
 	}
 
 	function delete($ID)
 	{
-		$this->DB->delete("links", $ID);
+		$this->DB->delete("link", $ID);
 	
 	}
 

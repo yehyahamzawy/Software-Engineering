@@ -13,7 +13,7 @@ require_once "iScheduleDoc.php";
 			$this->shifts = array();
 			$this->users = array();
 			$this->days = array();
-            $this->DB = new helper("localhost", "root", "","newdb");
+            $this->DB = new helper("localhost", "root", "","se1");
             
         }
 

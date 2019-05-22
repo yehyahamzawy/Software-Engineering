@@ -6,7 +6,7 @@ require_once "../class/CRUDinterface.php";
         public function __construct()
         {
             
-            $this->DB = new helper("localhost", "root", "","newdb");
+            $this->DB = new helper("localhost", "root", "","se1");
             
         }
 
@@ -19,7 +19,7 @@ require_once "../class/CRUDinterface.php";
     function readAllTable()
     {
 		$indexedArray = array();
-		$innerJoinSelection = "SELECT attendance.ID, attendance.inOrOut, attendance.userID, attendance.time, user.fName, user.lName, user.userTypeID, usertype.type FROM attendance INNER JOIN user ON attendance.userID=user.ID INNER JOIN usertype ON user.userTypeID = usertype.ID WHERE attendance.isDeleted = 0";
+		$innerJoinSelection = "SELECT attendance.ID, attendance.inOrOut, attendance.userID, attendance.time, user.fName, user.lName, user.userType, usertype.type FROM attendance INNER JOIN user ON attendance.userID=user.ID INNER JOIN usertype ON user.userType = usertype.ID WHERE attendance.isDeleted = 0 AND user.userType != 5";
 		
 		//echo $innerJoinSelection;
 		
@@ -77,7 +77,7 @@ require_once "../class/CRUDinterface.php";
 
     function getUsers()
     {
-        return $this->DB->selectIndexedArray("*", "user", NULL);
+        return $this->DB->selectIndexedArray("*", "user", "user.userType != 5");
     }
 
 

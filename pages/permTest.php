@@ -1,7 +1,8 @@
 
                 <?php 
                 session_start();
-                $pageID = 6;
+                $_SESSION["userID"] = 226;
+                $pageID = 4;
                 $_SESSION["pageID"] = $pageID;
                 require_once "../class/accessCheck.php";
                 $object = new accessCheck();
@@ -9,17 +10,5 @@
                 
                 ?><?php 
 
-require_once "../MVC/view/linksView.php";
-
-
-
-$view = new linksView(array('editor' => "../pages/editor.php", 'checker' => "../pages/checker.php" ),"Hello","testing page");
-
-
-$view->header();
-$view->showLinksEdit();
-$view->footer();
-
-
-
+echo "you have access"
 ?>
